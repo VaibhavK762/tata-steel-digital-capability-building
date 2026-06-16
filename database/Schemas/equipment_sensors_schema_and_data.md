@@ -1,0 +1,939 @@
+# Schema and Data: equipment_sensors
+
+This document provides the database schema and full data dump for the `equipment_sensors` table in the SQLite database (`data/database.db`).
+
+## Table Summary
+- **Total Columns:** 9
+- **Total Rows:** 900
+
+## SQL Definition
+```sql
+CREATE TABLE equipment_sensors (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT,
+            equipment_id TEXT,
+            equipment_name TEXT,
+            location TEXT,
+            temperature_c REAL,
+            vibration_mms REAL,
+            pressure_psi REAL,
+            status TEXT
+        )
+```
+
+## Column Definitions
+| Column ID | Column Name | Data Type | Primary Key? | Nullable? | Default | Foreign Key Reference |
+|---|---|---|---|---|---|---|
+| 0 | `id` | INTEGER | Yes | Yes | `NULL` |  |
+| 1 | `date` | TEXT | No | Yes | `NULL` |  |
+| 2 | `equipment_id` | TEXT | No | Yes | `NULL` |  |
+| 3 | `equipment_name` | TEXT | No | Yes | `NULL` |  |
+| 4 | `location` | TEXT | No | Yes | `NULL` |  |
+| 5 | `temperature_c` | REAL | No | Yes | `NULL` |  |
+| 6 | `vibration_mms` | REAL | No | Yes | `NULL` |  |
+| 7 | `pressure_psi` | REAL | No | Yes | `NULL` |  |
+| 8 | `status` | TEXT | No | Yes | `NULL` |  |
+
+## Table Data
+| id | date | equipment_id | equipment_name | location | temperature_c | vibration_mms | pressure_psi | status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2026-01-01 | EQ001 | Crusher Machine | Plant A | 46.63 | 0.446 | 115.21 | Normal |
+| 2 | 2026-01-02 | EQ001 | Crusher Machine | Plant A | 39.4 | 0.185 | 126.81 | Normal |
+| 3 | 2026-01-03 | EQ001 | Crusher Machine | Plant A | 47.34 | 0.327 | 106.7 | Normal |
+| 4 | 2026-01-04 | EQ001 | Crusher Machine | Plant A | 70.45 | 0.006 | 126.33 | Normal |
+| 5 | 2026-01-05 | EQ001 | Crusher Machine | Plant A | 36.83 | 0.375 | 122.24 | Normal |
+| 6 | 2026-01-06 | EQ001 | Crusher Machine | Plant A | 77.85 | 0.331 | 126.88 | Normal |
+| 7 | 2026-01-07 | EQ001 | Crusher Machine | Plant A | 70.28 | 0.193 | 121.08 | Normal |
+| 8 | 2026-01-08 | EQ001 | Crusher Machine | Plant A | 45.0 | 0.116 | 129.92 | Normal |
+| 9 | 2026-01-09 | EQ001 | Crusher Machine | Plant A | 38.45 | 0.349 | 101.87 | Normal |
+| 10 | 2026-01-10 | EQ001 | Crusher Machine | Plant A | 77.11 | 0.205 | 116.38 | Normal |
+| 11 | 2026-01-11 | EQ001 | Crusher Machine | Plant A | 63.64 | 0.326 | 118.7 | Normal |
+| 12 | 2026-01-12 | EQ001 | Crusher Machine | Plant A | 22.23 | 0.092 | 115.51 | Normal |
+| 13 | 2026-01-13 | EQ001 | Crusher Machine | Plant A | 31.51 | 0.146 | 125.06 | Normal |
+| 14 | 2026-01-14 | EQ001 | Crusher Machine | Plant A | 91.55 | 0.597 | 135.24 | Warning |
+| 15 | 2026-01-15 | EQ001 | Crusher Machine | Plant A | 44.42 | 0.091 | 127.4 | Normal |
+| 16 | 2026-01-16 | EQ001 | Crusher Machine | Plant A | 48.17 | 0.426 | 103.32 | Normal |
+| 17 | 2026-01-17 | EQ001 | Crusher Machine | Plant A | 71.26 | 0.373 | 123.32 | Normal |
+| 18 | 2026-01-18 | EQ001 | Crusher Machine | Plant A | 25.36 | 0.221 | 112.81 | Normal |
+| 19 | 2026-01-19 | EQ001 | Crusher Machine | Plant A | 75.61 | 0.105 | 109.5 | Normal |
+| 20 | 2026-01-20 | EQ001 | Crusher Machine | Plant A | 33.12 | 0.264 | 128.99 | Normal |
+| 21 | 2026-01-21 | EQ001 | Crusher Machine | Plant A | 70.53 | 0.145 | 104.19 | Normal |
+| 22 | 2026-01-22 | EQ001 | Crusher Machine | Plant A | 78.12 | 0.457 | 114.2 | Normal |
+| 23 | 2026-01-23 | EQ001 | Crusher Machine | Plant A | 51.88 | 0.138 | 126.44 | Normal |
+| 24 | 2026-01-24 | EQ001 | Crusher Machine | Plant A | 60.53 | 0.047 | 121.89 | Normal |
+| 25 | 2026-01-25 | EQ001 | Crusher Machine | Plant A | 66.44 | 0.038 | 102.6 | Normal |
+| 26 | 2026-01-26 | EQ001 | Crusher Machine | Plant A | 33.58 | 0.433 | 120.31 | Normal |
+| 27 | 2026-01-27 | EQ001 | Crusher Machine | Plant A | 21.83 | 0.128 | 128.11 | Normal |
+| 28 | 2026-01-28 | EQ001 | Crusher Machine | Plant A | 54.45 | 0.324 | 116.39 | Normal |
+| 29 | 2026-01-29 | EQ001 | Crusher Machine | Plant A | 70.42 | 0.428 | 104.11 | Normal |
+| 30 | 2026-01-30 | EQ001 | Crusher Machine | Plant A | 33.42 | 0.114 | 102.33 | Normal |
+| 31 | 2026-01-31 | EQ001 | Crusher Machine | Plant A | 22.59 | 0.258 | 126.41 | Normal |
+| 32 | 2026-02-01 | EQ001 | Crusher Machine | Plant A | 31.53 | 0.189 | 108.97 | Normal |
+| 33 | 2026-02-02 | EQ001 | Crusher Machine | Plant A | 32.8 | 0.212 | 115.25 | Normal |
+| 34 | 2026-02-03 | EQ001 | Crusher Machine | Plant A | 31.08 | 0.005 | 126.28 | Normal |
+| 35 | 2026-02-04 | EQ001 | Crusher Machine | Plant A | 24.78 | 0.06 | 108.27 | Normal |
+| 36 | 2026-02-05 | EQ001 | Crusher Machine | Plant A | 29.41 | 0.424 | 101.23 | Normal |
+| 37 | 2026-02-06 | EQ001 | Crusher Machine | Plant A | 54.7 | 0.166 | 107.15 | Normal |
+| 38 | 2026-02-07 | EQ001 | Crusher Machine | Plant A | 108.93 | 1.518 | 172.7 | Critical |
+| 39 | 2026-02-08 | EQ001 | Crusher Machine | Plant A | 56.85 | 0.126 | 113.95 | Normal |
+| 40 | 2026-02-09 | EQ001 | Crusher Machine | Plant A | 45.26 | 0.215 | 115.62 | Normal |
+| 41 | 2026-02-10 | EQ001 | Crusher Machine | Plant A | 108.01 | 1.663 | 172.74 | Critical |
+| 42 | 2026-02-11 | EQ001 | Crusher Machine | Plant A | 100.62 | 1.853 | 154.77 | Critical |
+| 43 | 2026-02-12 | EQ001 | Crusher Machine | Plant A | 23.02 | 0.442 | 105.33 | Normal |
+| 44 | 2026-02-13 | EQ001 | Crusher Machine | Plant A | 31.68 | 0.054 | 116.51 | Normal |
+| 45 | 2026-02-14 | EQ001 | Crusher Machine | Plant A | 38.66 | 0.483 | 101.52 | Normal |
+| 46 | 2026-02-15 | EQ001 | Crusher Machine | Plant A | 68.02 | 0.01 | 124.7 | Normal |
+| 47 | 2026-02-16 | EQ001 | Crusher Machine | Plant A | 53.8 | 0.498 | 103.88 | Normal |
+| 48 | 2026-02-17 | EQ001 | Crusher Machine | Plant A | 65.26 | 0.371 | 100.26 | Normal |
+| 49 | 2026-02-18 | EQ001 | Crusher Machine | Plant A | 67.5 | 0.035 | 119.75 | Normal |
+| 50 | 2026-02-19 | EQ001 | Crusher Machine | Plant A | 21.04 | 0.155 | 119.75 | Normal |
+| 51 | 2026-02-20 | EQ001 | Crusher Machine | Plant A | 54.14 | 0.406 | 106.22 | Normal |
+| 52 | 2026-02-21 | EQ001 | Crusher Machine | Plant A | 47.3 | 0.405 | 106.93 | Normal |
+| 53 | 2026-02-22 | EQ001 | Crusher Machine | Plant A | 91.24 | 0.549 | 143.92 | Warning |
+| 54 | 2026-02-23 | EQ001 | Crusher Machine | Plant A | 21.68 | 0.205 | 121.72 | Normal |
+| 55 | 2026-02-24 | EQ001 | Crusher Machine | Plant A | 59.62 | 0.215 | 119.65 | Normal |
+| 56 | 2026-02-25 | EQ001 | Crusher Machine | Plant A | 38.71 | 0.172 | 106.32 | Normal |
+| 57 | 2026-02-26 | EQ001 | Crusher Machine | Plant A | 34.41 | 0.159 | 112.02 | Normal |
+| 58 | 2026-02-27 | EQ001 | Crusher Machine | Plant A | 64.51 | 0.398 | 117.97 | Normal |
+| 59 | 2026-02-28 | EQ001 | Crusher Machine | Plant A | 20.47 | 0.274 | 127.95 | Normal |
+| 60 | 2026-03-01 | EQ001 | Crusher Machine | Plant A | 34.06 | 0.346 | 126.59 | Normal |
+| 61 | 2026-03-02 | EQ001 | Crusher Machine | Plant A | 20.33 | 0.385 | 105.74 | Normal |
+| 62 | 2026-03-03 | EQ001 | Crusher Machine | Plant A | 73.58 | 0.384 | 118.92 | Normal |
+| 63 | 2026-03-04 | EQ001 | Crusher Machine | Plant A | 61.63 | 0.073 | 110.84 | Normal |
+| 64 | 2026-03-05 | EQ001 | Crusher Machine | Plant A | 60.08 | 0.258 | 104.44 | Normal |
+| 65 | 2026-03-06 | EQ001 | Crusher Machine | Plant A | 23.82 | 0.384 | 110.01 | Normal |
+| 66 | 2026-03-07 | EQ001 | Crusher Machine | Plant A | 29.04 | 0.232 | 117.87 | Normal |
+| 67 | 2026-03-08 | EQ001 | Crusher Machine | Plant A | 67.94 | 0.294 | 110.31 | Normal |
+| 68 | 2026-03-09 | EQ001 | Crusher Machine | Plant A | 76.27 | 0.265 | 128.74 | Normal |
+| 69 | 2026-03-10 | EQ001 | Crusher Machine | Plant A | 54.21 | 0.165 | 121.39 | Normal |
+| 70 | 2026-03-11 | EQ001 | Crusher Machine | Plant A | 46.02 | 0.096 | 104.7 | Normal |
+| 71 | 2026-03-12 | EQ001 | Crusher Machine | Plant A | 46.09 | 0.139 | 119.86 | Normal |
+| 72 | 2026-03-13 | EQ001 | Crusher Machine | Plant A | 54.63 | 0.146 | 129.06 | Normal |
+| 73 | 2026-03-14 | EQ001 | Crusher Machine | Plant A | 94.27 | 0.776 | 145.3 | Warning |
+| 74 | 2026-03-15 | EQ001 | Crusher Machine | Plant A | 76.8 | 0.441 | 119.77 | Normal |
+| 75 | 2026-03-16 | EQ001 | Crusher Machine | Plant A | 41.65 | 0.132 | 127.64 | Normal |
+| 76 | 2026-03-17 | EQ001 | Crusher Machine | Plant A | 74.17 | 0.288 | 115.1 | Normal |
+| 77 | 2026-03-18 | EQ001 | Crusher Machine | Plant A | 73.65 | 0.174 | 107.97 | Normal |
+| 78 | 2026-03-19 | EQ001 | Crusher Machine | Plant A | 45.2 | 0.271 | 110.51 | Normal |
+| 79 | 2026-03-20 | EQ001 | Crusher Machine | Plant A | 23.34 | 0.12 | 122.39 | Normal |
+| 80 | 2026-03-21 | EQ001 | Crusher Machine | Plant A | 106.41 | 1.268 | 164.18 | Critical |
+| 81 | 2026-03-22 | EQ001 | Crusher Machine | Plant A | 74.23 | 0.5 | 102.48 | Normal |
+| 82 | 2026-03-23 | EQ001 | Crusher Machine | Plant A | 32.96 | 0.248 | 113.68 | Normal |
+| 83 | 2026-03-24 | EQ001 | Crusher Machine | Plant A | 64.98 | 0.412 | 116.96 | Normal |
+| 84 | 2026-03-25 | EQ001 | Crusher Machine | Plant A | 60.34 | 0.174 | 116.38 | Normal |
+| 85 | 2026-03-26 | EQ001 | Crusher Machine | Plant A | 23.39 | 0.409 | 117.53 | Normal |
+| 86 | 2026-03-27 | EQ001 | Crusher Machine | Plant A | 34.87 | 0.253 | 113.85 | Normal |
+| 87 | 2026-03-28 | EQ001 | Crusher Machine | Plant A | 23.39 | 0.236 | 102.91 | Normal |
+| 88 | 2026-03-29 | EQ001 | Crusher Machine | Plant A | 69.63 | 0.365 | 127.26 | Normal |
+| 89 | 2026-03-30 | EQ001 | Crusher Machine | Plant A | 49.28 | 0.271 | 119.88 | Normal |
+| 90 | 2026-03-31 | EQ001 | Crusher Machine | Plant A | 78.76 | 0.401 | 121.95 | Normal |
+| 91 | 2026-04-01 | EQ001 | Crusher Machine | Plant A | 41.19 | 0.282 | 120.93 | Normal |
+| 92 | 2026-04-02 | EQ001 | Crusher Machine | Plant A | 81.53 | 0.751 | 141.84 | Warning |
+| 93 | 2026-04-03 | EQ001 | Crusher Machine | Plant A | 67.19 | 0.464 | 115.08 | Normal |
+| 94 | 2026-04-04 | EQ001 | Crusher Machine | Plant A | 70.71 | 0.496 | 106.36 | Normal |
+| 95 | 2026-04-05 | EQ001 | Crusher Machine | Plant A | 79.41 | 0.346 | 117.6 | Normal |
+| 96 | 2026-04-06 | EQ001 | Crusher Machine | Plant A | 73.65 | 0.238 | 115.47 | Normal |
+| 97 | 2026-04-07 | EQ001 | Crusher Machine | Plant A | 105.56 | 1.429 | 169.75 | Critical |
+| 98 | 2026-04-08 | EQ001 | Crusher Machine | Plant A | 69.32 | 0.394 | 120.96 | Normal |
+| 99 | 2026-04-09 | EQ001 | Crusher Machine | Plant A | 22.4 | 0.194 | 108.79 | Normal |
+| 100 | 2026-04-10 | EQ001 | Crusher Machine | Plant A | 73.76 | 0.173 | 120.63 | Normal |
+| 101 | 2026-04-11 | EQ001 | Crusher Machine | Plant A | 71.44 | 0.085 | 120.31 | Normal |
+| 102 | 2026-04-12 | EQ001 | Crusher Machine | Plant A | 62.58 | 0.289 | 104.91 | Normal |
+| 103 | 2026-04-13 | EQ001 | Crusher Machine | Plant A | 68.52 | 0.245 | 101.45 | Normal |
+| 104 | 2026-04-14 | EQ001 | Crusher Machine | Plant A | 90.69 | 0.738 | 149.35 | Warning |
+| 105 | 2026-04-15 | EQ001 | Crusher Machine | Plant A | 49.1 | 0.176 | 125.47 | Normal |
+| 106 | 2026-04-16 | EQ001 | Crusher Machine | Plant A | 67.47 | 0.154 | 113.31 | Normal |
+| 107 | 2026-04-17 | EQ001 | Crusher Machine | Plant A | 39.83 | 0.152 | 115.15 | Normal |
+| 108 | 2026-04-18 | EQ001 | Crusher Machine | Plant A | 47.68 | 0.421 | 103.35 | Normal |
+| 109 | 2026-04-19 | EQ001 | Crusher Machine | Plant A | 37.46 | 0.112 | 124.21 | Normal |
+| 110 | 2026-04-20 | EQ001 | Crusher Machine | Plant A | 62.71 | 0.195 | 107.92 | Normal |
+| 111 | 2026-04-21 | EQ001 | Crusher Machine | Plant A | 93.76 | 0.695 | 149.38 | Warning |
+| 112 | 2026-04-22 | EQ001 | Crusher Machine | Plant A | 68.59 | 0.408 | 126.72 | Normal |
+| 113 | 2026-04-23 | EQ001 | Crusher Machine | Plant A | 43.32 | 0.308 | 119.26 | Normal |
+| 114 | 2026-04-24 | EQ001 | Crusher Machine | Plant A | 47.13 | 0.459 | 118.65 | Normal |
+| 115 | 2026-04-25 | EQ001 | Crusher Machine | Plant A | 51.53 | 0.253 | 111.8 | Normal |
+| 116 | 2026-04-26 | EQ001 | Crusher Machine | Plant A | 52.09 | 0.175 | 108.1 | Normal |
+| 117 | 2026-04-27 | EQ001 | Crusher Machine | Plant A | 28.97 | 0.487 | 112.32 | Normal |
+| 118 | 2026-04-28 | EQ001 | Crusher Machine | Plant A | 22.14 | 0.037 | 106.69 | Normal |
+| 119 | 2026-04-29 | EQ001 | Crusher Machine | Plant A | 47.78 | 0.215 | 113.87 | Normal |
+| 120 | 2026-04-30 | EQ001 | Crusher Machine | Plant A | 68.41 | 0.102 | 103.67 | Normal |
+| 121 | 2026-05-01 | EQ001 | Crusher Machine | Plant A | 94.28 | 0.924 | 139.15 | Warning |
+| 122 | 2026-05-02 | EQ001 | Crusher Machine | Plant A | 77.98 | 0.385 | 118.98 | Normal |
+| 123 | 2026-05-03 | EQ001 | Crusher Machine | Plant A | 41.99 | 0.096 | 127.65 | Normal |
+| 124 | 2026-05-04 | EQ001 | Crusher Machine | Plant A | 35.95 | 0.489 | 106.02 | Normal |
+| 125 | 2026-05-05 | EQ001 | Crusher Machine | Plant A | 87.43 | 0.992 | 141.34 | Warning |
+| 126 | 2026-05-06 | EQ001 | Crusher Machine | Plant A | 58.03 | 0.438 | 110.12 | Normal |
+| 127 | 2026-05-07 | EQ001 | Crusher Machine | Plant A | 72.76 | 0.15 | 108.78 | Normal |
+| 128 | 2026-05-08 | EQ001 | Crusher Machine | Plant A | 54.09 | 0.446 | 118.66 | Normal |
+| 129 | 2026-05-09 | EQ001 | Crusher Machine | Plant A | 43.0 | 0.144 | 100.97 | Normal |
+| 130 | 2026-05-10 | EQ001 | Crusher Machine | Plant A | 27.97 | 0.105 | 106.01 | Normal |
+| 131 | 2026-05-11 | EQ001 | Crusher Machine | Plant A | 79.15 | 0.409 | 121.18 | Normal |
+| 132 | 2026-05-12 | EQ001 | Crusher Machine | Plant A | 72.34 | 0.292 | 126.46 | Normal |
+| 133 | 2026-05-13 | EQ001 | Crusher Machine | Plant A | 39.82 | 0.354 | 102.7 | Normal |
+| 134 | 2026-05-14 | EQ001 | Crusher Machine | Plant A | 71.44 | 0.071 | 101.72 | Normal |
+| 135 | 2026-05-15 | EQ001 | Crusher Machine | Plant A | 31.44 | 0.496 | 122.04 | Normal |
+| 136 | 2026-05-16 | EQ001 | Crusher Machine | Plant A | 52.19 | 0.233 | 127.2 | Normal |
+| 137 | 2026-05-17 | EQ001 | Crusher Machine | Plant A | 46.95 | 0.182 | 111.55 | Normal |
+| 138 | 2026-05-18 | EQ001 | Crusher Machine | Plant A | 61.07 | 0.314 | 113.1 | Normal |
+| 139 | 2026-05-19 | EQ001 | Crusher Machine | Plant A | 61.77 | 0.043 | 110.18 | Normal |
+| 140 | 2026-05-20 | EQ001 | Crusher Machine | Plant A | 34.98 | 0.053 | 113.77 | Normal |
+| 141 | 2026-05-21 | EQ001 | Crusher Machine | Plant A | 60.1 | 0.052 | 125.68 | Normal |
+| 142 | 2026-05-22 | EQ001 | Crusher Machine | Plant A | 100.67 | 1.182 | 161.62 | Critical |
+| 143 | 2026-05-23 | EQ001 | Crusher Machine | Plant A | 54.15 | 0.072 | 127.69 | Normal |
+| 144 | 2026-05-24 | EQ001 | Crusher Machine | Plant A | 78.05 | 0.127 | 118.22 | Normal |
+| 145 | 2026-05-25 | EQ001 | Crusher Machine | Plant A | 55.38 | 0.152 | 125.12 | Normal |
+| 146 | 2026-05-26 | EQ001 | Crusher Machine | Plant A | 76.83 | 0.091 | 103.85 | Normal |
+| 147 | 2026-05-27 | EQ001 | Crusher Machine | Plant A | 54.09 | 0.386 | 126.38 | Normal |
+| 148 | 2026-05-28 | EQ001 | Crusher Machine | Plant A | 63.41 | 0.051 | 116.08 | Normal |
+| 149 | 2026-05-29 | EQ001 | Crusher Machine | Plant A | 70.23 | 0.149 | 112.16 | Normal |
+| 150 | 2026-05-30 | EQ001 | Crusher Machine | Plant A | 87.53 | 0.874 | 141.95 | Warning |
+| 151 | 2026-01-01 | EQ002 | Conveyor Belt | Plant A | 58.92 | 0.045 | 112.68 | Normal |
+| 152 | 2026-01-02 | EQ002 | Conveyor Belt | Plant A | 75.53 | 0.078 | 100.05 | Normal |
+| 153 | 2026-01-03 | EQ002 | Conveyor Belt | Plant A | 30.31 | 0.354 | 124.88 | Normal |
+| 154 | 2026-01-04 | EQ002 | Conveyor Belt | Plant A | 27.54 | 0.273 | 100.21 | Normal |
+| 155 | 2026-01-05 | EQ002 | Conveyor Belt | Plant A | 67.91 | 0.015 | 108.86 | Normal |
+| 156 | 2026-01-06 | EQ002 | Conveyor Belt | Plant A | 65.14 | 0.338 | 116.18 | Normal |
+| 157 | 2026-01-07 | EQ002 | Conveyor Belt | Plant A | 32.01 | 0.168 | 122.09 | Normal |
+| 158 | 2026-01-08 | EQ002 | Conveyor Belt | Plant A | 67.43 | 0.032 | 115.42 | Normal |
+| 159 | 2026-01-09 | EQ002 | Conveyor Belt | Plant A | 51.69 | 0.086 | 121.46 | Normal |
+| 160 | 2026-01-10 | EQ002 | Conveyor Belt | Plant A | 35.42 | 0.447 | 101.57 | Normal |
+| 161 | 2026-01-11 | EQ002 | Conveyor Belt | Plant A | 41.29 | 0.301 | 105.32 | Normal |
+| 162 | 2026-01-12 | EQ002 | Conveyor Belt | Plant A | 66.71 | 0.454 | 110.91 | Normal |
+| 163 | 2026-01-13 | EQ002 | Conveyor Belt | Plant A | 53.84 | 0.15 | 118.59 | Normal |
+| 164 | 2026-01-14 | EQ002 | Conveyor Belt | Plant A | 59.43 | 0.068 | 118.49 | Normal |
+| 165 | 2026-01-15 | EQ002 | Conveyor Belt | Plant A | 50.55 | 0.486 | 109.34 | Normal |
+| 166 | 2026-01-16 | EQ002 | Conveyor Belt | Plant A | 70.01 | 0.202 | 111.33 | Normal |
+| 167 | 2026-01-17 | EQ002 | Conveyor Belt | Plant A | 40.81 | 0.119 | 105.31 | Normal |
+| 168 | 2026-01-18 | EQ002 | Conveyor Belt | Plant A | 37.03 | 0.04 | 119.38 | Normal |
+| 169 | 2026-01-19 | EQ002 | Conveyor Belt | Plant A | 60.53 | 0.11 | 129.06 | Normal |
+| 170 | 2026-01-20 | EQ002 | Conveyor Belt | Plant A | 23.08 | 0.156 | 104.61 | Normal |
+| 171 | 2026-01-21 | EQ002 | Conveyor Belt | Plant A | 38.53 | 0.372 | 106.94 | Normal |
+| 172 | 2026-01-22 | EQ002 | Conveyor Belt | Plant A | 27.11 | 0.044 | 102.27 | Normal |
+| 173 | 2026-01-23 | EQ002 | Conveyor Belt | Plant A | 32.01 | 0.139 | 125.01 | Normal |
+| 174 | 2026-01-24 | EQ002 | Conveyor Belt | Plant A | 49.71 | 0.388 | 114.45 | Normal |
+| 175 | 2026-01-25 | EQ002 | Conveyor Belt | Plant A | 24.14 | 0.476 | 127.91 | Normal |
+| 176 | 2026-01-26 | EQ002 | Conveyor Belt | Plant A | 50.12 | 0.067 | 124.02 | Normal |
+| 177 | 2026-01-27 | EQ002 | Conveyor Belt | Plant A | 78.93 | 0.394 | 128.37 | Normal |
+| 178 | 2026-01-28 | EQ002 | Conveyor Belt | Plant A | 54.29 | 0.141 | 112.01 | Normal |
+| 179 | 2026-01-29 | EQ002 | Conveyor Belt | Plant A | 22.84 | 0.412 | 128.92 | Normal |
+| 180 | 2026-01-30 | EQ002 | Conveyor Belt | Plant A | 30.16 | 0.437 | 103.2 | Normal |
+| 181 | 2026-01-31 | EQ002 | Conveyor Belt | Plant A | 93.73 | 0.569 | 143.38 | Warning |
+| 182 | 2026-02-01 | EQ002 | Conveyor Belt | Plant A | 27.39 | 0.49 | 128.65 | Normal |
+| 183 | 2026-02-02 | EQ002 | Conveyor Belt | Plant A | 49.33 | 0.298 | 127.71 | Normal |
+| 184 | 2026-02-03 | EQ002 | Conveyor Belt | Plant A | 72.46 | 0.324 | 126.15 | Normal |
+| 185 | 2026-02-04 | EQ002 | Conveyor Belt | Plant A | 76.68 | 0.425 | 106.09 | Normal |
+| 186 | 2026-02-05 | EQ002 | Conveyor Belt | Plant A | 106.31 | 1.592 | 163.67 | Critical |
+| 187 | 2026-02-06 | EQ002 | Conveyor Belt | Plant A | 83.12 | 0.706 | 143.49 | Warning |
+| 188 | 2026-02-07 | EQ002 | Conveyor Belt | Plant A | 84.67 | 0.607 | 144.81 | Warning |
+| 189 | 2026-02-08 | EQ002 | Conveyor Belt | Plant A | 27.27 | 0.208 | 126.86 | Normal |
+| 190 | 2026-02-09 | EQ002 | Conveyor Belt | Plant A | 43.31 | 0.465 | 100.13 | Normal |
+| 191 | 2026-02-10 | EQ002 | Conveyor Belt | Plant A | 61.03 | 0.03 | 104.46 | Normal |
+| 192 | 2026-02-11 | EQ002 | Conveyor Belt | Plant A | 47.46 | 0.247 | 121.6 | Normal |
+| 193 | 2026-02-12 | EQ002 | Conveyor Belt | Plant A | 71.51 | 0.5 | 121.51 | Normal |
+| 194 | 2026-02-13 | EQ002 | Conveyor Belt | Plant A | 53.78 | 0.256 | 114.45 | Normal |
+| 195 | 2026-02-14 | EQ002 | Conveyor Belt | Plant A | 57.71 | 0.321 | 107.57 | Normal |
+| 196 | 2026-02-15 | EQ002 | Conveyor Belt | Plant A | 28.07 | 0.168 | 126.87 | Normal |
+| 197 | 2026-02-16 | EQ002 | Conveyor Belt | Plant A | 88.19 | 0.715 | 141.74 | Warning |
+| 198 | 2026-02-17 | EQ002 | Conveyor Belt | Plant A | 63.73 | 0.155 | 129.54 | Normal |
+| 199 | 2026-02-18 | EQ002 | Conveyor Belt | Plant A | 33.39 | 0.134 | 114.38 | Normal |
+| 200 | 2026-02-19 | EQ002 | Conveyor Belt | Plant A | 29.26 | 0.036 | 120.85 | Normal |
+| 201 | 2026-02-20 | EQ002 | Conveyor Belt | Plant A | 60.48 | 0.2 | 124.1 | Normal |
+| 202 | 2026-02-21 | EQ002 | Conveyor Belt | Plant A | 71.11 | 0.086 | 125.78 | Normal |
+| 203 | 2026-02-22 | EQ002 | Conveyor Belt | Plant A | 35.66 | 0.275 | 108.12 | Normal |
+| 204 | 2026-02-23 | EQ002 | Conveyor Belt | Plant A | 25.17 | 0.177 | 121.11 | Normal |
+| 205 | 2026-02-24 | EQ002 | Conveyor Belt | Plant A | 104.25 | 1.462 | 163.72 | Critical |
+| 206 | 2026-02-25 | EQ002 | Conveyor Belt | Plant A | 85.04 | 0.613 | 133.75 | Warning |
+| 207 | 2026-02-26 | EQ002 | Conveyor Belt | Plant A | 69.33 | 0.178 | 118.86 | Normal |
+| 208 | 2026-02-27 | EQ002 | Conveyor Belt | Plant A | 39.44 | 0.045 | 114.25 | Normal |
+| 209 | 2026-02-28 | EQ002 | Conveyor Belt | Plant A | 38.14 | 0.443 | 100.12 | Normal |
+| 210 | 2026-03-01 | EQ002 | Conveyor Belt | Plant A | 33.13 | 0.434 | 108.97 | Normal |
+| 211 | 2026-03-02 | EQ002 | Conveyor Belt | Plant A | 53.26 | 0.371 | 106.4 | Normal |
+| 212 | 2026-03-03 | EQ002 | Conveyor Belt | Plant A | 107.83 | 1.221 | 161.59 | Critical |
+| 213 | 2026-03-04 | EQ002 | Conveyor Belt | Plant A | 27.25 | 0.459 | 118.84 | Normal |
+| 214 | 2026-03-05 | EQ002 | Conveyor Belt | Plant A | 89.26 | 0.98 | 138.62 | Warning |
+| 215 | 2026-03-06 | EQ002 | Conveyor Belt | Plant A | 52.23 | 0.157 | 104.61 | Normal |
+| 216 | 2026-03-07 | EQ002 | Conveyor Belt | Plant A | 21.61 | 0.306 | 121.32 | Normal |
+| 217 | 2026-03-08 | EQ002 | Conveyor Belt | Plant A | 55.47 | 0.06 | 122.86 | Normal |
+| 218 | 2026-03-09 | EQ002 | Conveyor Belt | Plant A | 35.58 | 0.106 | 128.99 | Normal |
+| 219 | 2026-03-10 | EQ002 | Conveyor Belt | Plant A | 107.42 | 1.639 | 166.16 | Critical |
+| 220 | 2026-03-11 | EQ002 | Conveyor Belt | Plant A | 52.89 | 0.172 | 119.03 | Normal |
+| 221 | 2026-03-12 | EQ002 | Conveyor Belt | Plant A | 57.04 | 0.411 | 129.44 | Normal |
+| 222 | 2026-03-13 | EQ002 | Conveyor Belt | Plant A | 50.66 | 0.059 | 114.4 | Normal |
+| 223 | 2026-03-14 | EQ002 | Conveyor Belt | Plant A | 68.62 | 0.056 | 128.06 | Normal |
+| 224 | 2026-03-15 | EQ002 | Conveyor Belt | Plant A | 43.09 | 0.242 | 101.47 | Normal |
+| 225 | 2026-03-16 | EQ002 | Conveyor Belt | Plant A | 24.05 | 0.386 | 114.81 | Normal |
+| 226 | 2026-03-17 | EQ002 | Conveyor Belt | Plant A | 68.16 | 0.458 | 104.66 | Normal |
+| 227 | 2026-03-18 | EQ002 | Conveyor Belt | Plant A | 74.37 | 0.17 | 122.17 | Normal |
+| 228 | 2026-03-19 | EQ002 | Conveyor Belt | Plant A | 38.99 | 0.007 | 110.44 | Normal |
+| 229 | 2026-03-20 | EQ002 | Conveyor Belt | Plant A | 66.43 | 0.107 | 117.99 | Normal |
+| 230 | 2026-03-21 | EQ002 | Conveyor Belt | Plant A | 40.77 | 0.426 | 120.35 | Normal |
+| 231 | 2026-03-22 | EQ002 | Conveyor Belt | Plant A | 76.9 | 0.047 | 105.57 | Normal |
+| 232 | 2026-03-23 | EQ002 | Conveyor Belt | Plant A | 101.07 | 1.573 | 165.38 | Critical |
+| 233 | 2026-03-24 | EQ002 | Conveyor Belt | Plant A | 63.99 | 0.399 | 108.69 | Normal |
+| 234 | 2026-03-25 | EQ002 | Conveyor Belt | Plant A | 27.05 | 0.437 | 124.19 | Normal |
+| 235 | 2026-03-26 | EQ002 | Conveyor Belt | Plant A | 45.86 | 0.258 | 114.83 | Normal |
+| 236 | 2026-03-27 | EQ002 | Conveyor Belt | Plant A | 29.49 | 0.096 | 109.68 | Normal |
+| 237 | 2026-03-28 | EQ002 | Conveyor Belt | Plant A | 48.91 | 0.154 | 106.65 | Normal |
+| 238 | 2026-03-29 | EQ002 | Conveyor Belt | Plant A | 63.32 | 0.402 | 123.06 | Normal |
+| 239 | 2026-03-30 | EQ002 | Conveyor Belt | Plant A | 72.18 | 0.347 | 116.39 | Normal |
+| 240 | 2026-03-31 | EQ002 | Conveyor Belt | Plant A | 34.35 | 0.318 | 125.31 | Normal |
+| 241 | 2026-04-01 | EQ002 | Conveyor Belt | Plant A | 58.8 | 0.192 | 124.07 | Normal |
+| 242 | 2026-04-02 | EQ002 | Conveyor Belt | Plant A | 33.12 | 0.174 | 122.25 | Normal |
+| 243 | 2026-04-03 | EQ002 | Conveyor Belt | Plant A | 29.49 | 0.469 | 115.35 | Normal |
+| 244 | 2026-04-04 | EQ002 | Conveyor Belt | Plant A | 47.79 | 0.017 | 119.37 | Normal |
+| 245 | 2026-04-05 | EQ002 | Conveyor Belt | Plant A | 61.27 | 0.19 | 104.85 | Normal |
+| 246 | 2026-04-06 | EQ002 | Conveyor Belt | Plant A | 69.95 | 0.31 | 100.73 | Normal |
+| 247 | 2026-04-07 | EQ002 | Conveyor Belt | Plant A | 56.4 | 0.432 | 106.03 | Normal |
+| 248 | 2026-04-08 | EQ002 | Conveyor Belt | Plant A | 75.53 | 0.499 | 104.22 | Normal |
+| 249 | 2026-04-09 | EQ002 | Conveyor Belt | Plant A | 73.56 | 0.41 | 112.7 | Normal |
+| 250 | 2026-04-10 | EQ002 | Conveyor Belt | Plant A | 35.5 | 0.392 | 104.86 | Normal |
+| 251 | 2026-04-11 | EQ002 | Conveyor Belt | Plant A | 58.95 | 0.254 | 120.78 | Normal |
+| 252 | 2026-04-12 | EQ002 | Conveyor Belt | Plant A | 78.67 | 0.133 | 128.81 | Normal |
+| 253 | 2026-04-13 | EQ002 | Conveyor Belt | Plant A | 74.24 | 0.083 | 119.44 | Normal |
+| 254 | 2026-04-14 | EQ002 | Conveyor Belt | Plant A | 63.73 | 0.045 | 122.38 | Normal |
+| 255 | 2026-04-15 | EQ002 | Conveyor Belt | Plant A | 54.21 | 0.181 | 104.49 | Normal |
+| 256 | 2026-04-16 | EQ002 | Conveyor Belt | Plant A | 52.83 | 0.439 | 101.26 | Normal |
+| 257 | 2026-04-17 | EQ002 | Conveyor Belt | Plant A | 78.17 | 0.134 | 125.92 | Normal |
+| 258 | 2026-04-18 | EQ002 | Conveyor Belt | Plant A | 79.87 | 0.17 | 100.82 | Normal |
+| 259 | 2026-04-19 | EQ002 | Conveyor Belt | Plant A | 79.74 | 0.113 | 127.09 | Normal |
+| 260 | 2026-04-20 | EQ002 | Conveyor Belt | Plant A | 62.1 | 0.313 | 116.56 | Normal |
+| 261 | 2026-04-21 | EQ002 | Conveyor Belt | Plant A | 48.67 | 0.302 | 110.27 | Normal |
+| 262 | 2026-04-22 | EQ002 | Conveyor Belt | Plant A | 25.95 | 0.172 | 103.97 | Normal |
+| 263 | 2026-04-23 | EQ002 | Conveyor Belt | Plant A | 56.78 | 0.237 | 124.77 | Normal |
+| 264 | 2026-04-24 | EQ002 | Conveyor Belt | Plant A | 54.05 | 0.483 | 119.74 | Normal |
+| 265 | 2026-04-25 | EQ002 | Conveyor Belt | Plant A | 39.52 | 0.329 | 116.97 | Normal |
+| 266 | 2026-04-26 | EQ002 | Conveyor Belt | Plant A | 20.37 | 0.244 | 122.98 | Normal |
+| 267 | 2026-04-27 | EQ002 | Conveyor Belt | Plant A | 47.55 | 0.437 | 117.8 | Normal |
+| 268 | 2026-04-28 | EQ002 | Conveyor Belt | Plant A | 47.83 | 0.085 | 115.32 | Normal |
+| 269 | 2026-04-29 | EQ002 | Conveyor Belt | Plant A | 54.32 | 0.425 | 109.59 | Normal |
+| 270 | 2026-04-30 | EQ002 | Conveyor Belt | Plant A | 58.86 | 0.216 | 102.4 | Normal |
+| 271 | 2026-05-01 | EQ002 | Conveyor Belt | Plant A | 47.86 | 0.022 | 121.66 | Normal |
+| 272 | 2026-05-02 | EQ002 | Conveyor Belt | Plant A | 60.16 | 0.398 | 125.12 | Normal |
+| 273 | 2026-05-03 | EQ002 | Conveyor Belt | Plant A | 24.32 | 0.191 | 108.68 | Normal |
+| 274 | 2026-05-04 | EQ002 | Conveyor Belt | Plant A | 81.42 | 0.742 | 133.56 | Warning |
+| 275 | 2026-05-05 | EQ002 | Conveyor Belt | Plant A | 75.31 | 0.361 | 105.08 | Normal |
+| 276 | 2026-05-06 | EQ002 | Conveyor Belt | Plant A | 53.87 | 0.097 | 125.28 | Normal |
+| 277 | 2026-05-07 | EQ002 | Conveyor Belt | Plant A | 76.06 | 0.059 | 127.85 | Normal |
+| 278 | 2026-05-08 | EQ002 | Conveyor Belt | Plant A | 72.19 | 0.019 | 100.53 | Normal |
+| 279 | 2026-05-09 | EQ002 | Conveyor Belt | Plant A | 61.01 | 0.345 | 124.07 | Normal |
+| 280 | 2026-05-10 | EQ002 | Conveyor Belt | Plant A | 99.71 | 1.261 | 177.65 | Critical |
+| 281 | 2026-05-11 | EQ002 | Conveyor Belt | Plant A | 79.46 | 0.304 | 122.5 | Normal |
+| 282 | 2026-05-12 | EQ002 | Conveyor Belt | Plant A | 31.84 | 0.37 | 115.86 | Normal |
+| 283 | 2026-05-13 | EQ002 | Conveyor Belt | Plant A | 46.58 | 0.385 | 100.24 | Normal |
+| 284 | 2026-05-14 | EQ002 | Conveyor Belt | Plant A | 24.83 | 0.267 | 120.63 | Normal |
+| 285 | 2026-05-15 | EQ002 | Conveyor Belt | Plant A | 38.67 | 0.355 | 122.2 | Normal |
+| 286 | 2026-05-16 | EQ002 | Conveyor Belt | Plant A | 109.69 | 1.57 | 157.7 | Critical |
+| 287 | 2026-05-17 | EQ002 | Conveyor Belt | Plant A | 55.97 | 0.033 | 117.9 | Normal |
+| 288 | 2026-05-18 | EQ002 | Conveyor Belt | Plant A | 98.3 | 1.97 | 167.84 | Critical |
+| 289 | 2026-05-19 | EQ002 | Conveyor Belt | Plant A | 23.47 | 0.21 | 111.22 | Normal |
+| 290 | 2026-05-20 | EQ002 | Conveyor Belt | Plant A | 51.11 | 0.105 | 120.94 | Normal |
+| 291 | 2026-05-21 | EQ002 | Conveyor Belt | Plant A | 65.39 | 0.245 | 118.73 | Normal |
+| 292 | 2026-05-22 | EQ002 | Conveyor Belt | Plant A | 84.91 | 0.731 | 131.67 | Warning |
+| 293 | 2026-05-23 | EQ002 | Conveyor Belt | Plant A | 51.43 | 0.209 | 112.8 | Normal |
+| 294 | 2026-05-24 | EQ002 | Conveyor Belt | Plant A | 61.49 | 0.465 | 114.55 | Normal |
+| 295 | 2026-05-25 | EQ002 | Conveyor Belt | Plant A | 27.75 | 0.012 | 121.68 | Normal |
+| 296 | 2026-05-26 | EQ002 | Conveyor Belt | Plant A | 38.45 | 0.474 | 108.1 | Normal |
+| 297 | 2026-05-27 | EQ002 | Conveyor Belt | Plant A | 25.23 | 0.465 | 127.55 | Normal |
+| 298 | 2026-05-28 | EQ002 | Conveyor Belt | Plant A | 55.47 | 0.499 | 121.53 | Normal |
+| 299 | 2026-05-29 | EQ002 | Conveyor Belt | Plant A | 79.03 | 0.057 | 114.9 | Normal |
+| 300 | 2026-05-30 | EQ002 | Conveyor Belt | Plant A | 34.87 | 0.178 | 127.86 | Normal |
+| 301 | 2026-01-01 | EQ003 | Heating Regulator | Plant B | 57.55 | 0.277 | 121.78 | Normal |
+| 302 | 2026-01-02 | EQ003 | Heating Regulator | Plant B | 53.95 | 0.017 | 121.63 | Normal |
+| 303 | 2026-01-03 | EQ003 | Heating Regulator | Plant B | 64.46 | 0.26 | 106.11 | Normal |
+| 304 | 2026-01-04 | EQ003 | Heating Regulator | Plant B | 96.82 | 1.818 | 159.42 | Critical |
+| 305 | 2026-01-05 | EQ003 | Heating Regulator | Plant B | 28.07 | 0.214 | 100.7 | Normal |
+| 306 | 2026-01-06 | EQ003 | Heating Regulator | Plant B | 21.1 | 0.29 | 116.57 | Normal |
+| 307 | 2026-01-07 | EQ003 | Heating Regulator | Plant B | 103.44 | 1.769 | 175.25 | Critical |
+| 308 | 2026-01-08 | EQ003 | Heating Regulator | Plant B | 69.66 | 0.095 | 103.37 | Normal |
+| 309 | 2026-01-09 | EQ003 | Heating Regulator | Plant B | 66.96 | 0.041 | 122.09 | Normal |
+| 310 | 2026-01-10 | EQ003 | Heating Regulator | Plant B | 67.24 | 0.488 | 109.27 | Normal |
+| 311 | 2026-01-11 | EQ003 | Heating Regulator | Plant B | 58.34 | 0.303 | 111.06 | Normal |
+| 312 | 2026-01-12 | EQ003 | Heating Regulator | Plant B | 82.11 | 0.659 | 142.36 | Warning |
+| 313 | 2026-01-13 | EQ003 | Heating Regulator | Plant B | 107.36 | 1.803 | 159.09 | Critical |
+| 314 | 2026-01-14 | EQ003 | Heating Regulator | Plant B | 41.06 | 0.018 | 101.7 | Normal |
+| 315 | 2026-01-15 | EQ003 | Heating Regulator | Plant B | 58.11 | 0.393 | 116.54 | Normal |
+| 316 | 2026-01-16 | EQ003 | Heating Regulator | Plant B | 21.87 | 0.477 | 106.92 | Normal |
+| 317 | 2026-01-17 | EQ003 | Heating Regulator | Plant B | 55.69 | 0.452 | 118.4 | Normal |
+| 318 | 2026-01-18 | EQ003 | Heating Regulator | Plant B | 59.19 | 0.395 | 124.1 | Normal |
+| 319 | 2026-01-19 | EQ003 | Heating Regulator | Plant B | 46.59 | 0.102 | 122.18 | Normal |
+| 320 | 2026-01-20 | EQ003 | Heating Regulator | Plant B | 20.71 | 0.421 | 113.33 | Normal |
+| 321 | 2026-01-21 | EQ003 | Heating Regulator | Plant B | 26.3 | 0.138 | 120.05 | Normal |
+| 322 | 2026-01-22 | EQ003 | Heating Regulator | Plant B | 29.88 | 0.056 | 117.7 | Normal |
+| 323 | 2026-01-23 | EQ003 | Heating Regulator | Plant B | 54.09 | 0.495 | 107.8 | Normal |
+| 324 | 2026-01-24 | EQ003 | Heating Regulator | Plant B | 48.7 | 0.411 | 111.65 | Normal |
+| 325 | 2026-01-25 | EQ003 | Heating Regulator | Plant B | 47.28 | 0.339 | 127.98 | Normal |
+| 326 | 2026-01-26 | EQ003 | Heating Regulator | Plant B | 71.43 | 0.477 | 112.66 | Normal |
+| 327 | 2026-01-27 | EQ003 | Heating Regulator | Plant B | 76.42 | 0.421 | 123.51 | Normal |
+| 328 | 2026-01-28 | EQ003 | Heating Regulator | Plant B | 49.89 | 0.056 | 101.37 | Normal |
+| 329 | 2026-01-29 | EQ003 | Heating Regulator | Plant B | 65.67 | 0.22 | 118.39 | Normal |
+| 330 | 2026-01-30 | EQ003 | Heating Regulator | Plant B | 62.77 | 0.038 | 113.07 | Normal |
+| 331 | 2026-01-31 | EQ003 | Heating Regulator | Plant B | 42.19 | 0.108 | 119.47 | Normal |
+| 332 | 2026-02-01 | EQ003 | Heating Regulator | Plant B | 74.2 | 0.192 | 111.62 | Normal |
+| 333 | 2026-02-02 | EQ003 | Heating Regulator | Plant B | 50.65 | 0.013 | 126.33 | Normal |
+| 334 | 2026-02-03 | EQ003 | Heating Regulator | Plant B | 73.02 | 0.044 | 116.98 | Normal |
+| 335 | 2026-02-04 | EQ003 | Heating Regulator | Plant B | 38.42 | 0.367 | 127.31 | Normal |
+| 336 | 2026-02-05 | EQ003 | Heating Regulator | Plant B | 54.11 | 0.393 | 127.51 | Normal |
+| 337 | 2026-02-06 | EQ003 | Heating Regulator | Plant B | 52.48 | 0.033 | 116.34 | Normal |
+| 338 | 2026-02-07 | EQ003 | Heating Regulator | Plant B | 21.35 | 0.045 | 106.59 | Normal |
+| 339 | 2026-02-08 | EQ003 | Heating Regulator | Plant B | 56.42 | 0.08 | 126.97 | Normal |
+| 340 | 2026-02-09 | EQ003 | Heating Regulator | Plant B | 50.88 | 0.5 | 125.54 | Normal |
+| 341 | 2026-02-10 | EQ003 | Heating Regulator | Plant B | 39.03 | 0.209 | 108.01 | Normal |
+| 342 | 2026-02-11 | EQ003 | Heating Regulator | Plant B | 27.86 | 0.197 | 101.61 | Normal |
+| 343 | 2026-02-12 | EQ003 | Heating Regulator | Plant B | 44.94 | 0.405 | 110.68 | Normal |
+| 344 | 2026-02-13 | EQ003 | Heating Regulator | Plant B | 25.73 | 0.093 | 101.91 | Normal |
+| 345 | 2026-02-14 | EQ003 | Heating Regulator | Plant B | 93.49 | 0.644 | 136.5 | Warning |
+| 346 | 2026-02-15 | EQ003 | Heating Regulator | Plant B | 79.15 | 0.314 | 104.22 | Normal |
+| 347 | 2026-02-16 | EQ003 | Heating Regulator | Plant B | 50.82 | 0.037 | 120.79 | Normal |
+| 348 | 2026-02-17 | EQ003 | Heating Regulator | Plant B | 69.21 | 0.386 | 109.38 | Normal |
+| 349 | 2026-02-18 | EQ003 | Heating Regulator | Plant B | 37.47 | 0.204 | 126.25 | Normal |
+| 350 | 2026-02-19 | EQ003 | Heating Regulator | Plant B | 69.2 | 0.292 | 108.51 | Normal |
+| 351 | 2026-02-20 | EQ003 | Heating Regulator | Plant B | 86.23 | 0.583 | 141.67 | Warning |
+| 352 | 2026-02-21 | EQ003 | Heating Regulator | Plant B | 28.17 | 0.25 | 109.87 | Normal |
+| 353 | 2026-02-22 | EQ003 | Heating Regulator | Plant B | 39.52 | 0.377 | 128.75 | Normal |
+| 354 | 2026-02-23 | EQ003 | Heating Regulator | Plant B | 32.12 | 0.046 | 106.38 | Normal |
+| 355 | 2026-02-24 | EQ003 | Heating Regulator | Plant B | 62.05 | 0.347 | 118.82 | Normal |
+| 356 | 2026-02-25 | EQ003 | Heating Regulator | Plant B | 76.06 | 0.301 | 108.18 | Normal |
+| 357 | 2026-02-26 | EQ003 | Heating Regulator | Plant B | 33.5 | 0.275 | 127.55 | Normal |
+| 358 | 2026-02-27 | EQ003 | Heating Regulator | Plant B | 22.64 | 0.382 | 106.25 | Normal |
+| 359 | 2026-02-28 | EQ003 | Heating Regulator | Plant B | 33.51 | 0.207 | 101.68 | Normal |
+| 360 | 2026-03-01 | EQ003 | Heating Regulator | Plant B | 92.61 | 0.847 | 132.51 | Warning |
+| 361 | 2026-03-02 | EQ003 | Heating Regulator | Plant B | 33.05 | 0.358 | 123.41 | Normal |
+| 362 | 2026-03-03 | EQ003 | Heating Regulator | Plant B | 34.09 | 0.326 | 105.36 | Normal |
+| 363 | 2026-03-04 | EQ003 | Heating Regulator | Plant B | 44.57 | 0.091 | 100.72 | Normal |
+| 364 | 2026-03-05 | EQ003 | Heating Regulator | Plant B | 43.54 | 0.475 | 116.68 | Normal |
+| 365 | 2026-03-06 | EQ003 | Heating Regulator | Plant B | 37.74 | 0.499 | 116.13 | Normal |
+| 366 | 2026-03-07 | EQ003 | Heating Regulator | Plant B | 89.26 | 0.725 | 132.29 | Warning |
+| 367 | 2026-03-08 | EQ003 | Heating Regulator | Plant B | 62.31 | 0.008 | 126.62 | Normal |
+| 368 | 2026-03-09 | EQ003 | Heating Regulator | Plant B | 72.25 | 0.459 | 114.61 | Normal |
+| 369 | 2026-03-10 | EQ003 | Heating Regulator | Plant B | 22.32 | 0.144 | 106.16 | Normal |
+| 370 | 2026-03-11 | EQ003 | Heating Regulator | Plant B | 70.91 | 0.446 | 121.09 | Normal |
+| 371 | 2026-03-12 | EQ003 | Heating Regulator | Plant B | 70.6 | 0.407 | 112.48 | Normal |
+| 372 | 2026-03-13 | EQ003 | Heating Regulator | Plant B | 43.59 | 0.034 | 123.45 | Normal |
+| 373 | 2026-03-14 | EQ003 | Heating Regulator | Plant B | 25.8 | 0.027 | 104.41 | Normal |
+| 374 | 2026-03-15 | EQ003 | Heating Regulator | Plant B | 86.45 | 0.906 | 136.45 | Warning |
+| 375 | 2026-03-16 | EQ003 | Heating Regulator | Plant B | 77.84 | 0.148 | 111.03 | Normal |
+| 376 | 2026-03-17 | EQ003 | Heating Regulator | Plant B | 79.91 | 0.09 | 113.13 | Normal |
+| 377 | 2026-03-18 | EQ003 | Heating Regulator | Plant B | 39.77 | 0.309 | 120.46 | Normal |
+| 378 | 2026-03-19 | EQ003 | Heating Regulator | Plant B | 86.24 | 0.716 | 136.6 | Warning |
+| 379 | 2026-03-20 | EQ003 | Heating Regulator | Plant B | 44.79 | 0.076 | 102.38 | Normal |
+| 380 | 2026-03-21 | EQ003 | Heating Regulator | Plant B | 35.02 | 0.25 | 112.54 | Normal |
+| 381 | 2026-03-22 | EQ003 | Heating Regulator | Plant B | 74.77 | 0.05 | 102.53 | Normal |
+| 382 | 2026-03-23 | EQ003 | Heating Regulator | Plant B | 75.79 | 0.357 | 125.63 | Normal |
+| 383 | 2026-03-24 | EQ003 | Heating Regulator | Plant B | 62.76 | 0.223 | 105.45 | Normal |
+| 384 | 2026-03-25 | EQ003 | Heating Regulator | Plant B | 24.34 | 0.372 | 129.65 | Normal |
+| 385 | 2026-03-26 | EQ003 | Heating Regulator | Plant B | 52.76 | 0.055 | 102.93 | Normal |
+| 386 | 2026-03-27 | EQ003 | Heating Regulator | Plant B | 67.75 | 0.306 | 120.77 | Normal |
+| 387 | 2026-03-28 | EQ003 | Heating Regulator | Plant B | 51.54 | 0.089 | 127.94 | Normal |
+| 388 | 2026-03-29 | EQ003 | Heating Regulator | Plant B | 57.38 | 0.288 | 106.26 | Normal |
+| 389 | 2026-03-30 | EQ003 | Heating Regulator | Plant B | 43.56 | 0.142 | 120.2 | Normal |
+| 390 | 2026-03-31 | EQ003 | Heating Regulator | Plant B | 34.48 | 0.301 | 128.44 | Normal |
+| 391 | 2026-04-01 | EQ003 | Heating Regulator | Plant B | 33.93 | 0.042 | 115.78 | Normal |
+| 392 | 2026-04-02 | EQ003 | Heating Regulator | Plant B | 84.42 | 0.531 | 149.05 | Warning |
+| 393 | 2026-04-03 | EQ003 | Heating Regulator | Plant B | 20.2 | 0.027 | 128.97 | Normal |
+| 394 | 2026-04-04 | EQ003 | Heating Regulator | Plant B | 55.89 | 0.247 | 102.91 | Normal |
+| 395 | 2026-04-05 | EQ003 | Heating Regulator | Plant B | 46.06 | 0.219 | 104.34 | Normal |
+| 396 | 2026-04-06 | EQ003 | Heating Regulator | Plant B | 48.78 | 0.089 | 101.57 | Normal |
+| 397 | 2026-04-07 | EQ003 | Heating Regulator | Plant B | 22.01 | 0.397 | 105.23 | Normal |
+| 398 | 2026-04-08 | EQ003 | Heating Regulator | Plant B | 90.24 | 0.961 | 144.02 | Warning |
+| 399 | 2026-04-09 | EQ003 | Heating Regulator | Plant B | 61.04 | 0.245 | 101.27 | Normal |
+| 400 | 2026-04-10 | EQ003 | Heating Regulator | Plant B | 30.63 | 0.117 | 124.38 | Normal |
+| 401 | 2026-04-11 | EQ003 | Heating Regulator | Plant B | 23.04 | 0.435 | 128.03 | Normal |
+| 402 | 2026-04-12 | EQ003 | Heating Regulator | Plant B | 54.73 | 0.454 | 117.14 | Normal |
+| 403 | 2026-04-13 | EQ003 | Heating Regulator | Plant B | 56.65 | 0.429 | 118.55 | Normal |
+| 404 | 2026-04-14 | EQ003 | Heating Regulator | Plant B | 69.57 | 0.019 | 127.08 | Normal |
+| 405 | 2026-04-15 | EQ003 | Heating Regulator | Plant B | 70.02 | 0.002 | 107.52 | Normal |
+| 406 | 2026-04-16 | EQ003 | Heating Regulator | Plant B | 47.04 | 0.223 | 116.76 | Normal |
+| 407 | 2026-04-17 | EQ003 | Heating Regulator | Plant B | 61.4 | 0.037 | 117.84 | Normal |
+| 408 | 2026-04-18 | EQ003 | Heating Regulator | Plant B | 43.13 | 0.212 | 123.85 | Normal |
+| 409 | 2026-04-19 | EQ003 | Heating Regulator | Plant B | 46.24 | 0.46 | 121.82 | Normal |
+| 410 | 2026-04-20 | EQ003 | Heating Regulator | Plant B | 48.03 | 0.304 | 129.44 | Normal |
+| 411 | 2026-04-21 | EQ003 | Heating Regulator | Plant B | 67.25 | 0.395 | 123.77 | Normal |
+| 412 | 2026-04-22 | EQ003 | Heating Regulator | Plant B | 47.95 | 0.191 | 115.05 | Normal |
+| 413 | 2026-04-23 | EQ003 | Heating Regulator | Plant B | 28.41 | 0.452 | 109.24 | Normal |
+| 414 | 2026-04-24 | EQ003 | Heating Regulator | Plant B | 31.99 | 0.401 | 121.43 | Normal |
+| 415 | 2026-04-25 | EQ003 | Heating Regulator | Plant B | 42.12 | 0.399 | 117.06 | Normal |
+| 416 | 2026-04-26 | EQ003 | Heating Regulator | Plant B | 87.51 | 0.972 | 135.05 | Warning |
+| 417 | 2026-04-27 | EQ003 | Heating Regulator | Plant B | 40.11 | 0.169 | 120.66 | Normal |
+| 418 | 2026-04-28 | EQ003 | Heating Regulator | Plant B | 96.04 | 1.859 | 173.68 | Critical |
+| 419 | 2026-04-29 | EQ003 | Heating Regulator | Plant B | 69.7 | 0.191 | 101.57 | Normal |
+| 420 | 2026-04-30 | EQ003 | Heating Regulator | Plant B | 57.45 | 0.19 | 114.45 | Normal |
+| 421 | 2026-05-01 | EQ003 | Heating Regulator | Plant B | 33.63 | 0.129 | 129.64 | Normal |
+| 422 | 2026-05-02 | EQ003 | Heating Regulator | Plant B | 31.35 | 0.16 | 110.41 | Normal |
+| 423 | 2026-05-03 | EQ003 | Heating Regulator | Plant B | 57.2 | 0.06 | 111.34 | Normal |
+| 424 | 2026-05-04 | EQ003 | Heating Regulator | Plant B | 99.93 | 1.844 | 178.32 | Critical |
+| 425 | 2026-05-05 | EQ003 | Heating Regulator | Plant B | 27.26 | 0.344 | 113.17 | Normal |
+| 426 | 2026-05-06 | EQ003 | Heating Regulator | Plant B | 84.87 | 0.59 | 149.74 | Warning |
+| 427 | 2026-05-07 | EQ003 | Heating Regulator | Plant B | 64.59 | 0.008 | 121.1 | Normal |
+| 428 | 2026-05-08 | EQ003 | Heating Regulator | Plant B | 30.25 | 0.026 | 128.93 | Normal |
+| 429 | 2026-05-09 | EQ003 | Heating Regulator | Plant B | 24.41 | 0.024 | 106.89 | Normal |
+| 430 | 2026-05-10 | EQ003 | Heating Regulator | Plant B | 20.94 | 0.441 | 114.15 | Normal |
+| 431 | 2026-05-11 | EQ003 | Heating Regulator | Plant B | 60.88 | 0.477 | 129.18 | Normal |
+| 432 | 2026-05-12 | EQ003 | Heating Regulator | Plant B | 87.37 | 0.596 | 144.32 | Warning |
+| 433 | 2026-05-13 | EQ003 | Heating Regulator | Plant B | 41.67 | 0.447 | 128.25 | Normal |
+| 434 | 2026-05-14 | EQ003 | Heating Regulator | Plant B | 35.38 | 0.365 | 125.9 | Normal |
+| 435 | 2026-05-15 | EQ003 | Heating Regulator | Plant B | 46.64 | 0.154 | 101.49 | Normal |
+| 436 | 2026-05-16 | EQ003 | Heating Regulator | Plant B | 28.56 | 0.443 | 129.08 | Normal |
+| 437 | 2026-05-17 | EQ003 | Heating Regulator | Plant B | 37.4 | 0.306 | 126.65 | Normal |
+| 438 | 2026-05-18 | EQ003 | Heating Regulator | Plant B | 54.73 | 0.314 | 119.5 | Normal |
+| 439 | 2026-05-19 | EQ003 | Heating Regulator | Plant B | 75.92 | 0.19 | 101.82 | Normal |
+| 440 | 2026-05-20 | EQ003 | Heating Regulator | Plant B | 50.8 | 0.153 | 117.59 | Normal |
+| 441 | 2026-05-21 | EQ003 | Heating Regulator | Plant B | 56.19 | 0.03 | 111.49 | Normal |
+| 442 | 2026-05-22 | EQ003 | Heating Regulator | Plant B | 45.81 | 0.258 | 107.14 | Normal |
+| 443 | 2026-05-23 | EQ003 | Heating Regulator | Plant B | 33.7 | 0.24 | 124.26 | Normal |
+| 444 | 2026-05-24 | EQ003 | Heating Regulator | Plant B | 38.43 | 0.411 | 104.24 | Normal |
+| 445 | 2026-05-25 | EQ003 | Heating Regulator | Plant B | 51.68 | 0.191 | 111.42 | Normal |
+| 446 | 2026-05-26 | EQ003 | Heating Regulator | Plant B | 63.72 | 0.305 | 105.77 | Normal |
+| 447 | 2026-05-27 | EQ003 | Heating Regulator | Plant B | 54.73 | 0.071 | 118.45 | Normal |
+| 448 | 2026-05-28 | EQ003 | Heating Regulator | Plant B | 108.66 | 1.116 | 164.76 | Critical |
+| 449 | 2026-05-29 | EQ003 | Heating Regulator | Plant B | 98.26 | 1.908 | 154.0 | Critical |
+| 450 | 2026-05-30 | EQ003 | Heating Regulator | Plant B | 65.81 | 0.331 | 103.58 | Normal |
+| 451 | 2026-01-01 | EQ004 | Control Room System | Plant B | 62.26 | 0.482 | 126.51 | Normal |
+| 452 | 2026-01-02 | EQ004 | Control Room System | Plant B | 52.06 | 0.066 | 119.65 | Normal |
+| 453 | 2026-01-03 | EQ004 | Control Room System | Plant B | 53.52 | 0.351 | 115.62 | Normal |
+| 454 | 2026-01-04 | EQ004 | Control Room System | Plant B | 82.93 | 0.87 | 143.19 | Warning |
+| 455 | 2026-01-05 | EQ004 | Control Room System | Plant B | 49.57 | 0.307 | 127.24 | Normal |
+| 456 | 2026-01-06 | EQ004 | Control Room System | Plant B | 73.69 | 0.012 | 128.95 | Normal |
+| 457 | 2026-01-07 | EQ004 | Control Room System | Plant B | 74.82 | 0.094 | 103.22 | Normal |
+| 458 | 2026-01-08 | EQ004 | Control Room System | Plant B | 73.22 | 0.399 | 105.11 | Normal |
+| 459 | 2026-01-09 | EQ004 | Control Room System | Plant B | 27.93 | 0.455 | 127.27 | Normal |
+| 460 | 2026-01-10 | EQ004 | Control Room System | Plant B | 34.22 | 0.046 | 120.11 | Normal |
+| 461 | 2026-01-11 | EQ004 | Control Room System | Plant B | 50.59 | 0.236 | 109.7 | Normal |
+| 462 | 2026-01-12 | EQ004 | Control Room System | Plant B | 62.85 | 0.014 | 124.36 | Normal |
+| 463 | 2026-01-13 | EQ004 | Control Room System | Plant B | 86.59 | 0.834 | 135.52 | Warning |
+| 464 | 2026-01-14 | EQ004 | Control Room System | Plant B | 67.69 | 0.065 | 117.18 | Normal |
+| 465 | 2026-01-15 | EQ004 | Control Room System | Plant B | 55.88 | 0.4 | 101.18 | Normal |
+| 466 | 2026-01-16 | EQ004 | Control Room System | Plant B | 42.8 | 0.33 | 101.58 | Normal |
+| 467 | 2026-01-17 | EQ004 | Control Room System | Plant B | 86.74 | 0.925 | 147.01 | Warning |
+| 468 | 2026-01-18 | EQ004 | Control Room System | Plant B | 77.18 | 0.169 | 114.03 | Normal |
+| 469 | 2026-01-19 | EQ004 | Control Room System | Plant B | 100.96 | 1.225 | 159.55 | Critical |
+| 470 | 2026-01-20 | EQ004 | Control Room System | Plant B | 98.91 | 1.387 | 159.27 | Critical |
+| 471 | 2026-01-21 | EQ004 | Control Room System | Plant B | 76.71 | 0.487 | 117.46 | Normal |
+| 472 | 2026-01-22 | EQ004 | Control Room System | Plant B | 96.87 | 1.105 | 164.46 | Critical |
+| 473 | 2026-01-23 | EQ004 | Control Room System | Plant B | 75.24 | 0.01 | 127.99 | Normal |
+| 474 | 2026-01-24 | EQ004 | Control Room System | Plant B | 87.3 | 0.627 | 144.51 | Warning |
+| 475 | 2026-01-25 | EQ004 | Control Room System | Plant B | 71.52 | 0.2 | 109.77 | Normal |
+| 476 | 2026-01-26 | EQ004 | Control Room System | Plant B | 78.41 | 0.116 | 128.99 | Normal |
+| 477 | 2026-01-27 | EQ004 | Control Room System | Plant B | 28.89 | 0.034 | 113.86 | Normal |
+| 478 | 2026-01-28 | EQ004 | Control Room System | Plant B | 82.07 | 0.607 | 149.65 | Warning |
+| 479 | 2026-01-29 | EQ004 | Control Room System | Plant B | 45.87 | 0.227 | 128.08 | Normal |
+| 480 | 2026-01-30 | EQ004 | Control Room System | Plant B | 21.86 | 0.048 | 100.68 | Normal |
+| 481 | 2026-01-31 | EQ004 | Control Room System | Plant B | 76.4 | 0.023 | 122.69 | Normal |
+| 482 | 2026-02-01 | EQ004 | Control Room System | Plant B | 73.64 | 0.489 | 111.05 | Normal |
+| 483 | 2026-02-02 | EQ004 | Control Room System | Plant B | 89.1 | 0.731 | 138.62 | Warning |
+| 484 | 2026-02-03 | EQ004 | Control Room System | Plant B | 29.17 | 0.177 | 107.73 | Normal |
+| 485 | 2026-02-04 | EQ004 | Control Room System | Plant B | 75.11 | 0.451 | 103.07 | Normal |
+| 486 | 2026-02-05 | EQ004 | Control Room System | Plant B | 64.46 | 0.16 | 115.58 | Normal |
+| 487 | 2026-02-06 | EQ004 | Control Room System | Plant B | 46.89 | 0.287 | 116.31 | Normal |
+| 488 | 2026-02-07 | EQ004 | Control Room System | Plant B | 94.13 | 0.646 | 136.68 | Warning |
+| 489 | 2026-02-08 | EQ004 | Control Room System | Plant B | 37.18 | 0.34 | 111.44 | Normal |
+| 490 | 2026-02-09 | EQ004 | Control Room System | Plant B | 81.77 | 0.727 | 135.36 | Warning |
+| 491 | 2026-02-10 | EQ004 | Control Room System | Plant B | 27.03 | 0.307 | 116.39 | Normal |
+| 492 | 2026-02-11 | EQ004 | Control Room System | Plant B | 79.21 | 0.062 | 112.6 | Normal |
+| 493 | 2026-02-12 | EQ004 | Control Room System | Plant B | 27.01 | 0.25 | 116.46 | Normal |
+| 494 | 2026-02-13 | EQ004 | Control Room System | Plant B | 62.65 | 0.342 | 119.06 | Normal |
+| 495 | 2026-02-14 | EQ004 | Control Room System | Plant B | 72.51 | 0.332 | 107.92 | Normal |
+| 496 | 2026-02-15 | EQ004 | Control Room System | Plant B | 55.91 | 0.352 | 111.35 | Normal |
+| 497 | 2026-02-16 | EQ004 | Control Room System | Plant B | 94.12 | 0.511 | 139.04 | Warning |
+| 498 | 2026-02-17 | EQ004 | Control Room System | Plant B | 68.92 | 0.151 | 114.98 | Normal |
+| 499 | 2026-02-18 | EQ004 | Control Room System | Plant B | 67.23 | 0.429 | 120.43 | Normal |
+| 500 | 2026-02-19 | EQ004 | Control Room System | Plant B | 48.73 | 0.147 | 104.76 | Normal |
+| 501 | 2026-02-20 | EQ004 | Control Room System | Plant B | 49.13 | 0.213 | 101.78 | Normal |
+| 502 | 2026-02-21 | EQ004 | Control Room System | Plant B | 61.19 | 0.079 | 119.87 | Normal |
+| 503 | 2026-02-22 | EQ004 | Control Room System | Plant B | 41.33 | 0.284 | 115.59 | Normal |
+| 504 | 2026-02-23 | EQ004 | Control Room System | Plant B | 43.67 | 0.137 | 124.74 | Normal |
+| 505 | 2026-02-24 | EQ004 | Control Room System | Plant B | 57.04 | 0.059 | 115.05 | Normal |
+| 506 | 2026-02-25 | EQ004 | Control Room System | Plant B | 109.47 | 1.976 | 154.65 | Critical |
+| 507 | 2026-02-26 | EQ004 | Control Room System | Plant B | 53.59 | 0.389 | 125.63 | Normal |
+| 508 | 2026-02-27 | EQ004 | Control Room System | Plant B | 53.98 | 0.499 | 128.51 | Normal |
+| 509 | 2026-02-28 | EQ004 | Control Room System | Plant B | 59.92 | 0.282 | 122.04 | Normal |
+| 510 | 2026-03-01 | EQ004 | Control Room System | Plant B | 84.05 | 0.642 | 139.15 | Warning |
+| 511 | 2026-03-02 | EQ004 | Control Room System | Plant B | 23.3 | 0.355 | 124.77 | Normal |
+| 512 | 2026-03-03 | EQ004 | Control Room System | Plant B | 68.73 | 0.088 | 102.6 | Normal |
+| 513 | 2026-03-04 | EQ004 | Control Room System | Plant B | 29.07 | 0.486 | 128.15 | Normal |
+| 514 | 2026-03-05 | EQ004 | Control Room System | Plant B | 98.46 | 1.436 | 162.25 | Critical |
+| 515 | 2026-03-06 | EQ004 | Control Room System | Plant B | 76.81 | 0.082 | 116.17 | Normal |
+| 516 | 2026-03-07 | EQ004 | Control Room System | Plant B | 68.04 | 0.324 | 114.01 | Normal |
+| 517 | 2026-03-08 | EQ004 | Control Room System | Plant B | 46.43 | 0.333 | 128.1 | Normal |
+| 518 | 2026-03-09 | EQ004 | Control Room System | Plant B | 26.58 | 0.015 | 108.96 | Normal |
+| 519 | 2026-03-10 | EQ004 | Control Room System | Plant B | 58.99 | 0.137 | 129.38 | Normal |
+| 520 | 2026-03-11 | EQ004 | Control Room System | Plant B | 34.96 | 0.006 | 129.33 | Normal |
+| 521 | 2026-03-12 | EQ004 | Control Room System | Plant B | 56.18 | 0.45 | 126.01 | Normal |
+| 522 | 2026-03-13 | EQ004 | Control Room System | Plant B | 48.33 | 0.183 | 118.92 | Normal |
+| 523 | 2026-03-14 | EQ004 | Control Room System | Plant B | 71.7 | 0.166 | 127.55 | Normal |
+| 524 | 2026-03-15 | EQ004 | Control Room System | Plant B | 41.04 | 0.403 | 124.07 | Normal |
+| 525 | 2026-03-16 | EQ004 | Control Room System | Plant B | 28.39 | 0.399 | 108.98 | Normal |
+| 526 | 2026-03-17 | EQ004 | Control Room System | Plant B | 64.39 | 0.195 | 122.57 | Normal |
+| 527 | 2026-03-18 | EQ004 | Control Room System | Plant B | 83.84 | 0.653 | 141.47 | Warning |
+| 528 | 2026-03-19 | EQ004 | Control Room System | Plant B | 21.25 | 0.017 | 109.49 | Normal |
+| 529 | 2026-03-20 | EQ004 | Control Room System | Plant B | 55.4 | 0.377 | 102.84 | Normal |
+| 530 | 2026-03-21 | EQ004 | Control Room System | Plant B | 48.67 | 0.055 | 113.57 | Normal |
+| 531 | 2026-03-22 | EQ004 | Control Room System | Plant B | 43.99 | 0.495 | 114.59 | Normal |
+| 532 | 2026-03-23 | EQ004 | Control Room System | Plant B | 24.47 | 0.402 | 107.48 | Normal |
+| 533 | 2026-03-24 | EQ004 | Control Room System | Plant B | 60.36 | 0.188 | 108.45 | Normal |
+| 534 | 2026-03-25 | EQ004 | Control Room System | Plant B | 90.24 | 0.729 | 142.59 | Warning |
+| 535 | 2026-03-26 | EQ004 | Control Room System | Plant B | 24.88 | 0.459 | 123.39 | Normal |
+| 536 | 2026-03-27 | EQ004 | Control Room System | Plant B | 98.92 | 1.218 | 172.45 | Critical |
+| 537 | 2026-03-28 | EQ004 | Control Room System | Plant B | 74.96 | 0.297 | 106.57 | Normal |
+| 538 | 2026-03-29 | EQ004 | Control Room System | Plant B | 48.38 | 0.033 | 123.52 | Normal |
+| 539 | 2026-03-30 | EQ004 | Control Room System | Plant B | 74.64 | 0.37 | 125.33 | Normal |
+| 540 | 2026-03-31 | EQ004 | Control Room System | Plant B | 41.16 | 0.352 | 106.01 | Normal |
+| 541 | 2026-04-01 | EQ004 | Control Room System | Plant B | 75.61 | 0.277 | 111.13 | Normal |
+| 542 | 2026-04-02 | EQ004 | Control Room System | Plant B | 35.96 | 0.105 | 100.04 | Normal |
+| 543 | 2026-04-03 | EQ004 | Control Room System | Plant B | 51.41 | 0.222 | 109.16 | Normal |
+| 544 | 2026-04-04 | EQ004 | Control Room System | Plant B | 72.98 | 0.451 | 120.11 | Normal |
+| 545 | 2026-04-05 | EQ004 | Control Room System | Plant B | 48.86 | 0.356 | 123.35 | Normal |
+| 546 | 2026-04-06 | EQ004 | Control Room System | Plant B | 63.86 | 0.166 | 110.58 | Normal |
+| 547 | 2026-04-07 | EQ004 | Control Room System | Plant B | 87.37 | 0.833 | 137.87 | Warning |
+| 548 | 2026-04-08 | EQ004 | Control Room System | Plant B | 51.36 | 0.112 | 102.85 | Normal |
+| 549 | 2026-04-09 | EQ004 | Control Room System | Plant B | 32.47 | 0.045 | 103.43 | Normal |
+| 550 | 2026-04-10 | EQ004 | Control Room System | Plant B | 57.0 | 0.354 | 129.33 | Normal |
+| 551 | 2026-04-11 | EQ004 | Control Room System | Plant B | 52.52 | 0.21 | 104.13 | Normal |
+| 552 | 2026-04-12 | EQ004 | Control Room System | Plant B | 90.54 | 0.756 | 143.03 | Warning |
+| 553 | 2026-04-13 | EQ004 | Control Room System | Plant B | 22.53 | 0.28 | 124.19 | Normal |
+| 554 | 2026-04-14 | EQ004 | Control Room System | Plant B | 97.92 | 1.76 | 168.59 | Critical |
+| 555 | 2026-04-15 | EQ004 | Control Room System | Plant B | 63.16 | 0.292 | 104.63 | Normal |
+| 556 | 2026-04-16 | EQ004 | Control Room System | Plant B | 49.1 | 0.303 | 119.95 | Normal |
+| 557 | 2026-04-17 | EQ004 | Control Room System | Plant B | 87.36 | 0.917 | 148.5 | Warning |
+| 558 | 2026-04-18 | EQ004 | Control Room System | Plant B | 67.93 | 0.027 | 113.88 | Normal |
+| 559 | 2026-04-19 | EQ004 | Control Room System | Plant B | 28.11 | 0.448 | 101.66 | Normal |
+| 560 | 2026-04-20 | EQ004 | Control Room System | Plant B | 58.72 | 0.046 | 116.93 | Normal |
+| 561 | 2026-04-21 | EQ004 | Control Room System | Plant B | 79.78 | 0.103 | 125.36 | Normal |
+| 562 | 2026-04-22 | EQ004 | Control Room System | Plant B | 28.75 | 0.244 | 122.64 | Normal |
+| 563 | 2026-04-23 | EQ004 | Control Room System | Plant B | 81.8 | 0.763 | 137.45 | Warning |
+| 564 | 2026-04-24 | EQ004 | Control Room System | Plant B | 32.12 | 0.087 | 112.21 | Normal |
+| 565 | 2026-04-25 | EQ004 | Control Room System | Plant B | 89.87 | 0.539 | 135.93 | Warning |
+| 566 | 2026-04-26 | EQ004 | Control Room System | Plant B | 72.66 | 0.271 | 125.19 | Normal |
+| 567 | 2026-04-27 | EQ004 | Control Room System | Plant B | 44.53 | 0.171 | 125.35 | Normal |
+| 568 | 2026-04-28 | EQ004 | Control Room System | Plant B | 46.78 | 0.343 | 124.49 | Normal |
+| 569 | 2026-04-29 | EQ004 | Control Room System | Plant B | 67.42 | 0.29 | 115.52 | Normal |
+| 570 | 2026-04-30 | EQ004 | Control Room System | Plant B | 41.78 | 0.336 | 114.62 | Normal |
+| 571 | 2026-05-01 | EQ004 | Control Room System | Plant B | 25.13 | 0.283 | 104.27 | Normal |
+| 572 | 2026-05-02 | EQ004 | Control Room System | Plant B | 108.53 | 1.907 | 160.41 | Critical |
+| 573 | 2026-05-03 | EQ004 | Control Room System | Plant B | 54.34 | 0.263 | 100.58 | Normal |
+| 574 | 2026-05-04 | EQ004 | Control Room System | Plant B | 24.14 | 0.203 | 118.63 | Normal |
+| 575 | 2026-05-05 | EQ004 | Control Room System | Plant B | 85.06 | 0.975 | 136.29 | Warning |
+| 576 | 2026-05-06 | EQ004 | Control Room System | Plant B | 83.7 | 0.732 | 134.58 | Warning |
+| 577 | 2026-05-07 | EQ004 | Control Room System | Plant B | 25.68 | 0.252 | 119.31 | Normal |
+| 578 | 2026-05-08 | EQ004 | Control Room System | Plant B | 46.35 | 0.082 | 105.28 | Normal |
+| 579 | 2026-05-09 | EQ004 | Control Room System | Plant B | 69.11 | 0.219 | 100.75 | Normal |
+| 580 | 2026-05-10 | EQ004 | Control Room System | Plant B | 27.24 | 0.311 | 111.72 | Normal |
+| 581 | 2026-05-11 | EQ004 | Control Room System | Plant B | 73.84 | 0.299 | 128.03 | Normal |
+| 582 | 2026-05-12 | EQ004 | Control Room System | Plant B | 78.0 | 0.266 | 121.22 | Normal |
+| 583 | 2026-05-13 | EQ004 | Control Room System | Plant B | 74.64 | 0.397 | 119.45 | Normal |
+| 584 | 2026-05-14 | EQ004 | Control Room System | Plant B | 78.34 | 0.148 | 119.51 | Normal |
+| 585 | 2026-05-15 | EQ004 | Control Room System | Plant B | 69.62 | 0.367 | 108.9 | Normal |
+| 586 | 2026-05-16 | EQ004 | Control Room System | Plant B | 37.53 | 0.204 | 129.28 | Normal |
+| 587 | 2026-05-17 | EQ004 | Control Room System | Plant B | 65.46 | 0.199 | 105.02 | Normal |
+| 588 | 2026-05-18 | EQ004 | Control Room System | Plant B | 76.04 | 0.134 | 108.85 | Normal |
+| 589 | 2026-05-19 | EQ004 | Control Room System | Plant B | 28.65 | 0.042 | 100.66 | Normal |
+| 590 | 2026-05-20 | EQ004 | Control Room System | Plant B | 50.94 | 0.042 | 112.14 | Normal |
+| 591 | 2026-05-21 | EQ004 | Control Room System | Plant B | 81.36 | 0.914 | 141.49 | Warning |
+| 592 | 2026-05-22 | EQ004 | Control Room System | Plant B | 33.4 | 0.072 | 121.02 | Normal |
+| 593 | 2026-05-23 | EQ004 | Control Room System | Plant B | 47.22 | 0.409 | 101.49 | Normal |
+| 594 | 2026-05-24 | EQ004 | Control Room System | Plant B | 84.23 | 0.933 | 140.07 | Warning |
+| 595 | 2026-05-25 | EQ004 | Control Room System | Plant B | 82.57 | 0.907 | 139.55 | Warning |
+| 596 | 2026-05-26 | EQ004 | Control Room System | Plant B | 48.33 | 0.479 | 121.79 | Normal |
+| 597 | 2026-05-27 | EQ004 | Control Room System | Plant B | 62.32 | 0.378 | 118.05 | Normal |
+| 598 | 2026-05-28 | EQ004 | Control Room System | Plant B | 37.87 | 0.286 | 108.03 | Normal |
+| 599 | 2026-05-29 | EQ004 | Control Room System | Plant B | 51.59 | 0.405 | 113.56 | Normal |
+| 600 | 2026-05-30 | EQ004 | Control Room System | Plant B | 57.73 | 0.129 | 105.91 | Normal |
+| 601 | 2026-01-01 | EQ005 | Locomotive | Yard | 48.81 | 0.054 | 113.45 | Normal |
+| 602 | 2026-01-02 | EQ005 | Locomotive | Yard | 37.48 | 0.056 | 115.33 | Normal |
+| 603 | 2026-01-03 | EQ005 | Locomotive | Yard | 21.94 | 0.097 | 119.67 | Normal |
+| 604 | 2026-01-04 | EQ005 | Locomotive | Yard | 43.74 | 0.38 | 109.31 | Normal |
+| 605 | 2026-01-05 | EQ005 | Locomotive | Yard | 42.31 | 0.363 | 111.41 | Normal |
+| 606 | 2026-01-06 | EQ005 | Locomotive | Yard | 33.3 | 0.274 | 106.52 | Normal |
+| 607 | 2026-01-07 | EQ005 | Locomotive | Yard | 51.09 | 0.098 | 125.4 | Normal |
+| 608 | 2026-01-08 | EQ005 | Locomotive | Yard | 59.72 | 0.273 | 124.44 | Normal |
+| 609 | 2026-01-09 | EQ005 | Locomotive | Yard | 61.84 | 0.126 | 109.01 | Normal |
+| 610 | 2026-01-10 | EQ005 | Locomotive | Yard | 34.36 | 0.369 | 115.37 | Normal |
+| 611 | 2026-01-11 | EQ005 | Locomotive | Yard | 93.87 | 0.861 | 148.14 | Warning |
+| 612 | 2026-01-12 | EQ005 | Locomotive | Yard | 66.12 | 0.192 | 103.75 | Normal |
+| 613 | 2026-01-13 | EQ005 | Locomotive | Yard | 107.73 | 1.781 | 176.71 | Critical |
+| 614 | 2026-01-14 | EQ005 | Locomotive | Yard | 70.65 | 0.179 | 106.52 | Normal |
+| 615 | 2026-01-15 | EQ005 | Locomotive | Yard | 88.89 | 0.76 | 141.24 | Warning |
+| 616 | 2026-01-16 | EQ005 | Locomotive | Yard | 23.13 | 0.275 | 115.83 | Normal |
+| 617 | 2026-01-17 | EQ005 | Locomotive | Yard | 28.64 | 0.356 | 128.8 | Normal |
+| 618 | 2026-01-18 | EQ005 | Locomotive | Yard | 83.33 | 0.605 | 133.78 | Warning |
+| 619 | 2026-01-19 | EQ005 | Locomotive | Yard | 67.11 | 0.373 | 102.33 | Normal |
+| 620 | 2026-01-20 | EQ005 | Locomotive | Yard | 32.22 | 0.201 | 127.71 | Normal |
+| 621 | 2026-01-21 | EQ005 | Locomotive | Yard | 56.55 | 0.357 | 101.25 | Normal |
+| 622 | 2026-01-22 | EQ005 | Locomotive | Yard | 33.24 | 0.466 | 108.43 | Normal |
+| 623 | 2026-01-23 | EQ005 | Locomotive | Yard | 47.37 | 0.131 | 114.77 | Normal |
+| 624 | 2026-01-24 | EQ005 | Locomotive | Yard | 62.63 | 0.26 | 114.87 | Normal |
+| 625 | 2026-01-25 | EQ005 | Locomotive | Yard | 78.87 | 0.209 | 119.11 | Normal |
+| 626 | 2026-01-26 | EQ005 | Locomotive | Yard | 86.81 | 0.819 | 133.46 | Warning |
+| 627 | 2026-01-27 | EQ005 | Locomotive | Yard | 97.84 | 1.755 | 160.41 | Critical |
+| 628 | 2026-01-28 | EQ005 | Locomotive | Yard | 36.64 | 0.371 | 111.25 | Normal |
+| 629 | 2026-01-29 | EQ005 | Locomotive | Yard | 97.11 | 1.629 | 168.25 | Critical |
+| 630 | 2026-01-30 | EQ005 | Locomotive | Yard | 31.33 | 0.473 | 129.02 | Normal |
+| 631 | 2026-01-31 | EQ005 | Locomotive | Yard | 54.14 | 0.086 | 125.55 | Normal |
+| 632 | 2026-02-01 | EQ005 | Locomotive | Yard | 62.1 | 0.341 | 107.29 | Normal |
+| 633 | 2026-02-02 | EQ005 | Locomotive | Yard | 92.29 | 0.565 | 144.58 | Warning |
+| 634 | 2026-02-03 | EQ005 | Locomotive | Yard | 51.12 | 0.157 | 109.9 | Normal |
+| 635 | 2026-02-04 | EQ005 | Locomotive | Yard | 51.4 | 0.306 | 127.45 | Normal |
+| 636 | 2026-02-05 | EQ005 | Locomotive | Yard | 65.96 | 0.062 | 119.29 | Normal |
+| 637 | 2026-02-06 | EQ005 | Locomotive | Yard | 40.11 | 0.201 | 121.08 | Normal |
+| 638 | 2026-02-07 | EQ005 | Locomotive | Yard | 21.2 | 0.419 | 119.41 | Normal |
+| 639 | 2026-02-08 | EQ005 | Locomotive | Yard | 69.5 | 0.145 | 123.44 | Normal |
+| 640 | 2026-02-09 | EQ005 | Locomotive | Yard | 39.93 | 0.102 | 115.18 | Normal |
+| 641 | 2026-02-10 | EQ005 | Locomotive | Yard | 73.62 | 0.098 | 113.71 | Normal |
+| 642 | 2026-02-11 | EQ005 | Locomotive | Yard | 28.38 | 0.178 | 125.43 | Normal |
+| 643 | 2026-02-12 | EQ005 | Locomotive | Yard | 73.48 | 0.106 | 111.75 | Normal |
+| 644 | 2026-02-13 | EQ005 | Locomotive | Yard | 63.86 | 0.233 | 114.46 | Normal |
+| 645 | 2026-02-14 | EQ005 | Locomotive | Yard | 47.47 | 0.098 | 124.88 | Normal |
+| 646 | 2026-02-15 | EQ005 | Locomotive | Yard | 27.03 | 0.17 | 115.81 | Normal |
+| 647 | 2026-02-16 | EQ005 | Locomotive | Yard | 41.26 | 0.212 | 129.22 | Normal |
+| 648 | 2026-02-17 | EQ005 | Locomotive | Yard | 86.19 | 0.975 | 135.25 | Warning |
+| 649 | 2026-02-18 | EQ005 | Locomotive | Yard | 51.86 | 0.248 | 118.85 | Normal |
+| 650 | 2026-02-19 | EQ005 | Locomotive | Yard | 29.61 | 0.076 | 116.2 | Normal |
+| 651 | 2026-02-20 | EQ005 | Locomotive | Yard | 59.86 | 0.298 | 127.05 | Normal |
+| 652 | 2026-02-21 | EQ005 | Locomotive | Yard | 33.12 | 0.242 | 123.29 | Normal |
+| 653 | 2026-02-22 | EQ005 | Locomotive | Yard | 105.72 | 1.629 | 177.67 | Critical |
+| 654 | 2026-02-23 | EQ005 | Locomotive | Yard | 72.75 | 0.017 | 105.18 | Normal |
+| 655 | 2026-02-24 | EQ005 | Locomotive | Yard | 59.49 | 0.5 | 120.62 | Normal |
+| 656 | 2026-02-25 | EQ005 | Locomotive | Yard | 42.39 | 0.454 | 103.16 | Normal |
+| 657 | 2026-02-26 | EQ005 | Locomotive | Yard | 49.43 | 0.047 | 103.87 | Normal |
+| 658 | 2026-02-27 | EQ005 | Locomotive | Yard | 75.3 | 0.307 | 110.09 | Normal |
+| 659 | 2026-02-28 | EQ005 | Locomotive | Yard | 87.19 | 0.768 | 137.46 | Warning |
+| 660 | 2026-03-01 | EQ005 | Locomotive | Yard | 63.46 | 0.466 | 101.33 | Normal |
+| 661 | 2026-03-02 | EQ005 | Locomotive | Yard | 22.52 | 0.289 | 118.27 | Normal |
+| 662 | 2026-03-03 | EQ005 | Locomotive | Yard | 68.4 | 0.474 | 106.94 | Normal |
+| 663 | 2026-03-04 | EQ005 | Locomotive | Yard | 26.27 | 0.249 | 100.36 | Normal |
+| 664 | 2026-03-05 | EQ005 | Locomotive | Yard | 58.81 | 0.18 | 123.9 | Normal |
+| 665 | 2026-03-06 | EQ005 | Locomotive | Yard | 61.44 | 0.05 | 110.08 | Normal |
+| 666 | 2026-03-07 | EQ005 | Locomotive | Yard | 51.85 | 0.48 | 100.06 | Normal |
+| 667 | 2026-03-08 | EQ005 | Locomotive | Yard | 85.31 | 0.755 | 132.84 | Warning |
+| 668 | 2026-03-09 | EQ005 | Locomotive | Yard | 77.13 | 0.469 | 120.26 | Normal |
+| 669 | 2026-03-10 | EQ005 | Locomotive | Yard | 47.54 | 0.241 | 107.75 | Normal |
+| 670 | 2026-03-11 | EQ005 | Locomotive | Yard | 44.38 | 0.287 | 108.5 | Normal |
+| 671 | 2026-03-12 | EQ005 | Locomotive | Yard | 70.04 | 0.024 | 104.32 | Normal |
+| 672 | 2026-03-13 | EQ005 | Locomotive | Yard | 74.63 | 0.081 | 119.61 | Normal |
+| 673 | 2026-03-14 | EQ005 | Locomotive | Yard | 63.36 | 0.235 | 121.8 | Normal |
+| 674 | 2026-03-15 | EQ005 | Locomotive | Yard | 22.03 | 0.383 | 126.25 | Normal |
+| 675 | 2026-03-16 | EQ005 | Locomotive | Yard | 39.86 | 0.078 | 104.22 | Normal |
+| 676 | 2026-03-17 | EQ005 | Locomotive | Yard | 48.2 | 0.361 | 118.83 | Normal |
+| 677 | 2026-03-18 | EQ005 | Locomotive | Yard | 34.66 | 0.146 | 103.94 | Normal |
+| 678 | 2026-03-19 | EQ005 | Locomotive | Yard | 52.79 | 0.032 | 127.43 | Normal |
+| 679 | 2026-03-20 | EQ005 | Locomotive | Yard | 50.31 | 0.492 | 116.08 | Normal |
+| 680 | 2026-03-21 | EQ005 | Locomotive | Yard | 55.18 | 0.359 | 124.18 | Normal |
+| 681 | 2026-03-22 | EQ005 | Locomotive | Yard | 87.24 | 0.7 | 143.24 | Warning |
+| 682 | 2026-03-23 | EQ005 | Locomotive | Yard | 69.55 | 0.155 | 114.24 | Normal |
+| 683 | 2026-03-24 | EQ005 | Locomotive | Yard | 37.16 | 0.431 | 126.99 | Normal |
+| 684 | 2026-03-25 | EQ005 | Locomotive | Yard | 85.71 | 0.798 | 149.4 | Warning |
+| 685 | 2026-03-26 | EQ005 | Locomotive | Yard | 52.75 | 0.067 | 116.24 | Normal |
+| 686 | 2026-03-27 | EQ005 | Locomotive | Yard | 72.48 | 0.312 | 107.79 | Normal |
+| 687 | 2026-03-28 | EQ005 | Locomotive | Yard | 50.88 | 0.436 | 116.44 | Normal |
+| 688 | 2026-03-29 | EQ005 | Locomotive | Yard | 20.3 | 0.289 | 126.37 | Normal |
+| 689 | 2026-03-30 | EQ005 | Locomotive | Yard | 45.78 | 0.404 | 121.04 | Normal |
+| 690 | 2026-03-31 | EQ005 | Locomotive | Yard | 106.19 | 1.208 | 156.75 | Critical |
+| 691 | 2026-04-01 | EQ005 | Locomotive | Yard | 74.0 | 0.396 | 104.33 | Normal |
+| 692 | 2026-04-02 | EQ005 | Locomotive | Yard | 38.66 | 0.002 | 115.32 | Normal |
+| 693 | 2026-04-03 | EQ005 | Locomotive | Yard | 53.01 | 0.004 | 128.78 | Normal |
+| 694 | 2026-04-04 | EQ005 | Locomotive | Yard | 101.09 | 1.644 | 178.45 | Critical |
+| 695 | 2026-04-05 | EQ005 | Locomotive | Yard | 30.32 | 0.096 | 101.66 | Normal |
+| 696 | 2026-04-06 | EQ005 | Locomotive | Yard | 51.83 | 0.264 | 103.46 | Normal |
+| 697 | 2026-04-07 | EQ005 | Locomotive | Yard | 43.03 | 0.143 | 109.15 | Normal |
+| 698 | 2026-04-08 | EQ005 | Locomotive | Yard | 106.96 | 1.281 | 162.24 | Critical |
+| 699 | 2026-04-09 | EQ005 | Locomotive | Yard | 42.32 | 0.179 | 107.81 | Normal |
+| 700 | 2026-04-10 | EQ005 | Locomotive | Yard | 27.98 | 0.243 | 109.08 | Normal |
+| 701 | 2026-04-11 | EQ005 | Locomotive | Yard | 26.16 | 0.179 | 108.27 | Normal |
+| 702 | 2026-04-12 | EQ005 | Locomotive | Yard | 44.36 | 0.324 | 100.34 | Normal |
+| 703 | 2026-04-13 | EQ005 | Locomotive | Yard | 44.91 | 0.058 | 109.0 | Normal |
+| 704 | 2026-04-14 | EQ005 | Locomotive | Yard | 44.49 | 0.441 | 121.67 | Normal |
+| 705 | 2026-04-15 | EQ005 | Locomotive | Yard | 79.51 | 0.034 | 129.2 | Normal |
+| 706 | 2026-04-16 | EQ005 | Locomotive | Yard | 60.13 | 0.42 | 104.22 | Normal |
+| 707 | 2026-04-17 | EQ005 | Locomotive | Yard | 32.85 | 0.462 | 114.75 | Normal |
+| 708 | 2026-04-18 | EQ005 | Locomotive | Yard | 108.98 | 1.989 | 171.17 | Critical |
+| 709 | 2026-04-19 | EQ005 | Locomotive | Yard | 25.78 | 0.129 | 111.54 | Normal |
+| 710 | 2026-04-20 | EQ005 | Locomotive | Yard | 30.6 | 0.442 | 127.25 | Normal |
+| 711 | 2026-04-21 | EQ005 | Locomotive | Yard | 27.06 | 0.255 | 118.5 | Normal |
+| 712 | 2026-04-22 | EQ005 | Locomotive | Yard | 36.01 | 0.373 | 127.74 | Normal |
+| 713 | 2026-04-23 | EQ005 | Locomotive | Yard | 58.27 | 0.059 | 114.63 | Normal |
+| 714 | 2026-04-24 | EQ005 | Locomotive | Yard | 93.07 | 0.739 | 136.52 | Warning |
+| 715 | 2026-04-25 | EQ005 | Locomotive | Yard | 24.02 | 0.361 | 114.19 | Normal |
+| 716 | 2026-04-26 | EQ005 | Locomotive | Yard | 49.69 | 0.392 | 125.93 | Normal |
+| 717 | 2026-04-27 | EQ005 | Locomotive | Yard | 49.0 | 0.486 | 115.87 | Normal |
+| 718 | 2026-04-28 | EQ005 | Locomotive | Yard | 60.76 | 0.466 | 104.69 | Normal |
+| 719 | 2026-04-29 | EQ005 | Locomotive | Yard | 53.27 | 0.433 | 110.91 | Normal |
+| 720 | 2026-04-30 | EQ005 | Locomotive | Yard | 77.94 | 0.096 | 119.2 | Normal |
+| 721 | 2026-05-01 | EQ005 | Locomotive | Yard | 35.14 | 0.34 | 118.62 | Normal |
+| 722 | 2026-05-02 | EQ005 | Locomotive | Yard | 74.1 | 0.154 | 118.89 | Normal |
+| 723 | 2026-05-03 | EQ005 | Locomotive | Yard | 74.11 | 0.225 | 113.65 | Normal |
+| 724 | 2026-05-04 | EQ005 | Locomotive | Yard | 40.29 | 0.269 | 125.27 | Normal |
+| 725 | 2026-05-05 | EQ005 | Locomotive | Yard | 44.26 | 0.095 | 122.87 | Normal |
+| 726 | 2026-05-06 | EQ005 | Locomotive | Yard | 40.04 | 0.191 | 118.23 | Normal |
+| 727 | 2026-05-07 | EQ005 | Locomotive | Yard | 37.9 | 0.468 | 103.38 | Normal |
+| 728 | 2026-05-08 | EQ005 | Locomotive | Yard | 83.85 | 0.913 | 142.52 | Warning |
+| 729 | 2026-05-09 | EQ005 | Locomotive | Yard | 98.79 | 1.368 | 179.59 | Critical |
+| 730 | 2026-05-10 | EQ005 | Locomotive | Yard | 79.36 | 0.13 | 116.03 | Normal |
+| 731 | 2026-05-11 | EQ005 | Locomotive | Yard | 65.73 | 0.301 | 117.03 | Normal |
+| 732 | 2026-05-12 | EQ005 | Locomotive | Yard | 76.82 | 0.072 | 121.22 | Normal |
+| 733 | 2026-05-13 | EQ005 | Locomotive | Yard | 71.34 | 0.383 | 113.54 | Normal |
+| 734 | 2026-05-14 | EQ005 | Locomotive | Yard | 36.75 | 0.269 | 113.35 | Normal |
+| 735 | 2026-05-15 | EQ005 | Locomotive | Yard | 73.99 | 0.201 | 106.37 | Normal |
+| 736 | 2026-05-16 | EQ005 | Locomotive | Yard | 64.74 | 0.163 | 121.86 | Normal |
+| 737 | 2026-05-17 | EQ005 | Locomotive | Yard | 30.07 | 0.218 | 110.76 | Normal |
+| 738 | 2026-05-18 | EQ005 | Locomotive | Yard | 76.84 | 0.469 | 101.64 | Normal |
+| 739 | 2026-05-19 | EQ005 | Locomotive | Yard | 76.54 | 0.156 | 114.54 | Normal |
+| 740 | 2026-05-20 | EQ005 | Locomotive | Yard | 52.97 | 0.387 | 124.0 | Normal |
+| 741 | 2026-05-21 | EQ005 | Locomotive | Yard | 61.23 | 0.346 | 124.35 | Normal |
+| 742 | 2026-05-22 | EQ005 | Locomotive | Yard | 67.42 | 0.246 | 119.68 | Normal |
+| 743 | 2026-05-23 | EQ005 | Locomotive | Yard | 71.16 | 0.073 | 103.75 | Normal |
+| 744 | 2026-05-24 | EQ005 | Locomotive | Yard | 72.76 | 0.027 | 108.39 | Normal |
+| 745 | 2026-05-25 | EQ005 | Locomotive | Yard | 59.54 | 0.162 | 123.2 | Normal |
+| 746 | 2026-05-26 | EQ005 | Locomotive | Yard | 43.89 | 0.03 | 105.25 | Normal |
+| 747 | 2026-05-27 | EQ005 | Locomotive | Yard | 84.25 | 0.961 | 144.09 | Warning |
+| 748 | 2026-05-28 | EQ005 | Locomotive | Yard | 33.7 | 0.376 | 123.96 | Normal |
+| 749 | 2026-05-29 | EQ005 | Locomotive | Yard | 67.71 | 0.481 | 120.69 | Normal |
+| 750 | 2026-05-30 | EQ005 | Locomotive | Yard | 45.42 | 0.396 | 103.25 | Normal |
+| 751 | 2026-01-01 | EQ006 | Blast Furnace | Plant C | 62.76 | 0.124 | 118.5 | Normal |
+| 752 | 2026-01-02 | EQ006 | Blast Furnace | Plant C | 43.42 | 0.042 | 104.33 | Normal |
+| 753 | 2026-01-03 | EQ006 | Blast Furnace | Plant C | 50.78 | 0.268 | 114.56 | Normal |
+| 754 | 2026-01-04 | EQ006 | Blast Furnace | Plant C | 46.94 | 0.056 | 118.06 | Normal |
+| 755 | 2026-01-05 | EQ006 | Blast Furnace | Plant C | 58.88 | 0.472 | 117.02 | Normal |
+| 756 | 2026-01-06 | EQ006 | Blast Furnace | Plant C | 32.79 | 0.301 | 117.86 | Normal |
+| 757 | 2026-01-07 | EQ006 | Blast Furnace | Plant C | 70.49 | 0.091 | 126.03 | Normal |
+| 758 | 2026-01-08 | EQ006 | Blast Furnace | Plant C | 69.77 | 0.334 | 108.93 | Normal |
+| 759 | 2026-01-09 | EQ006 | Blast Furnace | Plant C | 83.93 | 0.717 | 143.93 | Warning |
+| 760 | 2026-01-10 | EQ006 | Blast Furnace | Plant C | 84.23 | 0.607 | 132.55 | Warning |
+| 761 | 2026-01-11 | EQ006 | Blast Furnace | Plant C | 25.99 | 0.446 | 113.46 | Normal |
+| 762 | 2026-01-12 | EQ006 | Blast Furnace | Plant C | 91.24 | 0.577 | 144.11 | Warning |
+| 763 | 2026-01-13 | EQ006 | Blast Furnace | Plant C | 74.17 | 0.498 | 116.54 | Normal |
+| 764 | 2026-01-14 | EQ006 | Blast Furnace | Plant C | 102.22 | 1.395 | 173.76 | Critical |
+| 765 | 2026-01-15 | EQ006 | Blast Furnace | Plant C | 26.18 | 0.139 | 121.72 | Normal |
+| 766 | 2026-01-16 | EQ006 | Blast Furnace | Plant C | 82.11 | 0.774 | 147.68 | Warning |
+| 767 | 2026-01-17 | EQ006 | Blast Furnace | Plant C | 75.69 | 0.259 | 127.24 | Normal |
+| 768 | 2026-01-18 | EQ006 | Blast Furnace | Plant C | 43.4 | 0.229 | 109.09 | Normal |
+| 769 | 2026-01-19 | EQ006 | Blast Furnace | Plant C | 75.53 | 0.094 | 109.75 | Normal |
+| 770 | 2026-01-20 | EQ006 | Blast Furnace | Plant C | 32.67 | 0.344 | 101.64 | Normal |
+| 771 | 2026-01-21 | EQ006 | Blast Furnace | Plant C | 69.53 | 0.34 | 124.69 | Normal |
+| 772 | 2026-01-22 | EQ006 | Blast Furnace | Plant C | 45.66 | 0.286 | 109.65 | Normal |
+| 773 | 2026-01-23 | EQ006 | Blast Furnace | Plant C | 58.37 | 0.144 | 104.1 | Normal |
+| 774 | 2026-01-24 | EQ006 | Blast Furnace | Plant C | 76.88 | 0.068 | 100.66 | Normal |
+| 775 | 2026-01-25 | EQ006 | Blast Furnace | Plant C | 50.45 | 0.022 | 101.47 | Normal |
+| 776 | 2026-01-26 | EQ006 | Blast Furnace | Plant C | 62.58 | 0.439 | 118.71 | Normal |
+| 777 | 2026-01-27 | EQ006 | Blast Furnace | Plant C | 93.68 | 0.534 | 149.7 | Warning |
+| 778 | 2026-01-28 | EQ006 | Blast Furnace | Plant C | 30.47 | 0.482 | 129.35 | Normal |
+| 779 | 2026-01-29 | EQ006 | Blast Furnace | Plant C | 37.35 | 0.39 | 127.01 | Normal |
+| 780 | 2026-01-30 | EQ006 | Blast Furnace | Plant C | 64.58 | 0.262 | 109.65 | Normal |
+| 781 | 2026-01-31 | EQ006 | Blast Furnace | Plant C | 48.16 | 0.009 | 118.14 | Normal |
+| 782 | 2026-02-01 | EQ006 | Blast Furnace | Plant C | 92.92 | 0.717 | 147.3 | Warning |
+| 783 | 2026-02-02 | EQ006 | Blast Furnace | Plant C | 49.22 | 0.445 | 117.7 | Normal |
+| 784 | 2026-02-03 | EQ006 | Blast Furnace | Plant C | 102.58 | 1.279 | 170.13 | Critical |
+| 785 | 2026-02-04 | EQ006 | Blast Furnace | Plant C | 90.32 | 0.644 | 134.27 | Warning |
+| 786 | 2026-02-05 | EQ006 | Blast Furnace | Plant C | 78.83 | 0.071 | 124.64 | Normal |
+| 787 | 2026-02-06 | EQ006 | Blast Furnace | Plant C | 21.3 | 0.485 | 109.98 | Normal |
+| 788 | 2026-02-07 | EQ006 | Blast Furnace | Plant C | 56.48 | 0.456 | 129.17 | Normal |
+| 789 | 2026-02-08 | EQ006 | Blast Furnace | Plant C | 42.63 | 0.253 | 124.3 | Normal |
+| 790 | 2026-02-09 | EQ006 | Blast Furnace | Plant C | 56.81 | 0.494 | 111.99 | Normal |
+| 791 | 2026-02-10 | EQ006 | Blast Furnace | Plant C | 68.72 | 0.022 | 123.5 | Normal |
+| 792 | 2026-02-11 | EQ006 | Blast Furnace | Plant C | 63.31 | 0.393 | 111.9 | Normal |
+| 793 | 2026-02-12 | EQ006 | Blast Furnace | Plant C | 86.08 | 0.919 | 142.85 | Warning |
+| 794 | 2026-02-13 | EQ006 | Blast Furnace | Plant C | 87.63 | 0.625 | 135.05 | Warning |
+| 795 | 2026-02-14 | EQ006 | Blast Furnace | Plant C | 50.59 | 0.157 | 113.7 | Normal |
+| 796 | 2026-02-15 | EQ006 | Blast Furnace | Plant C | 72.35 | 0.208 | 120.51 | Normal |
+| 797 | 2026-02-16 | EQ006 | Blast Furnace | Plant C | 78.29 | 0.042 | 103.49 | Normal |
+| 798 | 2026-02-17 | EQ006 | Blast Furnace | Plant C | 63.55 | 0.199 | 117.89 | Normal |
+| 799 | 2026-02-18 | EQ006 | Blast Furnace | Plant C | 32.26 | 0.294 | 106.77 | Normal |
+| 800 | 2026-02-19 | EQ006 | Blast Furnace | Plant C | 76.32 | 0.116 | 128.16 | Normal |
+| 801 | 2026-02-20 | EQ006 | Blast Furnace | Plant C | 47.25 | 0.218 | 100.41 | Normal |
+| 802 | 2026-02-21 | EQ006 | Blast Furnace | Plant C | 51.98 | 0.345 | 126.24 | Normal |
+| 803 | 2026-02-22 | EQ006 | Blast Furnace | Plant C | 60.11 | 0.194 | 100.87 | Normal |
+| 804 | 2026-02-23 | EQ006 | Blast Furnace | Plant C | 88.11 | 0.827 | 147.43 | Warning |
+| 805 | 2026-02-24 | EQ006 | Blast Furnace | Plant C | 101.47 | 1.554 | 176.76 | Critical |
+| 806 | 2026-02-25 | EQ006 | Blast Furnace | Plant C | 79.77 | 0.141 | 129.68 | Normal |
+| 807 | 2026-02-26 | EQ006 | Blast Furnace | Plant C | 64.0 | 0.391 | 104.99 | Normal |
+| 808 | 2026-02-27 | EQ006 | Blast Furnace | Plant C | 36.49 | 0.239 | 102.26 | Normal |
+| 809 | 2026-02-28 | EQ006 | Blast Furnace | Plant C | 77.17 | 0.224 | 101.64 | Normal |
+| 810 | 2026-03-01 | EQ006 | Blast Furnace | Plant C | 55.25 | 0.279 | 100.76 | Normal |
+| 811 | 2026-03-02 | EQ006 | Blast Furnace | Plant C | 77.6 | 0.099 | 115.51 | Normal |
+| 812 | 2026-03-03 | EQ006 | Blast Furnace | Plant C | 45.11 | 0.336 | 113.97 | Normal |
+| 813 | 2026-03-04 | EQ006 | Blast Furnace | Plant C | 52.03 | 0.15 | 125.57 | Normal |
+| 814 | 2026-03-05 | EQ006 | Blast Furnace | Plant C | 56.4 | 0.072 | 104.57 | Normal |
+| 815 | 2026-03-06 | EQ006 | Blast Furnace | Plant C | 37.62 | 0.007 | 117.29 | Normal |
+| 816 | 2026-03-07 | EQ006 | Blast Furnace | Plant C | 68.43 | 0.299 | 118.32 | Normal |
+| 817 | 2026-03-08 | EQ006 | Blast Furnace | Plant C | 53.08 | 0.494 | 116.66 | Normal |
+| 818 | 2026-03-09 | EQ006 | Blast Furnace | Plant C | 33.52 | 0.13 | 127.73 | Normal |
+| 819 | 2026-03-10 | EQ006 | Blast Furnace | Plant C | 83.08 | 0.963 | 136.47 | Warning |
+| 820 | 2026-03-11 | EQ006 | Blast Furnace | Plant C | 107.6 | 1.943 | 164.7 | Critical |
+| 821 | 2026-03-12 | EQ006 | Blast Furnace | Plant C | 90.67 | 0.846 | 140.69 | Warning |
+| 822 | 2026-03-13 | EQ006 | Blast Furnace | Plant C | 76.02 | 0.464 | 108.31 | Normal |
+| 823 | 2026-03-14 | EQ006 | Blast Furnace | Plant C | 36.13 | 0.483 | 119.51 | Normal |
+| 824 | 2026-03-15 | EQ006 | Blast Furnace | Plant C | 38.8 | 0.325 | 124.52 | Normal |
+| 825 | 2026-03-16 | EQ006 | Blast Furnace | Plant C | 59.16 | 0.226 | 117.65 | Normal |
+| 826 | 2026-03-17 | EQ006 | Blast Furnace | Plant C | 73.37 | 0.218 | 117.27 | Normal |
+| 827 | 2026-03-18 | EQ006 | Blast Furnace | Plant C | 32.45 | 0.01 | 116.52 | Normal |
+| 828 | 2026-03-19 | EQ006 | Blast Furnace | Plant C | 37.46 | 0.491 | 125.46 | Normal |
+| 829 | 2026-03-20 | EQ006 | Blast Furnace | Plant C | 20.84 | 0.389 | 126.82 | Normal |
+| 830 | 2026-03-21 | EQ006 | Blast Furnace | Plant C | 42.08 | 0.421 | 114.75 | Normal |
+| 831 | 2026-03-22 | EQ006 | Blast Furnace | Plant C | 55.29 | 0.181 | 121.32 | Normal |
+| 832 | 2026-03-23 | EQ006 | Blast Furnace | Plant C | 29.9 | 0.467 | 128.78 | Normal |
+| 833 | 2026-03-24 | EQ006 | Blast Furnace | Plant C | 82.82 | 0.704 | 141.56 | Warning |
+| 834 | 2026-03-25 | EQ006 | Blast Furnace | Plant C | 58.6 | 0.117 | 105.65 | Normal |
+| 835 | 2026-03-26 | EQ006 | Blast Furnace | Plant C | 107.44 | 1.57 | 153.09 | Critical |
+| 836 | 2026-03-27 | EQ006 | Blast Furnace | Plant C | 49.72 | 0.106 | 123.96 | Normal |
+| 837 | 2026-03-28 | EQ006 | Blast Furnace | Plant C | 49.45 | 0.318 | 105.2 | Normal |
+| 838 | 2026-03-29 | EQ006 | Blast Furnace | Plant C | 72.38 | 0.313 | 102.71 | Normal |
+| 839 | 2026-03-30 | EQ006 | Blast Furnace | Plant C | 65.65 | 0.335 | 126.42 | Normal |
+| 840 | 2026-03-31 | EQ006 | Blast Furnace | Plant C | 62.46 | 0.308 | 125.97 | Normal |
+| 841 | 2026-04-01 | EQ006 | Blast Furnace | Plant C | 61.69 | 0.348 | 124.99 | Normal |
+| 842 | 2026-04-02 | EQ006 | Blast Furnace | Plant C | 57.38 | 0.201 | 122.66 | Normal |
+| 843 | 2026-04-03 | EQ006 | Blast Furnace | Plant C | 94.33 | 0.894 | 133.4 | Warning |
+| 844 | 2026-04-04 | EQ006 | Blast Furnace | Plant C | 58.25 | 0.104 | 113.75 | Normal |
+| 845 | 2026-04-05 | EQ006 | Blast Furnace | Plant C | 73.36 | 0.43 | 117.64 | Normal |
+| 846 | 2026-04-06 | EQ006 | Blast Furnace | Plant C | 36.98 | 0.237 | 118.6 | Normal |
+| 847 | 2026-04-07 | EQ006 | Blast Furnace | Plant C | 74.81 | 0.218 | 122.75 | Normal |
+| 848 | 2026-04-08 | EQ006 | Blast Furnace | Plant C | 94.59 | 0.916 | 135.48 | Warning |
+| 849 | 2026-04-09 | EQ006 | Blast Furnace | Plant C | 67.73 | 0.287 | 125.96 | Normal |
+| 850 | 2026-04-10 | EQ006 | Blast Furnace | Plant C | 32.79 | 0.334 | 129.91 | Normal |
+| 851 | 2026-04-11 | EQ006 | Blast Furnace | Plant C | 48.6 | 0.336 | 118.34 | Normal |
+| 852 | 2026-04-12 | EQ006 | Blast Furnace | Plant C | 55.69 | 0.474 | 124.68 | Normal |
+| 853 | 2026-04-13 | EQ006 | Blast Furnace | Plant C | 30.87 | 0.457 | 113.5 | Normal |
+| 854 | 2026-04-14 | EQ006 | Blast Furnace | Plant C | 31.78 | 0.407 | 110.34 | Normal |
+| 855 | 2026-04-15 | EQ006 | Blast Furnace | Plant C | 50.35 | 0.151 | 101.84 | Normal |
+| 856 | 2026-04-16 | EQ006 | Blast Furnace | Plant C | 28.07 | 0.003 | 121.15 | Normal |
+| 857 | 2026-04-17 | EQ006 | Blast Furnace | Plant C | 26.25 | 0.5 | 124.04 | Normal |
+| 858 | 2026-04-18 | EQ006 | Blast Furnace | Plant C | 40.63 | 0.261 | 119.1 | Normal |
+| 859 | 2026-04-19 | EQ006 | Blast Furnace | Plant C | 22.23 | 0.09 | 101.68 | Normal |
+| 860 | 2026-04-20 | EQ006 | Blast Furnace | Plant C | 73.3 | 0.238 | 115.07 | Normal |
+| 861 | 2026-04-21 | EQ006 | Blast Furnace | Plant C | 74.86 | 0.233 | 127.58 | Normal |
+| 862 | 2026-04-22 | EQ006 | Blast Furnace | Plant C | 59.32 | 0.491 | 103.95 | Normal |
+| 863 | 2026-04-23 | EQ006 | Blast Furnace | Plant C | 32.09 | 0.229 | 101.8 | Normal |
+| 864 | 2026-04-24 | EQ006 | Blast Furnace | Plant C | 62.87 | 0.169 | 125.04 | Normal |
+| 865 | 2026-04-25 | EQ006 | Blast Furnace | Plant C | 36.66 | 0.32 | 129.68 | Normal |
+| 866 | 2026-04-26 | EQ006 | Blast Furnace | Plant C | 22.47 | 0.041 | 103.27 | Normal |
+| 867 | 2026-04-27 | EQ006 | Blast Furnace | Plant C | 35.11 | 0.41 | 119.69 | Normal |
+| 868 | 2026-04-28 | EQ006 | Blast Furnace | Plant C | 53.88 | 0.183 | 112.73 | Normal |
+| 869 | 2026-04-29 | EQ006 | Blast Furnace | Plant C | 57.44 | 0.206 | 116.13 | Normal |
+| 870 | 2026-04-30 | EQ006 | Blast Furnace | Plant C | 47.87 | 0.347 | 113.97 | Normal |
+| 871 | 2026-05-01 | EQ006 | Blast Furnace | Plant C | 89.05 | 0.668 | 141.55 | Warning |
+| 872 | 2026-05-02 | EQ006 | Blast Furnace | Plant C | 44.8 | 0.03 | 115.13 | Normal |
+| 873 | 2026-05-03 | EQ006 | Blast Furnace | Plant C | 34.01 | 0.14 | 121.19 | Normal |
+| 874 | 2026-05-04 | EQ006 | Blast Furnace | Plant C | 52.36 | 0.331 | 121.37 | Normal |
+| 875 | 2026-05-05 | EQ006 | Blast Furnace | Plant C | 49.74 | 0.033 | 111.67 | Normal |
+| 876 | 2026-05-06 | EQ006 | Blast Furnace | Plant C | 68.79 | 0.415 | 127.61 | Normal |
+| 877 | 2026-05-07 | EQ006 | Blast Furnace | Plant C | 84.28 | 0.637 | 142.44 | Warning |
+| 878 | 2026-05-08 | EQ006 | Blast Furnace | Plant C | 35.26 | 0.251 | 103.49 | Normal |
+| 879 | 2026-05-09 | EQ006 | Blast Furnace | Plant C | 52.97 | 0.305 | 130.0 | Normal |
+| 880 | 2026-05-10 | EQ006 | Blast Furnace | Plant C | 94.44 | 0.742 | 140.83 | Warning |
+| 881 | 2026-05-11 | EQ006 | Blast Furnace | Plant C | 38.3 | 0.212 | 119.87 | Normal |
+| 882 | 2026-05-12 | EQ006 | Blast Furnace | Plant C | 25.05 | 0.195 | 109.27 | Normal |
+| 883 | 2026-05-13 | EQ006 | Blast Furnace | Plant C | 71.58 | 0.154 | 116.2 | Normal |
+| 884 | 2026-05-14 | EQ006 | Blast Furnace | Plant C | 22.49 | 0.059 | 115.05 | Normal |
+| 885 | 2026-05-15 | EQ006 | Blast Furnace | Plant C | 59.89 | 0.048 | 116.65 | Normal |
+| 886 | 2026-05-16 | EQ006 | Blast Furnace | Plant C | 81.36 | 0.973 | 146.85 | Warning |
+| 887 | 2026-05-17 | EQ006 | Blast Furnace | Plant C | 71.0 | 0.394 | 114.95 | Normal |
+| 888 | 2026-05-18 | EQ006 | Blast Furnace | Plant C | 75.25 | 0.2 | 111.79 | Normal |
+| 889 | 2026-05-19 | EQ006 | Blast Furnace | Plant C | 74.64 | 0.487 | 114.07 | Normal |
+| 890 | 2026-05-20 | EQ006 | Blast Furnace | Plant C | 69.08 | 0.337 | 103.1 | Normal |
+| 891 | 2026-05-21 | EQ006 | Blast Furnace | Plant C | 36.98 | 0.153 | 102.71 | Normal |
+| 892 | 2026-05-22 | EQ006 | Blast Furnace | Plant C | 79.05 | 0.192 | 123.3 | Normal |
+| 893 | 2026-05-23 | EQ006 | Blast Furnace | Plant C | 106.65 | 1.844 | 162.62 | Critical |
+| 894 | 2026-05-24 | EQ006 | Blast Furnace | Plant C | 106.31 | 1.578 | 157.13 | Critical |
+| 895 | 2026-05-25 | EQ006 | Blast Furnace | Plant C | 34.78 | 0.381 | 102.83 | Normal |
+| 896 | 2026-05-26 | EQ006 | Blast Furnace | Plant C | 71.44 | 0.105 | 120.78 | Normal |
+| 897 | 2026-05-27 | EQ006 | Blast Furnace | Plant C | 78.87 | 0.2 | 127.24 | Normal |
+| 898 | 2026-05-28 | EQ006 | Blast Furnace | Plant C | 64.68 | 0.445 | 114.66 | Normal |
+| 899 | 2026-05-29 | EQ006 | Blast Furnace | Plant C | 75.27 | 0.497 | 115.56 | Normal |
+| 900 | 2026-05-30 | EQ006 | Blast Furnace | Plant C | 43.33 | 0.476 | 121.71 | Normal |
