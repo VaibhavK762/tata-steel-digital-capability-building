@@ -76,18 +76,28 @@ def chunk_text_section_aware(text, chunk_size, overlap):
     """
     First split by section headers (structure-aware).
     Then sub-chunk any section still longer than chunk_size.
+    Filter out junk/near-empty chunks (titles, page markers, etc).
     """
     sections = split_by_section(text)
     final_chunks = []
 
     for section in sections:
+        # Strip markdown/formatting noise for length check
+        cleaned = section.replace('#', '').replace('-', '').replace('[Page', '').strip()
+        
+        # Skip junk chunks (titles, separators, page markers, near-empty)
+        if len(cleaned.split()) < 15:
+            continue
+
         word_count = len(section.split())
         if word_count <= chunk_size * 1.3:
-            # Section fits in one chunk (with some tolerance)
             final_chunks.append(section)
         else:
-            # Section too long, sub-chunk it
             sub_chunks = chunk_words(section, chunk_size, overlap)
+            sub_chunks = [
+                c for c in sub_chunks 
+                if len(c.replace('#','').replace('-','').strip().split()) >= 15
+            ]
             final_chunks.extend(sub_chunks)
 
     return final_chunks
