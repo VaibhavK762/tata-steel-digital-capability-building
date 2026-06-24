@@ -4,95 +4,217 @@ This document provides the schema details and a detailed preview of chunks for t
 
 ## Collection Summary
 - **Collection Name:** `hr_support`
-- **Total Chunks/Embeddings:** 8
-- **Embedding Model:** `SentenceTransformer('all-MiniLM-L6-v2')` (384 dimensions)
+- **Total Chunks/Embeddings:** 38
+- **Embedding Model:** `SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')` (384 dimensions)
 - **Distance Metric:** Cosine Distance (`hnsw:space: cosine`)
 
 ## Source Documents Summary
 | Source PDF / File | Total Chunks |
 |---|---|
-| `hr_policy.pdf` | 3 |
-| `onboarding_doc.pdf` | 3 |
-| `leave_policy.pdf` | 2 |
+| `hr_policy.pdf` | 15 |
+| `leave_policy.pdf` | 12 |
+| `onboarding_doc.pdf` | 11 |
 
 ## Chunks Preview (First 20 Chunks)
-### Chunk ID: `doc_0_0`
+### Chunk ID: `hr_support_0_0`
 - **Source File:** `hr_policy.pdf`
 - **Chunk Index:** `0`
 
 #### Text Content:
 ```text
-[Page 1] # Tata Steel HR Policy Document ## Human Resources Department | 2024 --- ### Section 1: Scope & Applicability This policy applies to all permanent employees of Tata Steel Limited across all locations in India. Contractual and trainee employees are covered under separate policy addendums. All employees are governed by the Tata Code of Conduct, which takes precedence in case of any conflict. --- ### Section 2: Employment Terms - All employees are governed by Tata Steel Code of Conduct - Employment contract must be signed within 7 days of joining - Probation period: 6 months for all new joiners - Probation may be extended by maximum 3 months if performance is unsatisfactory - Confirmation subject to satisfactory performance review - Notice period: 30 days after confirmation, 7 days during probation - Background verification mandatory before confirmation --- ### Section 3: Working Hours & Attendance - Standard shift: 8 hours per day, 6 days per week - Three shifts: Morning (6AM-2PM), Afternoon (2PM-10PM), Night (10PM-6AM) - Administrative staff: 9AM-6PM Monday to Saturday (2nd & 4th Saturday off) - Overtime: Paid at 1.5x rate beyond 8 hours on weekdays, 2x on weekly off/holidays - Maximum overtime: 48 hours per month as per Factories Act - Biometric attendance mandatory at all plant locations - Late arrival beyond 15 minutes (3 times a month) attracts HR review [Page 2] --- ### Section 4: Compensation Structure **Salary components include:** - Basic Pay (40-50% of CTC) - House Rent Allowance (HRA) - Dearness Allowance (DA) — revised quarterly based on CPI - Special Allowance - Shift Allowance (for rotating shift workers) - Performance-linked Variable Pay **Salary Disbursement:** - Salary credited on the last working day of every month - Payslips available on HR Portal by 1st of next month - Reimbursements processed within 15 working days of claim submission --- ### Section 5: Performance Management - Annual performance review cycle: April to March - Mid-year review conducted in October - Rating scale: Outstanding (1), Excellent (2), Good (3), Average (4), Below Average (5) - Increment based on performance rating and department budget - Promotion eligibility: Minimum 2 years in current role - Promotion requires: Good (3) or above rating for 2 consecutive years - Goal setting (KRAs) must be completed within first month of cycle - 360-degree feedback applicable for Manager and above grades --- ### Section 6: Promotion Policy [Page 3] **Eligibility criteria:** - Minimum 2 years experience in current role - Performance rating: Good or above for last 2 years - Completion of mandatory training courses for current role - Recommendation from direct manager - Available vacancy in target role (for role-based promotions) - No active disciplinary action in last 12 months **Promotion Process:** 1. Manager nominates employee through HR Portal 2. HR reviews eligibility against criteria checklist 3. Skill assessment conducted (technical + behavioral) 4. Interview with senior management / promotion panel 5. Final approval by department head and HR head 6. Promotion letter issued within 30 days of approval
+[Page 1] Section 1: Scope & Applicability • Applies to all permanent employees of Tata Steel Limited across India. • Contractual and trainee employees governed through separate addendums. • Tata Steel Code of Conduct takes precedence over all policies. Section 2: Employment Terms • Employment contract to be signed within 7 days of joining. • Probation period: 6 months. • Probation extension: up to 3 months if required. • Confirmation subject to satisfactory performance. • Notice period: o During probation: 7 days o After confirmation: 30 days • Background verification mandatory before confirmation. Section 3: Recruitment & Selection Policy Internal Job Postings • Vacancies posted internally for 7 days before external hiring. • Employees may apply through HR Portal. •
 ```
 
 ---
-### Chunk ID: `doc_0_1`
+### Chunk ID: `hr_support_0_1`
 - **Source File:** `hr_policy.pdf`
 - **Chunk Index:** `1`
 
 #### Text Content:
 ```text
-months **Promotion Process:** 1. Manager nominates employee through HR Portal 2. HR reviews eligibility against criteria checklist 3. Skill assessment conducted (technical + behavioral) 4. Interview with senior management / promotion panel 5. Final approval by department head and HR head 6. Promotion letter issued within 30 days of approval **Types of Promotion:** | Type | Description | |---|---| | Vertical Promotion | Move to higher grade with increased responsibility | | Lateral Movement | Same grade, different department/function | | Fast Track Promotion | For exceptional performers (Outstanding rating, 2 consecutive years) | --- ### Section 7: Training & Development - All employees entitled to minimum 40 hours training per year - Mandatory safety training: Must complete within 30 days of joining - Technical/role-specific training assigned based on skill gap analysis - Training costs covered by company for company-nominated programs [Page 4] - Study leave available for relevant certifications (max 10 days/year) - Bond required for training above Rs 1 lakh (typically 2-year service bond) - Training Need Identification (TNI) conducted annually with manager input - E-learning portal access provided to all employees from day one --- ### Section 8: Code of Conduct & Disciplinary Policy **Expected Behavior:** - Honesty and integrity in all dealings - Respect for colleagues regardless of position, gender, or background - Confidentiality of company information - No conflict of interest in vendor/contractor dealings - Zero tolerance for harassment of any kind **Disciplinary Process:** 1. Verbal warning for first minor offense 2. Written warning for repeated or moderate offense 3. Show cause notice for serious misconduct 4. Domestic inquiry for major misconduct 5. Action ranging from warning to termination based on inquiry findings **Examples of Major Misconduct:** - Theft, fraud, or dishonesty - Violation of safety procedures causing harm - Harassment or discrimination - Unauthorized disclosure of confidential information - Habitual absenteeism without approval --- [Page 5] ### Section 9: Grievance Policy - Submit grievance to direct manager first (verbally or via HR Portal) - If unresolved in 7 days, escalate to HR Business Partner - HR resolves within 14 days of escalation - Final escalation to Employee Relations Committee - No retaliation against grievance filers — protected under whistleblower policy - Anonymous reporting channel available via Ethics Helpline --- ### Section 10: Separation Policy - Resignation requires 30-day notice (post-confirmation) - Full and Final settlement processed within 45 days of last working day - Exit interview mandatory for all separating employees - Relieving letter and experience certificate issued on completion of formalities - Gratuity payable as per Payment of Gratuity Act, 1972 (5+ years service) - Notice period buyout option available with manager approval --- ### Section 11: Employee Welfare Schemes - Group Mediclaim covering employee, spouse, and up to 2 children - Group Personal Accident Insurance (24x7 coverage) - Employee Assistance Program (confidential counseling) - Subsidized canteen facilities at all locations - Annual health checkup for employees above 35 years - Tata Steel Cooperative Credit Society membership available
+mandatory before confirmation. Section 3: Recruitment & Selection Policy Internal Job Postings • Vacancies posted internally for 7 days before external hiring. • Employees may apply through HR Portal. • Internal candidates preferred if equally qualified. • Referral bonus: ₹15,000. Selection Process 1. Application screening. 2. Technical assessment/aptitude test. 3. Technical and HR interviews. 4. Background verification. 5. Medical fitness check. 6. Offer letter issuance. Diversity & Inclusion • Equal opportunity employer. • No discrimination based on gender, religion, caste, or disability. [Page 2] • Women leadership target: 25% by 2030. • 3% positions reserved for differently-abled employees. Section 4: Working Hours & Attendance Work Schedule • Standard shift: 8 hours/day, 6 days/week. • Morning: 6AM–2PM. • Afternoon: 2PM–10PM. •
 ```
 
 ---
-### Chunk ID: `doc_0_2`
+### Chunk ID: `hr_support_0_2`
 - **Source File:** `hr_policy.pdf`
 - **Chunk Index:** `2`
 
 #### Text Content:
 ```text
-covering employee, spouse, and up to 2 children - Group Personal Accident Insurance (24x7 coverage) - Employee Assistance Program (confidential counseling) - Subsidized canteen facilities at all locations - Annual health checkup for employees above 35 years - Tata Steel Cooperative Credit Society membership available
+2030. • 3% positions reserved for differently-abled employees. Section 4: Working Hours & Attendance Work Schedule • Standard shift: 8 hours/day, 6 days/week. • Morning: 6AM–2PM. • Afternoon: 2PM–10PM. • Night: 10PM–6AM. • Administrative staff: 9AM–6PM. • 2nd and 4th Saturday off. Attendance • Biometric attendance mandatory. • HR review triggered after three late arrivals exceeding 15 minutes in a month. Overtime • 1.5× pay beyond 8 hours on working days. • 2× pay on holidays and weekly offs. • Maximum 48 overtime hours/month. Section 5: Compensation Structure Salary Components • Basic Pay (40–50% of CTC) • HRA • Dearness Allowance (DA) • Special Allowance • Shift Allowance • Performance-linked Variable Pay Salary Disbursement • Salary credited on last working
 ```
 
 ---
-### Chunk ID: `doc_1_0`
+### Chunk ID: `hr_support_0_3`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `3`
+
+#### Text Content:
+```text
+• Basic Pay (40–50% of CTC) • HRA • Dearness Allowance (DA) • Special Allowance • Shift Allowance • Performance-linked Variable Pay Salary Disbursement • Salary credited on last working day. • Payslips available by 1st of following month. • Reimbursements processed within 15 working days. [Page 3] Section 6: Performance Management Review Cycle • Annual review: April–March. • Mid-year review: October. Rating Scale 1. Outstanding 2. Excellent 3. Good 4. Average 5. Below Average KRA Management • KRAs finalized within first month. • Goal setting through SMART framework. • 360-degree feedback applicable for managers and above. Promotion Eligibility • Minimum 2 years in current role. • Good or better rating for last 2 years. • Mandatory training completion. •
+```
+
+---
+### Chunk ID: `hr_support_0_4`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `4`
+
+#### Text Content:
+```text
+360-degree feedback applicable for managers and above. Promotion Eligibility • Minimum 2 years in current role. • Good or better rating for last 2 years. • Mandatory training completion. • Manager recommendation. • No disciplinary action in previous 12 months. Section 7: Promotion Policy Process 1. Manager nomination. 2. HR eligibility review. 3. Skill assessment. 4. Promotion interview. 5. Final approval. 6. Promotion letter issuance within 30 days. [Page 4] Types of Promotion • Vertical Promotion: Move to higher grade with increased responsibility. • Lateral Movement: Same grade, different department or function. • Fast Track Promotion: For exceptional performers with outstanding performance. Section 8: Training & Development Training Entitlement • Minimum 40 training hours annually. • Technical training: 24 hours.
+```
+
+---
+### Chunk ID: `hr_support_0_5`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `5`
+
+#### Text Content:
+```text
+or function. • Fast Track Promotion: For exceptional performers with outstanding performance. Section 8: Training & Development Training Entitlement • Minimum 40 training hours annually. • Technical training: 24 hours. • Behavioral/leadership training: 16 hours. • Safety training mandatory. Training Types • Induction Training • On-the-job Training • Classroom Training • E-learning • External Training • Certification Programs Additional Provisions • Training Need Identification (TNI) annually. • Study leave up to 10 days/year. • Company-sponsored programs funded by company. • Training above ₹1 lakh requires 2-year bond. Section 9: Transfer & Relocation Policy Transfer Rules • Business-driven or employee-requested. • Employee request notice: 30 days. • Company transfer notice: 15 days. [Page 5] Relocation Support • Packing and moving expenses.
+```
+
+---
+### Chunk ID: `hr_support_0_6`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `6`
+
+#### Text Content:
+```text
+& Relocation Policy Transfer Rules • Business-driven or employee-requested. • Employee request notice: 30 days. • Company transfer notice: 15 days. [Page 5] Relocation Support • Packing and moving expenses. • Temporary accommodation (30 days). • Family travel expenses. • School admission assistance. Transfer Allowance • Within city: ₹10,000 • Inter-city: ₹25,000 • Inter-state: ₹50,000 Section 10: Awards & Recognition Annual Awards • Best Employee Award • Safety Champion Award • Innovation Award • Long Service Award • Best Team Award Spot Recognition • Up to ₹5,000 by manager. • Quarterly certificates. • Points-based rewards through HR Portal. Section 11: Code of Conduct & Disciplinary Policy Expected Behaviour • Integrity and honesty. • Respect for all employees. • Confidentiality. •
+```
+
+---
+### Chunk ID: `hr_support_0_7`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `7`
+
+#### Text Content:
+```text
+Quarterly certificates. • Points-based rewards through HR Portal. Section 11: Code of Conduct & Disciplinary Policy Expected Behaviour • Integrity and honesty. • Respect for all employees. • Confidentiality. • Avoidance of conflicts of interest. • Zero tolerance for harassment. [Page 6] Disciplinary Process 1. Verbal warning. 2. Written warning. 3. Show cause notice. 4. Domestic inquiry. 5. Appropriate disciplinary action. Major Misconduct • Theft or fraud. • Safety violations causing harm. • Harassment. • Confidentiality breaches. • Habitual absenteeism. Section 12: Anti-Harassment Policy (POSH) Coverage • Employees, contractors, and visitors. • Workplace, off-site events, and digital communication. ICC Structure • Senior woman employee as Presiding Officer. • External member. • Complaint within 3 months of incident. Process 1. Complaint
+```
+
+---
+### Chunk ID: `hr_support_0_8`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `8`
+
+#### Text Content:
+```text
+visitors. • Workplace, off-site events, and digital communication. ICC Structure • Senior woman employee as Presiding Officer. • External member. • Complaint within 3 months of incident. Process 1. Complaint filing. 2. Acknowledgement within 7 days. 3. Conciliation if requested. 4. Inquiry within 90 days. 5. Action within 60 days. 6. Appeal option available. [Page 7] Section 13: Grievance Policy Escalation Process 1. Direct manager. 2. HR Business Partner. 3. Employee Relations Committee. Timelines • Manager resolution attempt: 7 days. • HR resolution: 14 days. Protection • No retaliation. • Anonymous ethics helpline available. Section 14: Health, Wellness & Employee Welfare Insurance • Group Mediclaim. • Personal Accident Insurance. Health Programs • Annual health checkup for employees above 35. •
+```
+
+---
+### Chunk ID: `hr_support_0_9`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `9`
+
+#### Text Content:
+```text
+Anonymous ethics helpline available. Section 14: Health, Wellness & Employee Welfare Insurance • Group Mediclaim. • Personal Accident Insurance. Health Programs • Annual health checkup for employees above 35. • Occupational health monitoring. • Pre-employment medical examination. Mental Health • Employee Assistance Program (EAP). • 6 free counselling sessions. • Stress management workshops. • Yoga and meditation sessions. Welfare Facilities • Subsidized canteen. • Cooperative Credit Society membership. [Page 8] Section 15: Leave Policy Special Leave • Natural disasters/emergencies. • Blood donation leave. • Sports and cultural representation leave. Encashment • Maximum 15 days/year during service. • Encashment formula: o (Basic Pay + DA) ÷ 26 × Days Shift Worker Benefits • Additional 6 EL days annually. • Weekly off
+```
+
+---
+### Chunk ID: `hr_support_0_10`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `10`
+
+#### Text Content:
+```text
+• Maximum 15 days/year during service. • Encashment formula: o (Basic Pay + DA) ÷ 26 × Days Shift Worker Benefits • Additional 6 EL days annually. • Weekly off replacement provisions. New Joiners • CL and SL from Day 1. • EL accrues during probation. AWOL (Absent Without Leave) Consequences • 1–3 days: Warning letter and Leave Without Pay (LWP). • 4–7 days: Written warning and LWP . • 8–14 days: Show cause notice and LWP . • 15+ days: Deemed abandonment of service. Section 16: Data Privacy & Confidentiality Data Protection • Employee data collected only for legitimate HR purposes. • Access-controlled storage. • Correction requests through HR Portal. Confidentiality • Confidentiality agreement mandatory. • No sharing company
+```
+
+---
+### Chunk ID: `hr_support_0_11`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `11`
+
+#### Text Content:
+```text
+Confidentiality Data Protection • Employee data collected only for legitimate HR purposes. • Access-controlled storage. • Correction requests through HR Portal. Confidentiality • Confidentiality agreement mandatory. • No sharing company information on social media. • Technical processes considered trade secrets. [Page 9] Breach Consequences • Disciplinary action. • Legal action. • Recovery of damages. Section 17: Onboarding & Mentorship Buddy Program • Assigned on joining. • Peer with 2+ years experience. • Weekly check-ins for first 3 months. Formal Mentor • Assigned within first month. • Monthly meetings. • Minimum 1-year mentoring relationship. Safety Induction • Full-day induction. • Safety assessment with minimum 80% score. • Annual certificate renewal. Section 18: IT & Digital Access Email Setup • Company email
+```
+
+---
+### Chunk ID: `hr_support_0_12`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `12`
+
+#### Text Content:
+```text
+1-year mentoring relationship. Safety Induction • Full-day induction. • Safety assessment with minimum 80% score. • Annual certificate renewal. Section 18: IT & Digital Access Email Setup • Company email creation. • Two-factor authentication mandatory. SAP Access • Manager approval required. • Role-based module access. VPN Access • Approved based on business need. • Two-factor authentication mandatory. [Page 10] Section 19: Facilities & Workplace Services Facilities • Medical Centre — 24×7 • ATM — 24×7 • Cooperative Store — 9AM–6PM • Prayer Room — Always Open • Sports Complex — 5AM–9PM • Library — 9AM–5PM Section 20: Communication & Culture Tata Values • Integrity • Respect • Excellence • Unity • Responsibility Communication Channels • Email • Teams • Phone
+```
+
+---
+### Chunk ID: `hr_support_0_13`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `13`
+
+#### Text Content:
+```text
+5AM–9PM • Library — 9AM–5PM Section 20: Communication & Culture Tata Values • Integrity • Respect • Excellence • Unity • Responsibility Communication Channels • Email • Teams • Phone • HR Portal • Notice Boards Engagement • Quarterly town halls. • Monthly department briefings. • Annual CEO strategy session. • Open-door manager policy. [Page 11] Section 21: Separation Policy Resignation • 30-day notice period after confirmation. • Notice buyout possible with approval. Exit Process • Knowledge transfer. • Exit interview. • Department clearances. Final Settlement • Full & Final settlement within 45 days. • Relieving letter and experience certificate issued. Statutory Benefits • Gratuity as per applicable law.
+```
+
+---
+### Chunk ID: `hr_support_0_14`
+- **Source File:** `hr_policy.pdf`
+- **Chunk Index:** `14`
+
+#### Text Content:
+```text
+settlement within 45 days. • Relieving letter and experience certificate issued. Statutory Benefits • Gratuity as per applicable law.
+```
+
+---
+### Chunk ID: `hr_support_1_0`
 - **Source File:** `leave_policy.pdf`
 - **Chunk Index:** `0`
 
 #### Text Content:
 ```text
-[Page 1] # Tata Steel Leave Policy ## HR Department | 2024 --- ### Section 1: Policy Objective This policy defines the types of leave available to employees, eligibility, accrual, and application procedures. The objective is to support employee wellbeing while ensuring operational continuity. --- ### Section 2: Types of Leave **Casual Leave (CL):** - 12 days per year, credited 1 day per month - Cannot carry forward - Maximum 3 days at a time - Cannot be combined with other leave types except with HR approval - Approval from direct manager required, minimum 1 day advance notice (non-emergency) **Sick Leave (SL):** - 12 days per year, credited 1 day per month - Medical certificate required beyond 3 consecutive days - Can carry forward up to 15 days - No encashment allowed - Extended sick leave (beyond accrued balance) treated as Leave Without Pay unless medically certified for ESI benefit **Annual Leave / Earned Leave (AL/EL):** - 21 days per year, credited at 1.75 days per month - Can carry forward up to 45 days - Encashment allowed up to 30 days on retirement/resignation [Page 2] - Minimum 3 days per application (except for single-day applications with prior approval) - Must be planned and approved at least 7 days in advance for travel-related leave **Maternity Leave:** - 26 weeks for first two children - 12 weeks for third child onwards - Full pay during entire period - Job security guaranteed on return — same or equivalent role - Additional 8 weeks unpaid leave on request (Crèche facility provided at major locations) - Work-from-home option for 1 month post return, subject to role suitability **Paternity Leave:** - 15 days within 6 months of child birth - Full pay - Non transferable - Can be availed in maximum 2 splits **Bereavement Leave:** - 5 days on death of immediate family member (spouse, child, parent, sibling) - Full pay - No advance notice required **Compensatory Off (Comp Off):** - Granted for working on weekly off or company holiday - Must be availed within 30 days of accrual - Cannot be encashed **Leave Without Pay (LWP):** - Granted only when all other leave balances exhausted - Requires HR and manager approval - Affects continuity of service for benefit calculations beyond 30 days/year [Page 3] --- ### Section 3: Leave Application Process 1. Apply on HR portal minimum 3 days in advance for planned leave 2. Emergency leave: Inform manager same day via call/SMS, regularize on portal within 2 days 3. Manager approves/rejects within 24 hours of application 4. HR system auto updates leave balance upon approval 5. Rejection must be communicated with reason via portal 6. Leave during notice period requires HR approval in addition to manager --- ### Section 4: Leave Balance Tracking - Check balance on HR portal anytime (real-time updated) - Monthly statement emailed to all employees on 5th of every month - Year-end summary circulated in March - Lapse date for CL: 31st March every year (unused CL lapses) -
+## Section 1: Policy Objective 
+This policy defines the types of leave available to employees, eligibility, accrual, and application 
+procedures. The objective is to support employee wellbeing while ensuring operational continuity. 
+ 
+---
 ```
 
 ---
-### Chunk ID: `doc_1_1`
+### Chunk ID: `hr_support_1_1`
 - **Source File:** `leave_policy.pdf`
 - **Chunk Index:** `1`
 
 #### Text Content:
 ```text
-addition to manager --- ### Section 4: Leave Balance Tracking - Check balance on HR portal anytime (real-time updated) - Monthly statement emailed to all employees on 5th of every month - Year-end summary circulated in March - Lapse date for CL: 31st March every year (unused CL lapses) - EL carry-forward cap: 45 days; excess automatically lapses unless encashed --- ### Section 5: Holidays - National Holidays: 3 days (Republic Day, Independence Day, Gandhi Jayanti) — fixed for all - Festival Holidays: 7 days (employee chooses from a list of 12 regional/religious holidays published in January) - Total Paid Holidays: 10 per year - Holiday list published every January on HR Portal and notice boards - Plant operations (continuous process) — holiday work compensated with Comp Off + holiday pay --- [Page 4] ### Section 6: Special Leave Categories **Sabbatical Leave:** - Available to employees with 5+ years of service - Maximum 6 months, unpaid - For higher education, family care, or personal reasons - Job guarantee on return subject to vacancy availability **Examination Leave:** - Up to 10 days per year for employees pursuing company-sponsored or relevant courses - Requires proof of examination (admit card/hall ticket) **Marriage Leave:** - 5 days, once during service, for employee's own marriage - Full pay --- ### Section 7: Leave During Probation - Probationary employees entitled to SL and CL on pro-rata basis - EL accrual starts but cannot be availed until confirmation - Maternity/Paternity leave applicable even during probation as per statutory requirement --- ### Section 8: Leave Encashment Rules | Leave Type | Encashable | When | |---|---|---| | Casual Leave | No | - | | Sick Leave | No | - | [Page 5] | Earned Leave | Yes | On resignation/retirement, max 30 days | | Comp Off | No | Must be availed | --- ### Section 9: Frequently Raised Queries - **Q: Can I take CL and SL together?** Generally not recommended; requires manager justification. - **Q: What if I fall sick during approved EL?** Convert to SL with medical certificate, subject to SL balance. - **Q: Is Sunday counted in leave days?** Weekly offs falling within a leave period are not counted as leave days for EL/CL, but are counted for LWP .
+## Section 2: Types of Leave **Casual Leave (CL):** - 12 days per year, credited 1 day per month - Cannot carry forward - Maximum 3 days at a time - Cannot be combined with other leave types except with HR approval - Approval from direct manager required, minimum 1 day advance notice (non-emergency) **Sick Leave (SL):** - 12 days per year, credited 1 day per month - Medical certificate required beyond 3 consecutive days - Can carry forward up to 15 days - No encashment allowed - Extended sick leave (beyond accrued balance) treated as Leave Without Pay unless medically certified for ESI benefit **Annual Leave / Earned Leave (AL/EL):** - 21 days per year, credited at 1.75 days
 ```
 
 ---
-### Chunk ID: `doc_2_0`
-- **Source File:** `onboarding_doc.pdf`
-- **Chunk Index:** `0`
-
-#### Text Content:
-```text
-[Page 1] # Tata Steel New Employee Onboarding Guide ## HR Department | 2024 --- ### Section 1: Welcome to Tata Steel Welcome to the Tata Steel family! This guide will help you navigate your first 90 days with us. Tata Steel is one of the world's most geographically diversified steel producers with operations in 26 countries, and a legacy spanning over a century built on the Tata values of trust, integrity, and excellence. Our purpose is "Promoting Personal Growth, Enriching Lives" — and that begins with you. --- ### Section 2: Day 1 Checklist □ Report to HR department at 9AM □ Collect joining kit and ID card □ Complete joining formalities: □ Submit original documents (educational certificates, ID proof, address proof) □ Sign employment contract and code of conduct acknowledgment □ Complete bank account form (salary account) □ Enroll for PF and ESI □ Submit passport size photographs (4) □ Nomination forms for PF, Gratuity, Insurance □ Meet your direct manager □ Get workstation/locker assigned □ Get system access credentials (email, SAP login) □ Attend safety induction (mandatory before plant area access) □ Collect uniform/PPE if applicable to role --- ### Section 3: First Week Checklist □ Complete safety induction training (full day session) □ Meet your team members and key stakeholders □ Understand your job responsibilities and reporting structure □ Get access to all required systems (SAP, HR Portal, Learning Portal) [Page 2] □ Complete HR portal registration and profile update □ Set up email and communication tools (Teams/Outlook) □ Attend department orientation session □ Complete mandatory safety training modules online □ Tour of work area and emergency exits/assembly points □ Receive department-specific induction handbook --- ### Section 4: First 30 Days □ Complete all mandatory trainings: □ Safety Basics □ Chemical Handling (if applicable to role) □ PPE Training □ Code of Conduct e-module □ Information Security awareness □ Understand departmental processes and workflows □ Complete probation review form (initial goal setting) □ Set performance goals (KRAs) with manager □ Get mentor/buddy assigned □ Complete compliance training (POSH, anti-bribery) □ Shadow experienced team member for role-specific tasks □ Complete medical fitness checkup (if not done pre-joining) --- ### Section 5: First 90 Days □ Complete role-specific technical training as per skill gap □ Mid-probation check-in with manager (Day 45) □ Begin contributing independently on assigned tasks □ Provide onboarding feedback via HR Portal survey □ Set 6-month development goals □ Familiarize with performance management cycle and timelines --- ### Section 6: Important Systems Access | System | Purpose | Contact for Access | [Page 3] |---|---|---| | SAP | ERP System (procurement, inventory, HR) | IT Helpdesk x401 | | HR Portal | Leave, Payroll, Personal Info | HR x201 | | Learning Portal | Training enrollment & tracking | L&D x202 | | Email/Teams | Communication & collaboration | IT x401 | | Safety Portal | Incident Reporting, Permits | Safety x203 | | CMMS | Maintenance work orders (if applicable) | Maintenance x301 |
-```
-
----
-### Chunk ID: `doc_2_1`
-- **Source File:** `onboarding_doc.pdf`
-- **Chunk Index:** `1`
-
-#### Text Content:
-```text
-Info | HR x201 | | Learning Portal | Training enrollment & tracking | L&D x202 | | Email/Teams | Communication & collaboration | IT x401 | | Safety Portal | Incident Reporting, Permits | Safety x203 | | CMMS | Maintenance work orders (if applicable) | Maintenance x301 | | Biometric Access | Plant area entry | Security x207 | --- ### Section 7: Organization Structure Overview Tata Steel operations are organized into: - **Plant Operations** — Iron making, Steel making, Rolling Mills - **Maintenance & Engineering** — Mechanical, Electrical, Instrumentation - **Quality Assurance** — Inspection, Testing, Certification - **HR & Administration** — Recruitment, L&D, Employee Relations - **Finance & Commercial** — Procurement, Finance, Sales - **Safety, Health & Environment (SHE)** Each plant location has a Plant Head, supported by Functional Heads for each department above. --- ### Section 8: Key Contacts | Department | Contact | Extension | |---|---|---| | HR Department | hr@tatasteel.com | 201 | | IT Helpdesk | it@tatasteel.com | 401 | | L&D Department | ld@tatasteel.com | 202 | [Page 4] | Safety Officer | safety@tatasteel.com | 203 | | Finance/Payroll | finance@tatasteel.com | 501 | | Security | security@tatasteel.com | 207 | | Your Manager | (provided separately) | - | --- ### Section 9: Benefits Overview - Provident Fund: 12% employer contribution (matching employee contribution) - Health Insurance (Mediclaim): Self + family covered up to specified sum insured - Group Personal Accident Insurance: 24x7 coverage - Gratuity: After 5 years of continuous service - Annual Bonus: Based on company and individual performance - Canteen Subsidy: 50% subsidized meals at plant canteens - Transport: Company bus service for plant locations - Children Education Assistance: Up to Rs 10,000/year per child (max 2 children) - Employee Assistance Program: Confidential counseling services - Tata Steel Cooperative Credit Society: Optional membership for savings/loans --- ### Section 10: Code of Conduct Highlights As a Tata Steel employee, you are expected to: - Act with integrity and transparency in all dealings - Avoid conflicts of interest; declare any potential conflicts - Maintain confidentiality of company and customer information - Treat all colleagues with respect and dignity (zero tolerance for harassment) - Comply with all applicable laws and company policies - Report any violations through the Ethics Helpline (anonymous reporting available) --- [Page 5] ### Section 11: Frequently Asked Questions (New Joiners) **Q: When will I receive my first salary?** A: Salary is processed on the last working day of the month. If you join mid-month, you'll receive a pro-rated salary for that month. **Q: How do I apply for leave during probation?** A: You can apply for Casual Leave and Sick Leave from day one via the HR Portal, subject to pro- rata accrual. **Q: Who do I contact if my system access doesn't work?** A: Raise a ticket with IT Helpdesk (Extension 401) or email it@tatasteel.com. **Q: Is the safety induction mandatory even for office-based roles?** A: Yes, all employees must complete basic safety induction regardless of
-```
-
----
-### Chunk ID: `doc_2_2`
-- **Source File:** `onboarding_doc.pdf`
+### Chunk ID: `hr_support_1_2`
+- **Source File:** `leave_policy.pdf`
 - **Chunk Index:** `2`
 
 #### Text Content:
 ```text
-Portal, subject to pro- rata accrual. **Q: Who do I contact if my system access doesn't work?** A: Raise a ticket with IT Helpdesk (Extension 401) or email it@tatasteel.com. **Q: Is the safety induction mandatory even for office-based roles?** A: Yes, all employees must complete basic safety induction regardless of role, as plant visits may be required. **Q: When does my probation review happen?** A: A formal review is conducted at the end of 6 months. An informal check-in happens around Day 45-60.
+leave (beyond accrued balance) treated as Leave Without Pay unless medically certified for ESI benefit **Annual Leave / Earned Leave (AL/EL):** - 21 days per year, credited at 1.75 days per month - Can carry forward up to 45 days - Encashment allowed up to 30 days on retirement/resignation [Page 2] - Minimum 3 days per application (except for single-day applications with prior approval) - Must be planned and approved at least 7 days in advance for travel-related leave **Maternity Leave:** - 26 weeks for first two children - 12 weeks for third child onwards - Full pay during entire period - Job security guaranteed on return — same or equivalent role - Additional 8 weeks unpaid leave on request
 ```
 
 ---
+### Chunk ID: `hr_support_1_3`
+- **Source File:** `leave_policy.pdf`
+- **Chunk Index:** `3`
+
+#### Text Content:
+```text
+weeks for third child onwards - Full pay during entire period - Job security guaranteed on return — same or equivalent role - Additional 8 weeks unpaid leave on request (Crèche facility provided at major locations) - Work-from-home option for 1 month post return, subject to role suitability **Paternity Leave:** - 15 days within 6 months of child birth - Full pay - Non transferable - Can be availed in maximum 2 splits **Bereavement Leave:** - 5 days on death of immediate family member (spouse, child, parent, sibling) - Full pay - No advance notice required **Compensatory Off (Comp Off):** - Granted for working on weekly off or company holiday - Must be availed within 30 days of accrual -
+```
+
+---
+### Chunk ID: `hr_support_1_4`
+- **Source File:** `leave_policy.pdf`
+- **Chunk Index:** `4`
+
+#### Text Content:
+```text
+pay - No advance notice required **Compensatory Off (Comp Off):** - Granted for working on weekly off or company holiday - Must be availed within 30 days of accrual - Cannot be encashed **Leave Without Pay (LWP):** - Granted only when all other leave balances exhausted - Requires HR and manager approval - Affects continuity of service for benefit calculations beyond 30 days/year [Page 3] ---
+```

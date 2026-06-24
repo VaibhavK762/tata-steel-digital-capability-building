@@ -1,14 +1,9 @@
-import chromadb
-from sentence_transformers import SentenceTransformer
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
+from agents.shared import embedder, db_client as client
 
 load_dotenv()
 
-CHROMA_PATH = "data/chroma_db"
-
-embedder = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
-client = chromadb.PersistentClient(path=CHROMA_PATH)
 llm = ChatGroq(model="llama-3.1-8b-instant")
 
 ANSWER_PROMPT = """

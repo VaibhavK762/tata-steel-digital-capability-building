@@ -46,11 +46,11 @@ def assign_user_type(level):
     if level == 1:
         return 'New Joiner'
     elif level in [2, 3]:
-        return 'Mid Level Employee'
+        return 'Employee'
     elif level == 4:
         return 'Manager'
     else:
-        return 'Senior Executive'
+        return 'Executive'
 
 df['user_type'] = df['job_level'].apply(assign_user_type)
 

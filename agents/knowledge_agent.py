@@ -1,17 +1,11 @@
-import chromadb
-from sentence_transformers import SentenceTransformer
 from langchain_groq import ChatGroq
 from dotenv import load_dotenv
+from agents.shared import embedder, db_client as client
 
 load_dotenv()
 
-CHROMA_PATH = "data/chroma_db"
-
-embedder = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
-client = chromadb.PersistentClient(path=CHROMA_PATH)
 llm = ChatGroq(model="llama-3.1-8b-instant")
 
-# ── Prompts ──────────────────────────────────────
 
 ANSWER_PROMPT = """
 You are a helpful assistant for Tata Steel employees. 
@@ -55,7 +49,6 @@ keywords) that might find better matching information.
 Return ONLY the new query text, nothing else.
 """
 
-# ── Core Search Function ──────────────────────────
 
 def search_chromadb(query, collections, n_results=4, max_distance=0.45):
     """Search with a relevance cutoff"""
@@ -84,7 +77,6 @@ def search_chromadb(query, collections, n_results=4, max_distance=0.45):
     all_results.sort(key=lambda x: x['distance'])
     return all_results[:n_results]
 
-# ── Self-RAG + Agentic Helper Functions ───────────
 
 def check_sufficiency(question, context):
     """Self-RAG: verify if retrieved context actually answers the question"""
@@ -102,7 +94,6 @@ def refine_query(question, original_query):
     response = llm.invoke(prompt)
     return response.content.strip()
 
-# ── Main Agent Function ───────────────────────────
 
 def knowledge_sop_agent(user_question, max_retries=1):
     """
@@ -134,7 +125,6 @@ def knowledge_sop_agent(user_question, max_retries=1):
             for r in results
         ])
 
-        # Self-RAG: check if this context is actually sufficient
         is_sufficient = check_sufficiency(user_question, context)
 
         if is_sufficient or attempt == max_retries:
@@ -162,7 +152,6 @@ def knowledge_sop_agent(user_question, max_retries=1):
         "attempts": attempt + 1
     }
 
-# ── Quick test ──────────────────────────────
 if __name__ == "__main__":
     test_questions = [
         "What is the chemical spill procedure?",

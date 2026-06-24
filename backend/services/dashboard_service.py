@@ -101,11 +101,68 @@ def get_employee_dashboard(user_id):
     )
 
     # --------------------
+    # Known Skills
+    # --------------------
+
+    known_skills_rows = cursor.execute("""
+        SELECT skill_name
+        FROM user_skills
+        WHERE user_id = ?
+        ORDER BY skill_name
+    """, (user_id,)).fetchall()
+
+    known_skills = [
+        row["skill_name"]
+        for row in known_skills_rows
+    ]
+
+    # --------------------
+    # Announcements
+    # --------------------
+
+    announcement_rows = cursor.execute("""
+        SELECT
+            announcement_id,
+            title,
+            priority,
+            created_at
+        FROM announcements
+        WHERE target_audience IN
+        ('ALL','EMPLOYEES')
+        ORDER BY announcement_id DESC
+        LIMIT 5
+    """).fetchall()
+
+    announcements = [
+        dict(row)
+        for row in announcement_rows
+    ]
+
+    # --------------------
+    # Recent Documents
+    # --------------------
+
+    document_rows = cursor.execute("""
+        SELECT
+            document_id,
+            document_name,
+            category
+        FROM documents
+        ORDER BY document_id DESC
+        LIMIT 5
+    """).fetchall()
+
+    recent_documents = [
+        dict(row)
+        for row in document_rows
+    ]
+
+    # --------------------
     # Recommendations
     # --------------------
 
     recommendations = cursor.execute("""
-        SELECT
+        SELECT DISTINCT
             r.course_id,
             c.course_name,
             r.priority
@@ -137,6 +194,14 @@ def get_employee_dashboard(user_id):
                 user["nsqf_level"]
         },
 
+        "career_path": {
+            "current_role":
+                user["current_role"],
+
+            "target_role":
+                user["target_role"]
+        },
+
         "learning_progress": {
             "completion_percentage":
                 completion_percentage,
@@ -165,8 +230,17 @@ def get_employee_dashboard(user_id):
                 missing_skills
         },
 
+        "known_skills":
+            known_skills,
+
         "recommendations":
-            recommended_courses
+            recommended_courses,
+
+        "announcements":
+            announcements,
+
+        "recent_documents":
+            recent_documents
     }
 
 def get_manager_dashboard(manager_id):
@@ -219,11 +293,32 @@ def get_manager_dashboard(manager_id):
 
     if team_size == 0:
 
+        announcement_rows = cursor.execute("""
+            SELECT
+                announcement_id,
+                title,
+                priority,
+                created_at
+            FROM announcements
+            WHERE target_audience IN
+            ('ALL','MANAGERS')
+            ORDER BY announcement_id DESC
+            LIMIT 5
+        """).fetchall()
+
+        announcements = [
+            dict(row)
+            for row in announcement_rows
+        ]
+
         conn.close()
 
         return {
             "manager": dict(manager),
-            "team_size": 0
+            "team_size": 0,
+            "team_members": [],
+            "pending_approvals": [],
+            "announcements": announcements
         }
 
     # -------------------
@@ -324,6 +419,64 @@ def get_manager_dashboard(manager_id):
             "skill": skill,
             "count": count
         })
+        # -------------------
+    # Pending Approvals
+    # -------------------
+
+    pending_requests = cursor.execute("""
+        SELECT
+            r.request_id,
+            u.name,
+            c.course_name,
+            r.submitted_at
+        FROM course_completion_requests r
+        JOIN users u
+            ON r.user_id = u.user_id
+        JOIN courses c
+            ON r.course_id = c.course_id
+        WHERE r.status = 'Pending'
+        ORDER BY r.request_id DESC
+        LIMIT 10
+    """).fetchall()
+
+    pending_approvals = [
+        dict(row)
+        for row in pending_requests
+    ]
+
+    # -------------------
+    # Announcements
+    # -------------------
+
+    announcement_rows = cursor.execute("""
+        SELECT
+            announcement_id,
+            title,
+            priority,
+            created_at
+        FROM announcements
+        WHERE target_audience IN
+        ('ALL','MANAGERS')
+        ORDER BY announcement_id DESC
+        LIMIT 5
+    """).fetchall()
+
+    announcements = [
+        dict(row)
+        for row in announcement_rows
+    ]
+
+    # -------------------
+    # Team Members
+    # -------------------
+
+    team_members = [
+        {
+            "user_id": member["user_id"],
+            "name": member["name"]
+        }
+        for member in team
+    ]
 
     conn.close()
 
@@ -338,6 +491,8 @@ def get_manager_dashboard(manager_id):
 
         "team_size": team_size,
 
+        "team_members": team_members,
+
         "team_completion": team_completion,
 
         "team_readiness": avg_readiness,
@@ -349,7 +504,13 @@ def get_manager_dashboard(manager_id):
         },
 
         "top_missing_skills":
-            top_missing_skills
+            top_missing_skills,
+
+        "pending_approvals":
+            pending_approvals,
+
+        "announcements":
+            announcements
     }
 
 
@@ -511,6 +672,28 @@ def get_executive_dashboard(executive_id):
             "skill": skill,
             "count": count
         })
+    
+    # ------------------
+    # Announcements
+    # ------------------
+
+    announcement_rows = cursor.execute("""
+        SELECT
+            announcement_id,
+            title,
+            priority,
+            created_at
+        FROM announcements
+        WHERE target_audience IN
+        ('ALL','EXECUTIVES')
+        ORDER BY announcement_id DESC
+        LIMIT 5
+    """).fetchall()
+
+    announcements = [
+         dict(row)
+         for row in announcement_rows
+    ]
 
     conn.close()
 
@@ -551,7 +734,10 @@ def get_executive_dashboard(executive_id):
         },
 
         "top_skill_gaps":
-            top_skill_gaps
+            top_skill_gaps,
+
+        "announcements":
+            announcements
     }
 
 
@@ -724,6 +910,54 @@ def get_ld_dashboard():
         for row in course_rows
     ]
 
+        # -------------------------
+    # Documents Summary
+    # -------------------------
+
+    total_documents = cursor.execute("""
+        SELECT COUNT(*)
+        FROM documents
+    """).fetchone()[0]
+
+    document_categories = cursor.execute("""
+        SELECT
+            category,
+            COUNT(*) as count
+        FROM documents
+        GROUP BY category
+        ORDER BY count DESC
+    """).fetchall()
+
+    documents_summary = {
+        "total_documents": total_documents,
+        "categories": [
+            dict(row)
+            for row in document_categories
+        ]
+    }
+
+    # -------------------------
+    # Announcements
+    # -------------------------
+
+    announcement_rows = cursor.execute("""
+        SELECT
+            announcement_id,
+            title,
+            priority,
+            created_at
+        FROM announcements
+        WHERE target_audience IN
+        ('ALL','LND')
+        ORDER BY announcement_id DESC
+        LIMIT 5
+    """).fetchall()
+
+    announcements = [
+        dict(row)
+        for row in announcement_rows
+    ]
+
     conn.close()
 
     return {
@@ -736,9 +970,18 @@ def get_ld_dashboard():
             "average_readiness": average_readiness
         },
 
-        "department_stats": department_stats,
+        "department_stats":
+            department_stats,
 
-        "top_skill_gaps": top_skill_gaps,
+        "top_skill_gaps":
+            top_skill_gaps,
 
-        "top_courses": top_courses
+        "top_courses":
+            top_courses,
+
+        "documents_summary":
+            documents_summary,
+
+        "announcements":
+            announcements
     }

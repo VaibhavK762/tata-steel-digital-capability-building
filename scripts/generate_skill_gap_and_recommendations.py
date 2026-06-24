@@ -23,6 +23,102 @@ SELECT *
 FROM courses
 """, conn)
 
+# ==========================================================
+# Skill Synonym Mapping
+# ==========================================================
+
+SKILL_EQUIVALENTS = {
+
+    "communication related skills": [
+        "communication skills",
+        "reporting"
+    ],
+
+    "problem solving attitude": [
+        "problem solving",
+        "rca"
+    ],
+
+    "analytical skills": [
+        "process control",
+        "measurement parameters",
+        "calibration"
+    ],
+
+    "high concentration levels": [
+        "process monitoring",
+        "process control"
+    ],
+
+    "willingness to work in a factory environment": [
+        "workplace discipline",
+        "housekeeping"
+    ],
+
+    "physical fitness": [
+        "equipment operation"
+    ],
+
+    "sharp reflex": [
+        "equipment operation"
+    ],
+
+    "hydraulic equipment maintenance": [
+        "hydraulic maintenance"
+    ],
+
+    "pneumatic equipment maintenance": [
+        "pneumatic maintenance"
+    ],
+
+    "welding joints": [
+        "gtaw welding"
+    ],
+
+    "welding procedure specification": [
+        "gtaw welding"
+    ],
+
+    "gas tungsten arc welding (gtaw)": [
+        "gtaw welding"
+    ],
+
+    "tungsten inert arc welding (gtaw)": [
+        "gtaw welding"
+    ],
+
+    "control system operation": [
+        "process control",
+        "scada"
+    ],
+
+    "computer terminal operation": [
+        "computer operations",
+        "digital reporting"
+    ],
+
+    "assembly and disassembly": [
+        "electronic assembly",
+        "electrical assembly"
+    ],
+
+    "machining": [
+        "machining"
+    ],
+
+    "inventory management": [
+        "inventory management"
+    ],
+
+    "traffic signals": [
+        "traffic signals"
+    ],
+
+    "troubleshooting": [
+        "troubleshooting"
+    ]
+}
+
 cursor = conn.cursor()
 
 cursor.execute("DELETE FROM skill_gap")
@@ -95,14 +191,37 @@ for _, user in users.iterrows():
 
         skill_gap_rows += 1
 
-        matching_courses = courses[
-            courses["skills_taught"]
-            .str.lower()
-            .str.contains(
-                skill,
-                na=False
+        # ==========================================
+        # Exact + Synonym Based Matching
+        # ==========================================
+
+        search_terms = [skill]
+
+        if skill in SKILL_EQUIVALENTS:
+            search_terms.extend(
+                SKILL_EQUIVALENTS[skill]
             )
-        ]
+
+        matching_courses = pd.DataFrame()
+
+        for term in search_terms:
+
+            matches = courses[
+                courses["skills_taught"]
+                .str.lower()
+                .str.contains(
+                    term,
+                    na=False
+                )
+            ]
+
+            matching_courses = pd.concat(
+                [matching_courses, matches]
+            )
+
+        matching_courses = matching_courses.drop_duplicates(
+            subset=["course_id"]
+        )
 
         for _, course in matching_courses.iterrows():
 
@@ -128,11 +247,11 @@ for _, user in users.iterrows():
 conn.commit()
 
 print(
-    f"✅ Skill gaps: {skill_gap_rows}"
+    f"✅ Skill gaps generated: {skill_gap_rows}"
 )
 
 print(
-    f"✅ Recommendations: {recommendation_rows}"
+    f"✅ Recommendations generated: {recommendation_rows}"
 )
 
 conn.close()

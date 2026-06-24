@@ -33,38 +33,38 @@ CREATE TABLE courses (
 ## Table Data
 | course_id | course_name | skills_taught | target_role | duration | level | provider |
 | --- | --- | --- | --- | --- | --- | --- |
-| C001 | Safety Basics | Safety Awareness, PPE Usage | All | 2 days | Beginner | Tata Steel L&D |
-| C002 | Chemical Handling | Chemical Safety, HAZMAT Handling | Plant Operations | 3 days | Beginner | Tata Steel L&D |
-| C003 | PPE Training | PPE Usage, Safety Compliance | All | 1 day | Beginner | Tata Steel L&D |
-| C004 | Fire Safety & Emergency Response | Fire Safety, Emergency Evacuation | All | 1 day | Beginner | Tata Steel L&D |
-| C005 | Steel Manufacturing 101 | Steel Process, Quality Control | Junior Engineer | 1 week | Beginner | Tata Steel L&D |
-| C006 | Blast Furnace Operations | Furnace Control, Temperature Management | Plant Operations | 2 weeks | Intermediate | Tata Steel L&D |
-| C007 | Crusher Operations & Maintenance | Equipment Operation, Crusher Maintenance | Plant Technician | 1 week | Intermediate | Tata Steel L&D |
-| C008 | Conveyor Systems Maintenance | Belt Maintenance, Conveyor Safety | Mechanical | 3 days | Beginner | Tata Steel L&D |
-| C009 | Control Room Operations | SCADA, Process Control | Senior Engineer | 2 weeks | Advanced | Tata Steel L&D |
-| C010 | Predictive Maintenance Fundamentals | Sensor Reading, Vibration Analysis | Maintenance Team | 1 week | Intermediate | Tata Steel L&D |
-| C011 | Steel Quality Control & ISO Standards | Quality Standards, ISO Compliance | Quality Engineer | 1 week | Intermediate | Tata Steel L&D |
-| C012 | Heating Regulator Operations | Furnace Temperature Control, Fuel Management | Plant Operations | 2 weeks | Intermediate | Tata Steel L&D |
-| C013 | Battery Operations & Safety | Battery Handling, Electrical Safety | Plant Operations | 1 week | Intermediate | Tata Steel L&D |
-| C014 | Locomotive Driving & Safety | Locomotive Operation, Yard Safety | Operations | 2 weeks | Intermediate | Tata Steel L&D |
-| C015 | Mobile Equipment Operations | Equipment Handling, Field Safety | Operations | 1 week | Beginner | Tata Steel L&D |
-| C016 | Welding & Fabrication | Gas Tungsten Arc Welding, Metal Fabrication | Mechanical | 2 weeks | Intermediate | Tata Steel L&D |
-| C017 | Electrical Maintenance Basics | Electrical Safety, Circuit Maintenance | Mechanical | 1 week | Intermediate | Tata Steel L&D |
-| C018 | Instrumentation Fundamentals | Instrumentation, Calibration | IT Engineer | 1 week | Intermediate | Tata Steel L&D |
-| C019 | Leadership Fundamentals | Team Management, Communication | Manager | 3 days | Intermediate | Tata Steel L&D |
-| C020 | Project Management for Engineers | Planning, Risk Management | Senior Engineer | 2 weeks | Intermediate | Tata Steel L&D |
-| C021 | Incident Investigation & Root Cause Analysis | Root Cause Analysis, Incident Reporting | Safety Officer | 3 days | Intermediate | Tata Steel L&D |
-| C022 | Environmental Compliance | ISO 14001, Waste Management | All | 2 days | Beginner | Tata Steel L&D |
-| C023 | AutoCAD Basics | AutoCAD Basic, Technical Drawing | Junior Engineer | 2 weeks | Beginner | External |
-| C024 | AutoCAD Advanced | AutoCAD Advanced, 3D Modeling | Senior Engineer | 3 weeks | Advanced | External |
-| C025 | Python for Steel Data Analysis | Python, Pandas, Data Analysis | IT Engineer | 4 weeks | Intermediate | External |
-| C026 | SQL for Data Analytics | SQL Basic, SQL Advanced, Database Querying | IT Engineer | 3 weeks | Intermediate | External |
-| C027 | Power BI Analytics | Power BI, Data Visualization | Data Analyst | 2 weeks | Intermediate | External |
-| C028 | Machine Learning Fundamentals | ML Basics, Statistics, Python | Data Analyst | 4 weeks | Advanced | External |
-| C029 | SAP for Steel Industry | SAP, ERP, Process Management | All | 1 week | Intermediate | External |
-| C030 | Digital Tools & MS Office | MS Office, Digital Literacy | All | 3 days | Beginner | Tata Steel L&D |
-| C031 | Refractory Bricks Laying | Refractory Installation, Furnace Lining | Plant Technician | 1 week | Intermediate | Tata Steel L&D |
-| C032 | Hydraulic & Pneumatic Systems | Hydraulic Systems, Pneumatic Maintenance | Mechanical | 1 week | Intermediate | Tata Steel L&D |
-| C033 | Plant Operations Hand Skills | Manual Plant Operations, Material Handling | Junior Engineer | 1 week | Beginner | Tata Steel L&D |
-| C034 | Stacker & Reclaimer Operations | Equipment Operation, Material Stacking | Plant Operations | 1 week | Intermediate | Tata Steel L&D |
-| C035 | Excavator & Dumper Operations | Heavy Equipment Operation, Field Safety | Operations | 1 week | Beginner | Tata Steel L&D |
+| C001 | Industrial Safety Fundamentals | Safety Practices, PPE Usage, Hazard Awareness | All | 2 Days | Beginner | Tata Steel L&D |
+| C002 | Workplace Health & Safety | Health and Safety Practices, Risk Assessment | All | 2 Days | Beginner | Tata Steel L&D |
+| C003 | 5S and Workplace Discipline | 5S, Housekeeping, Workplace Discipline | All | 1 Day | Beginner | Tata Steel L&D |
+| C004 | Emergency Response & Fire Safety | Emergency Response, Fire Safety | All | 1 Day | Beginner | Tata Steel L&D |
+| C005 | Cast House Fundamentals | Tap Hole Preparation, Equipment Maintenance | Cast House Junior Operator | 1 Week | Beginner | Tata Steel L&D |
+| C006 | Advanced Cast House Operations | Blast Furnace Operations, Cast House Equipment | Cast House Senior Operator | 2 Weeks | Intermediate | Tata Steel L&D |
+| C007 | Heating Regulation & Process Monitoring | Measurement Parameters, Process Monitoring | Heating Regulator | 1 Week | Intermediate | Tata Steel L&D |
+| C008 | Control Room Operations | Control Panel Operation, Process Control, SCADA | Control Room Operator | 2 Weeks | Advanced | Tata Steel L&D |
+| C009 | Rolling Mill Process Control | Metallurgy, Hydraulics, Process Control | Process Operator: Rolling Mills | 2 Weeks | Advanced | Tata Steel L&D |
+| C010 | Battery Operations Excellence | Coke Production, Pollution Control | Battery Operator | 1 Week | Advanced | Tata Steel L&D |
+| C011 | Bearing Inspection Fundamentals | Bearing Inspection, Bearing Maintenance | Bearing Maintenance | 3 Days | Beginner | Tata Steel L&D |
+| C012 | Conveyor Maintenance Techniques | Conveyor Maintenance, Troubleshooting | Belt Conveyor Maintenance | 1 Week | Intermediate | Tata Steel L&D |
+| C013 | Electrical Assembly Workshop | Electrical Assembly, Quality Checks | Fitter Electrical Assembly | 1 Week | Beginner | Tata Steel L&D |
+| C014 | Instrumentation & Calibration | Instrumentation, Calibration | Iron & Steel - Fitter Instrumentation | 2 Weeks | Intermediate | Tata Steel L&D |
+| C015 | Electronic Assembly Systems | Electronic Assembly, Wiring, Soldering | Iron & Steel - Fitter: Electronic Assembly | 1 Week | Intermediate | Tata Steel L&D |
+| C016 | Hydraulic & Pneumatic Systems | Hydraulic Maintenance, Pneumatic Maintenance | Fitter: Hydraulic & Pneumatic System | 2 Weeks | Advanced | Tata Steel L&D |
+| C017 | Levelling Alignment & Balancing | Alignment, Balancing, Testing | Fitter: Levelling, Alignment & Balancing | 1 Week | Intermediate | Tata Steel L&D |
+| C018 | Mobile Equipment Maintenance | Machining, Welding, Equipment Maintenance | Mobile Equipment Maintenance | 2 Weeks | Advanced | Tata Steel L&D |
+| C019 | Rigging Fundamentals | Rigging, Load Distribution, Lifting | Rigger: Rigging of Heavy Material | 1 Week | Beginner | Tata Steel L&D |
+| C020 | Mobile Equipment Operations | Equipment Operation, Driving Skills | Mobile Equipment Operator | 2 Weeks | Intermediate | Tata Steel L&D |
+| C021 | Crane Operations & Safety | Crane Operation, Signalling, Safety | EOT Overhead Crane Operator | 2 Weeks | Intermediate | Tata Steel L&D |
+| C022 | Industrial Locomotive Operations | Traffic Signals, Locomotive Systems | Locomotive Driver | 3 Weeks | Advanced | Tata Steel L&D |
+| C023 | Mechanised Housekeeping | Equipment Operation, Housekeeping | House Keeping with Mechanised Equipment | 3 Days | Beginner | Tata Steel L&D |
+| C024 | Plasma Cutting Fundamentals | Plasma Arc Cutting | Iron & Steel - Plasma Cutter: Manual | 1 Week | Beginner | Tata Steel L&D |
+| C025 | Industrial Machining | Machining, Engineering Drawings | Iron & Steel - Machinist | 2 Weeks | Intermediate | Tata Steel L&D |
+| C026 | Advanced GTAW Welding | GTAW Welding, Welding Metallurgy | Iron & Steel - Tungsten Inert Gas Welder (GTAW) | 3 Weeks | Advanced | Tata Steel L&D |
+| C027 | Utility Plant Operations | Plant Operations, Tool Handling | Iron & Steel - Utility Hand-Plant Operations | 1 Week | Beginner | Tata Steel L&D |
+| C028 | Fluid Management Systems | Fluid Systems, Inventory Management | Fluid Management Operator: Rolling Mills | 2 Weeks | Intermediate | Tata Steel L&D |
+| C029 | Industrial Refractory Practices | Refractory Installation, Drawings | Refractory Brick Layer | 2 Weeks | Advanced | Tata Steel L&D |
+| C030 | Conveyor Operations & Maintenance | Conveyor Operation, Maintenance | Conveyor Operation and Maintenance | 1 Week | Intermediate | Tata Steel L&D |
+| C031 | Physical Testing Laboratory Basics | Physical Testing, Calibration | Laboratory Technician Physical | 1 Week | Beginner | Tata Steel L&D |
+| C032 | Problem Solving & Root Cause Analysis | Problem Solving, RCA | All | 2 Days | Intermediate | Tata Steel L&D |
+| C033 | Industrial Communication Skills | Communication Skills, Reporting | All | 2 Days | Beginner | Tata Steel L&D |
+| C034 | Digital Skills for Manufacturing | Computer Operations, Digital Reporting | All | 3 Days | Intermediate | Tata Steel L&D |
+| C035 | Leadership for Frontline Managers | Leadership, Coaching, Team Management | Manager | 1 Week | Advanced | Tata Steel L&D |

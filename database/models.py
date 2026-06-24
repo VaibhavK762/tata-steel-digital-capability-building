@@ -25,7 +25,9 @@ def create_database():
             timeline TEXT,
             learning_preference TEXT,
             language_preference TEXT DEFAULT 'English',
-            created_at TEXT DEFAULT CURRENT_TIMESTAMP
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            manager_id INTEGER,
+            is_new_joiner INTEGER DEFAULT 1
         )
     ''')
 
@@ -107,6 +109,80 @@ def create_database():
             downtime_hours REAL,
             downtime_reason TEXT,
             performance_status TEXT
+        )
+    ''')
+
+    # ── Announcements Table ────────────────
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS announcements (
+            announcement_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            message TEXT NOT NULL,
+            target_audience TEXT NOT NULL,
+            priority TEXT DEFAULT 'Medium',
+            created_by TEXT,
+            created_at TEXT
+        )
+    ''')
+
+    # ── Documents Table ───────────────────
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS documents (
+            document_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            document_name TEXT NOT NULL,
+            category TEXT NOT NULL,
+            upload_date TEXT,
+            file_path TEXT NOT NULL,
+            status TEXT DEFAULT 'active',
+            uploaded_by TEXT,
+            indexed INTEGER DEFAULT 0
+        )
+    ''')
+
+    # ── Skill Gap Table ───────────────────
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS skill_gap (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            target_role TEXT,
+            missing_skill TEXT,
+            readiness_score REAL
+        )
+    ''')
+
+    # ── Recommendations Table ─────────────
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS recommendations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            course_id TEXT,
+            reason TEXT,
+            priority TEXT
+        )
+    ''')
+
+    # ── Onboarding Tasks Table ────────────
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS onboarding_tasks (
+            task_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            task_name TEXT,
+            status TEXT,
+            due_date TEXT,
+            completed_date TEXT
+        )
+    ''')
+
+    # ── Course Completion Requests Table ──
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS course_completion_requests (
+            request_id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            course_id TEXT NOT NULL,
+            status TEXT DEFAULT 'Pending',
+            submitted_at TEXT,
+            approved_at TEXT,
+            approved_by INTEGER
         )
     ''')
 
