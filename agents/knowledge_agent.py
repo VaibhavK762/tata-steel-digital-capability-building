@@ -6,158 +6,364 @@ load_dotenv()
 
 llm = ChatGroq(model="llama-3.1-8b-instant")
 
+ROLE_COLLECTION = client.get_collection("role_knowledge")
+
+ROLE_NAMES = sorted(
+    {
+        meta["role"]
+        for meta in ROLE_COLLECTION.get(
+            include=["metadatas"]
+        )["metadatas"]
+        if "role" in meta
+    },
+    key=len,
+    reverse=True
+)
 
 ANSWER_PROMPT = """
-You are a helpful assistant for Tata Steel employees. 
-Answer the user's question using ONLY the context provided below.
-If the answer isn't in the context, say you don't have that 
-information and suggest they contact the relevant department.
+You are the Tata Steel Knowledge Assistant.
 
-Respond in the SAME language the user asked in 
-(English or Hindi). Be concise and practical.
+Answer the user's question using ONLY the information
+provided in the retrieved context.
+
+Instructions:
+1. Never use outside knowledge.
+2. Never invent facts or numbers.
+3. Start directly with the answer.
+4. If the answer spans multiple retrieved sections,
+   combine the relevant information into one response.
+5. If the context contains statistics, dates, percentages,
+   financial values, production figures, or other numbers,
+   include them accurately.
+6. For report-related questions (annual report, sustainability,
+   financial performance, production, exports, EBITDA, capex,
+   strategy, ESG, etc.), synthesize all relevant retrieved
+   information into a well-structured summary. Include important
+   numbers, comparisons, trends and explanations when available.
+7. For SOP, safety or maintenance questions,
+   provide clear step-by-step guidance if available.
+8. For role-related questions,
+   summarize the required responsibilities and skills.
+9. If the requested information is not present in the retrieved
+   context, clearly state that it is not available in the retrieved
+   documents. Do not speculate or use outside knowledge.
+10. Keep answers concise (80–180 words) unless the user
+    requests more detail.
+11. Multiple retrieved chunks may contain different parts of the answer.
+    Read ALL retrieved context before answering and combine the relevant information.
+12. Do not answer using only the first matching chunk.
+13. When the retrieved context contains tables, convert the relevant
+    rows into natural language instead of copying the table.
 
 Context:
 {context}
 
-User Question: {question}
+Question:
+{question}
 
 Answer:
 """
 
-SUFFICIENCY_CHECK_PROMPT = """
-Given this user question and the retrieved context, 
-determine if the context is SUFFICIENT to fully answer 
-the question.
+EXPAND_PROMPT = """
+Rewrite the user's query into a better semantic search query.
 
-Question: {question}
+Rules:
+- Preserve the original meaning.
+- Add closely related keywords.
+- If it is a financial question, include words such as:
+  annual report, revenue, EBITDA, profit, production,
+  exports, capex, sustainability, financial performance.
+- If it is a safety question, include safety-related terms.
+- If it is a maintenance question, include equipment,
+  troubleshooting, preventive maintenance,
+  predictive maintenance.
+- If it is a role question, include job role,
+  NSQF, responsibilities, competencies and skills.
+- Return ONLY the rewritten query.
 
-Context:
-{context}
+Original question:
+{query}
 
-Reply with ONLY one word: SUFFICIENT or INSUFFICIENT
+Search query:
 """
 
-REFINE_QUERY_PROMPT = """
-The following search query did not return enough useful 
-information to answer the user's question:
+def detect_role(question):
 
-Original question: {question}
-Search query used: {query}
+    question = question.lower()
 
-Generate ONE alternative search query (different wording/
-keywords) that might find better matching information.
-Return ONLY the new query text, nothing else.
-"""
+    for role in ROLE_NAMES:
 
+        if role.lower() in question:
+            return role
 
-def search_chromadb(query, collections, n_results=4, max_distance=0.45):
-    """Search with a relevance cutoff"""
-    query_embedding = embedder.encode([query]).tolist()
-    all_results = []
+    return None
 
-    for collection_name in collections:
-        try:
-            collection = client.get_collection(collection_name)
-            results = collection.query(
-                query_embeddings=query_embedding,
-                n_results=n_results * 2  # fetch extra, then filter
-            )
-            for i, doc in enumerate(results['documents'][0]):
-                distance = results['distances'][0][i]
-                if distance <= max_distance:
-                    all_results.append({
-                        "text": doc,
-                        "source": results['metadatas'][0][i]['source'],
-                        "collection": collection_name,
-                        "distance": distance
-                    })
-        except Exception as e:
-            print(f"Error searching {collection_name}: {e}")
+def get_target_collections(question):
 
-    all_results.sort(key=lambda x: x['distance'])
-    return all_results[:n_results]
+    role = detect_role(question)
 
+    if role:
+        return ["role_knowledge"], role
 
-def check_sufficiency(question, context):
-    """Self-RAG: verify if retrieved context actually answers the question"""
-    prompt = SUFFICIENCY_CHECK_PROMPT.format(
-        question=question, context=context
-    )
-    response = llm.invoke(prompt)
-    return "SUFFICIENT" in response.content.upper()
+    q = question.lower()
 
-def refine_query(question, original_query):
-    """Agentic: generate alternative search query"""
-    prompt = REFINE_QUERY_PROMPT.format(
-        question=question, query=original_query
-    )
+    safety_keywords = [
+        "fire",
+        "ppe",
+        "chemical",
+        "spill",
+        "emergency",
+        "evacuation",
+        "helmet",
+        "hazard",
+        "accident",
+        "pass",
+        "extinguisher",
+        "safety"
+    ]
+
+    report_keywords = [
+        "annual report",
+        "revenue",
+        "profit",
+        "ebitda",
+        "sales",
+        "production",
+        "sustainability",
+        "carbon",
+        "co2",
+        "financial"
+    ]
+
+    maintenance_keywords = [
+        "maintenance",
+        "lubrication",
+        "bearing",
+        "inspection",
+        "preventive",
+        "predictive",
+        "machine"
+    ]
+
+    hr_keywords = [
+        "leave",
+        "vacation",
+        "policy",
+        "attendance",
+        "joining",
+        "joining formalities",
+        "onboarding",
+        "holiday",
+        "salary",
+        "hr"
+    ]
+
+    if any(k in q for k in safety_keywords):
+        return ["knowledge_safety"], None
+
+    if any(k in q for k in report_keywords):
+        return ["knowledge_reports"], None
+
+    if any(k in q for k in maintenance_keywords):
+        return ["maintenance"], None
+
+    if any(k in q for k in hr_keywords):
+        return ["hr_support"], None
+
+    return [
+        "knowledge_reports",
+        "knowledge_safety",
+        "maintenance",
+        "role_knowledge"
+    ], None
+
+def expand_query(query):
+    """Expand query with related keywords for better retrieval"""
+    prompt = EXPAND_PROMPT.format(query=query)
     response = llm.invoke(prompt)
     return response.content.strip()
 
+def search_chromadb(
+    query,
+    collections,
+    n_results=5,
+    role=None,
+    max_distance=0.75
+):
 
-def knowledge_sop_agent(user_question, max_retries=1):
-    """
-    Knowledge & SOP Agent with Agentic retry + Self-RAG check
-    """
-    query = user_question
-    attempt = 0
-    results = []
+    query_embedding = embedder.encode([query]).tolist()
 
-    while attempt <= max_retries:
+    all_results = []
+
+    for collection_name in collections:
+
+        try:
+
+            collection = client.get_collection(collection_name)
+
+            if role and collection_name == "role_knowledge":
+                results = collection.query(
+                    query_embeddings=query_embedding,
+                    n_results=40,
+                    where={
+                        "role": role
+                    }
+                )
+
+            else:
+                results = collection.query(
+                    query_embeddings=query_embedding,
+                    n_results=40
+                )
+
+            for i, doc in enumerate(results["documents"][0]):
+
+                distance = results["distances"][0][i]
+
+                if distance <= max_distance:
+
+                    all_results.append({
+                        "text": doc,
+                        "source": results["metadatas"][0][i]["source"],
+                        "collection": collection_name,
+                        "distance": distance
+                    })
+
+        except Exception as e:
+            print(f"Error searching {collection_name}: {e}")
+
+    all_results.sort(key=lambda x: x["distance"])
+    print("\n========== RETRIEVED DOCUMENTS ==========")
+
+    for r in all_results:
+        print(f"Source   : {r['source']}")
+        print(f"Distance : {r['distance']:.4f}")
+        print(r["text"][:250])
+        print("----------------------------------------")
+
+    return all_results
+
+def deduplicate(results, max_results=10):
+    """Remove duplicate chunks, keep best scoring"""
+    seen = set()
+    unique = []
+    for r in results:
+        if r['text'] not in seen:
+            seen.add(r['text'])
+            unique.append(r)
+        if len(unique) >= max_results:
+            break
+    return unique
+
+# Phrases that indicate the LLM couldn't find relevant info in context
+_NOT_FOUND_PHRASES = [
+    "i couldn't find",
+    "not mentioned in",
+    "not found in",
+    "no information",
+    "don't have that information",
+    "is not provided in",
+    "is not covered in",
+    "not available in",
+    "not present in the context",
+    "context does not",
+    "provided documents do not",
+]
+
+def _answer_used_context(answer_text: str) -> bool:
+    """Return False if the LLM answer signals it couldn't use the retrieved context."""
+    lower = answer_text.lower()
+    return not any(phrase in lower for phrase in _NOT_FOUND_PHRASES)
+
+def knowledge_sop_agent(user_question):
+    """
+    Knowledge & SOP Agent
+    - Searches knowledge_sop + role_knowledge collections
+    - Uses per-collection distance thresholds (see _COLLECTION_THRESHOLDS)
+    - Uses query expansion for better retrieval when first pass yields nothing
+    - Only reports sources that actually informed the answer
+    """
+    # Step 1: Search with original query
+    collections, role = get_target_collections(
+    user_question
+    )
+
+    results = search_chromadb(
+        user_question,
+        collections=collections,
+        n_results=5,
+        role=role
+    )
+
+    # Step 2: If no results, try expanded query
+    if not results:
+        expanded = expand_query(user_question)
+        collections = [
+            "knowledge_safety",
+            "knowledge_reports",
+            "maintenance",
+            "role_knowledge",
+            "hr_support"
+        ]
         results = search_chromadb(
-            query,
-            collections=["knowledge_sop", "role_knowledge"],
-            n_results=4,
-            max_distance=0.45
+            expanded,
+            collections=collections,
+            n_results=5,
+            role=role
         )
 
-        if not results:
-            attempt += 1
-            if attempt <= max_retries:
-                query = refine_query(user_question, query)
-                print(f"   🔄 Retrying with refined query: '{query}'")
-                continue
-            else:
-                break
+    # Step 3: If still nothing, return fallback
+    if not results:
+        return {
+            "answer": "I couldn't find specific information about this "
+                       "in our documents. Please contact your supervisor "
+                       "or the relevant department for accurate guidance.",
+            "sources": []
+        }
 
-        context = "\n\n---\n\n".join([
-            f"[Source: {r['source']}]\n{r['text']}"
-            for r in results
-        ])
+    # Step 4: Deduplicate and build context
+    results = deduplicate(results, max_results=10)
+    context = "\n\n---\n\n".join([
+        f"[Source: {r['source']}]\n{r['text']}"
+        for r in results
+    ])
+    print("\n" + "=" * 80)
+    print("RETRIEVED CHUNKS")
+    print("=" * 80)
 
-        is_sufficient = check_sufficiency(user_question, context)
+    for i, r in enumerate(results, 1):
+        print(f"\nChunk {i}")
+        print(f"Source     : {r['source']}")
+        print(f"Collection : {r['collection']}")
+        print(f"Distance   : {round(r['distance'], 4)}")
+        print("-" * 60)
+        print(r["text"][:600])
+        print("-" * 60)
 
-        if is_sufficient or attempt == max_retries:
-            # Generate final answer
-            prompt = ANSWER_PROMPT.format(
-                context=context, question=user_question
-            )
-            response = llm.invoke(prompt)
-            sources = list(set([r['source'] for r in results]))
-            return {
-                "answer": response.content,
-                "sources": sources,
-                "attempts": attempt + 1
-            }
-        else:
-            attempt += 1
-            query = refine_query(user_question, query)
-            print(f"   🔄 Context insufficient, retrying with: '{query}'")
+    # Step 5: Generate answer
+    prompt = ANSWER_PROMPT.format(
+        context=context,
+        question=user_question
+    )
+    response = llm.invoke(prompt)
+    answer_text = response.content
+
+    # Step 6: Only report sources if the LLM actually used the context.
+    # If the answer signals "not found", return empty sources to avoid
+    # listing irrelevant files that weren't used to generate the response.
+    if _answer_used_context(answer_text):
+        sources = list(set([r['source'] for r in results]))
+    else:
+        sources = []
 
     return {
-        "answer": "I couldn't find specific information about this "
-                   "in our documents. Please contact your supervisor "
-                   "or the relevant department for accurate guidance.",
-        "sources": [],
-        "attempts": attempt + 1
+        "answer": answer_text,
+        "sources": sources
     }
 
 if __name__ == "__main__":
     test_questions = [
-        "What is the chemical spill procedure?",
-        "What skills does a Heating Regulator need?",
-        "Chemical spill ke time kya karna chahiye?",
-        "What is the promotion eligibility and what training do I need for it?"
+        "What is the contribution of exports as a percentage of the total turnover of the entity?"
     ]
 
     for q in test_questions:
@@ -166,4 +372,3 @@ if __name__ == "__main__":
         result = knowledge_sop_agent(q)
         print(f"A: {result['answer']}")
         print(f"Sources: {result['sources']}")
-        print(f"Attempts: {result['attempts']}")

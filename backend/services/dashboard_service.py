@@ -48,9 +48,10 @@ def get_employee_dashboard(user_id):
     # --------------------
 
     progress = cursor.execute("""
-        SELECT status
-        FROM progress
-        WHERE user_id = ?
+        SELECT p.course_id, p.status, req.status AS approval_status
+        FROM progress p
+        LEFT JOIN course_completion_requests req ON req.user_id = p.user_id AND req.course_id = p.course_id AND req.status = 'Pending'
+        WHERE p.user_id = ?
     """, (user_id,)).fetchall()
 
     total_courses = len(progress)
@@ -77,6 +78,15 @@ def get_employee_dashboard(user_id):
         ) * 100,
         2
     )
+
+    course_progress_dict = {
+        row["course_id"]: (
+            "verification_pending"
+            if row["approval_status"] == "Pending"
+            else row["status"]
+        )
+        for row in progress
+    }
 
     # --------------------
     # Skill Gap
@@ -165,18 +175,35 @@ def get_employee_dashboard(user_id):
         SELECT DISTINCT
             r.course_id,
             c.course_name,
-            r.priority
+            c.skills_taught,
+            c.duration,
+            c.level,
+            c.provider,
+            r.reason,
+            r.priority,
+            p.status AS progress_status,
+            req.status AS approval_status
         FROM recommendations r
-        JOIN courses c
-        ON r.course_id = c.course_id
+        JOIN courses c ON r.course_id = c.course_id
+        LEFT JOIN progress p ON p.user_id = r.user_id AND p.course_id = r.course_id
+        LEFT JOIN course_completion_requests req ON req.user_id = r.user_id AND req.course_id = r.course_id AND req.status = 'Pending'
         WHERE r.user_id = ?
         LIMIT 5
     """, (user_id,)).fetchall()
 
-    recommended_courses = [
-        dict(row)
-        for row in recommendations
-    ]
+    recommended_courses = []
+    for row in recommendations:
+        item = dict(row)
+        status = 'not_started'
+        if item.get('approval_status') == 'Pending':
+            status = 'verification_pending'
+        elif item.get('progress_status') == 'completed':
+            status = 'completed'
+        elif item.get('progress_status') == 'in_progress':
+            status = 'in_progress'
+        
+        item['status'] = status
+        recommended_courses.append(item)
 
     conn.close()
 
@@ -240,7 +267,10 @@ def get_employee_dashboard(user_id):
             announcements,
 
         "recent_documents":
-            recent_documents
+            recent_documents,
+
+        "course_progress":
+            course_progress_dict
     }
 
 def get_manager_dashboard(manager_id):
@@ -282,7 +312,8 @@ def get_manager_dashboard(manager_id):
     team = cursor.execute("""
         SELECT
             user_id,
-            name
+            name,
+            is_new_joiner
         FROM users
         WHERE manager_id = ?
     """, (manager_id,)).fetchall()
@@ -318,6 +349,7 @@ def get_manager_dashboard(manager_id):
             "team_size": 0,
             "team_members": [],
             "pending_approvals": [],
+            "pending_onboarding_approvals": [],
             "announcements": announcements
         }
 
@@ -473,9 +505,33 @@ def get_manager_dashboard(manager_id):
     team_members = [
         {
             "user_id": member["user_id"],
-            "name": member["name"]
+            "name": member["name"],
+            "is_new_joiner": member["is_new_joiner"]
         }
         for member in team
+    ]
+
+    pending_onboarding = cursor.execute("""
+        SELECT
+            t.task_id,
+            t.user_id,
+            u.name AS employee_name,
+            t.task_name,
+            t.due_date
+        FROM onboarding_tasks t
+        JOIN users u ON t.user_id = u.user_id
+        WHERE u.manager_id = ? AND t.status = 'Pending Approval'
+    """, (manager_id,)).fetchall()
+
+    pending_onboarding_approvals = [
+        {
+            "task_id": row["task_id"],
+            "user_id": row["user_id"],
+            "employee_name": row["employee_name"],
+            "task_name": row["task_name"],
+            "due_date": row["due_date"]
+        }
+        for row in pending_onboarding
     ]
 
     conn.close()
@@ -508,6 +564,9 @@ def get_manager_dashboard(manager_id):
 
         "pending_approvals":
             pending_approvals,
+
+        "pending_onboarding_approvals":
+            pending_onboarding_approvals,
 
         "announcements":
             announcements

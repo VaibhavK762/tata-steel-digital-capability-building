@@ -15,6 +15,15 @@ question using ONLY the data provided. Be specific with
 numbers. Where data is already ranked or sorted, report 
 it as given — do not recalculate or re-derive the ranking 
 yourself. Keep response under 120 words.
+Instructions
+
+- Use the provided production summary exactly.
+- Do not perform arithmetic unless explicitly requested.
+- Do not estimate or forecast future production.
+- Do not infer causes that are not present.
+- If incident-level information is unavailable, clearly state that.
+- When comparing units, compare using the provided summary rather than recalculating values.
+- Keep answers below 120 words.
 
 Production Summary:
 {summary}
@@ -121,6 +130,15 @@ def production_agent(question, unit=None):
     Production Intelligence Agent
     Pure SQL aggregation + LLM narrative, no RAG
     """
+    if not unit:
+        q_lower = question.lower()
+        if "unit 1" in q_lower:
+            unit = "Unit 1"
+        elif "unit 2" in q_lower:
+            unit = "Unit 2"
+        elif "unit 3" in q_lower:
+            unit = "Unit 3"
+
     summaries = get_unit_summary(unit=unit)
     downtime_reasons = get_top_downtime_reasons(unit=unit)
 

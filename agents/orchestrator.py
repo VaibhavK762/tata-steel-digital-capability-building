@@ -18,14 +18,14 @@ Reply with ONLY the category word, nothing else.
 
 Categories:
 - KNOWLEDGE: Questions about company policies, safety 
-  procedures, SOPs, role requirements, general company info
+  procedures, SOPs, job role descriptions/required skills (e.g. "What skills does a Heating Regulator need?"), general company info
 - HR: Questions about leave, payroll, onboarding, 
   promotion eligibility, HR policies, benefits
 - MAINTENANCE: Equipment problems, troubleshooting, 
   machine issues, sensor readings, repair questions
-- LEARNING: Questions about skill gaps, course 
-  recommendations, training, career readiness, 
-  "what should I learn"
+- LEARNING: Questions about personal skill gaps, individual course 
+  recommendations, personal training status, personal career readiness, 
+  "what should I learn", "my learning path"
 - PRODUCTION: Questions about production output, KPIs, 
   efficiency, downtime, unit performance (manager/exec only)
 - UNKNOWN: Doesn't fit any category clearly
@@ -91,11 +91,11 @@ def orchestrate(message, user_id=None, user_type=None, current_role=None):
                 "sources": []
             }
         result = learning_agent(user_id, message)
-        return {"category": category, "answer": result["answer"], "sources": []}
+        return {"category": category, **result}
 
     elif category == "PRODUCTION":
         result = production_agent(message)
-        return {"category": category, "answer": result["answer"], "sources": []}
+        return {"category": category, **result}
 
     else:
         return {
@@ -107,18 +107,56 @@ def orchestrate(message, user_id=None, user_type=None, current_role=None):
         }
 
 if __name__ == "__main__":
+
     test_cases = [
-        ("What is the chemical spill procedure?", 15, "Employee", None),
-        ("How many casual leave days do I get?", 15, "Employee", None),
-        ("Crusher machine is vibrating, what should I do?", 15, "Employee", None),
-        ("Give me my learning roadmap", 15, "Employee", None),
-        ("Why is Unit 3 underperforming?", 15, "Employee", None),  # should be blocked
-        ("Why is Unit 3 underperforming?", 23, "Manager", None),  # should work
+
+        # ---------------- KNOWLEDGE ----------------
+        ("What are the safety rules for welding?", 15, "Employee"),
+        ("What does a Battery Operator do?", 15, "Employee"),
+        ("Tell me about Tata Steel's sustainability report", 15, "Employee"),
+
+        # ---------------- HR ----------------
+        ("How many leaves do I have?", 15, "Employee"),
+        ("What is the promotion process?", 15, "Employee"),
+        ("What happens during probation?", 15, "Employee"),
+
+        # ---------------- MAINTENANCE ----------------
+        ("My conveyor belt is making noise", 15, "Employee"),
+        ("What is the vibration threshold for equipment?", 15, "Employee"),
+        ("Heating regulator error E4", 15, "Employee"),
+
+        # ---------------- LEARNING ----------------
+        ("What should I learn next?", 15, "Employee"),
+        ("Am I ready for my target role?", 15, "Employee"),
+        ("Give me a skill gap analysis", 15, "Employee"),
+
+        # ---------------- PRODUCTION ----------------
+        ("How is Unit 1 efficiency this month?", 23, "Manager"),
+        ("What's causing the most downtime?", 23, "Manager"),
+        ("Compare department performance", 23, "Manager"),
+
+        # ---------------- BLOCKED ----------------
+        ("How is Unit 1 efficiency this month?", 15, "New Joiner"),
+        ("What's causing the most downtime?", 15, "Employee"),
     ]
 
-    for message, user_id, user_type, role in test_cases:
-        print(f"\n{'='*60}")
-        print(f"User type: {user_type} | Q: {message}")
-        result = orchestrate(message, user_id=user_id, user_type=user_type, current_role=role)
-        print(f"Category: {result['category']}")
-        print(f"A: {result['answer'][:300]}")
+    for i, (message, user_id, user_type) in enumerate(test_cases, 1):
+
+        print("\n" + "=" * 80)
+        print(f"TEST {i}")
+        print(f"User Type : {user_type}")
+        print(f"Question  : {message}")
+
+        result = orchestrate(
+            message,
+            user_id=user_id,
+            user_type=user_type
+        )
+
+        print(f"\nCategory : {result['category']}")
+        print(f"\nAnswer:\n{result['answer']}")
+
+        if result.get("sources"):
+            print("\nSources:")
+            for s in result["sources"]:
+                print("-", s)

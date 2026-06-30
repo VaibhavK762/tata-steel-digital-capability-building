@@ -69,7 +69,7 @@ def update_new_joiner_status(user_id):
 
         conn.execute("""
         UPDATE users
-        SET is_new_joiner = 0
+        SET is_new_joiner = 0, user_type = 'Employee'
         WHERE user_id = ?
         """, (user_id,))
 
@@ -103,14 +103,42 @@ def complete_onboarding_task(task_id, user_id):
         conn.close()
         return {"error": "Onboarding task not found"}
 
+    cursor.execute("""
+        UPDATE onboarding_tasks
+        SET status = 'Pending Approval'
+        WHERE task_id = ? AND user_id = ?
+    """, (task_id, user_id))
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Onboarding task submitted for manager approval"}
+
+
+def approve_onboarding_task(task_id, manager_id):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    # Get the user_id for this task
+    task = cursor.execute("""
+        SELECT user_id FROM onboarding_tasks
+        WHERE task_id = ?
+    """, (task_id,)).fetchone()
+
+    if not task:
+        conn.close()
+        return {"error": "Onboarding task not found"}
+
+    user_id = task[0]
+
     from datetime import datetime
     today = datetime.now().strftime("%Y-%m-%d")
 
     cursor.execute("""
         UPDATE onboarding_tasks
         SET status = 'Completed', completed_date = ?
-        WHERE task_id = ? AND user_id = ?
-    """, (today, task_id, user_id))
+        WHERE task_id = ?
+    """, (today, task_id))
 
     conn.commit()
     conn.close()
@@ -118,4 +146,20 @@ def complete_onboarding_task(task_id, user_id):
     # Automatically check if user completed onboarding and update user status
     update_new_joiner_status(user_id)
 
-    return {"message": "Onboarding task completed successfully"}
+    return {"message": "Onboarding task approved successfully"}
+
+
+def reject_onboarding_task(task_id, manager_id):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        UPDATE onboarding_tasks
+        SET status = 'Pending', completed_date = NULL
+        WHERE task_id = ?
+    """, (task_id,))
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "Onboarding task approval rejected"}

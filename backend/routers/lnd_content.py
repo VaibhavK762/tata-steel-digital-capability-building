@@ -207,3 +207,12 @@ def create_course(request: CreateCourseRequest):
     conn.commit()
     conn.close()
     return {"message": "Course created successfully", "course_id": request.course_id}
+
+
+@router.get("/courses")
+def get_all_courses():
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
+    rows = conn.execute("SELECT * FROM courses ORDER BY course_name").fetchall()
+    conn.close()
+    return [dict(row) for row in rows]

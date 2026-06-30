@@ -14,6 +14,7 @@ llm = ChatGroq(
 
 PROMPT = """
 You are a Tata Steel Learning & Development Assistant.
+Answer the user's question in the most appropriate way using the information provided below.
 
 Employee Details:
 Name: {name}
@@ -49,6 +50,9 @@ Instructions:
 4. Mention only information provided.
 5. Be encouraging and practical.
 6. Keep answer under 120 words.
+7. Never invent training progress, course duration, or completion dates.
+8. If information is unavailable, clearly say it is unavailable.
+9. Never answer questions about another employee.
 """
 
 
@@ -110,7 +114,8 @@ def get_recommendations(user_id):
             r.course_id,
             c.course_name,
             c.skills_taught,
-            r.priority
+            r.priority,
+            c.duration
         FROM recommendations r
         JOIN courses c
         ON r.course_id = c.course_id
@@ -165,17 +170,27 @@ def learning_agent(user_id, question):
 
     course_details = []
 
-    for _, name_course, skills, priority in recommendations:
+    for _, name_course, skills, priority, duration in recommendations:
 
         course_details.append(
             f"{name_course} "
             f"(Priority: {priority}, "
+            f"Duration: {duration}, "
             f"Skills: {skills})"
         )
 
     question_lower = question.lower()
 
-    if "skill" in question_lower:
+    if "duration" in question_lower or "how long" in question_lower:
+
+        task = """
+        Focus ONLY on:
+        - course durations
+        - recommended courses
+        - learning order
+        """
+
+    elif "skill" in question_lower:
 
         task = """
         Focus ONLY on:
@@ -191,6 +206,7 @@ def learning_agent(user_id, question):
         - recommended courses
         - learning order
         - how the courses help
+        - course durations
         """
 
     elif "promotion" in question_lower or "ready" in question_lower:
@@ -208,7 +224,7 @@ def learning_agent(user_id, question):
         Provide a complete learning roadmap:
         readiness,
         missing skills,
-        recommended courses,
+        recommended courses with durations,
         and next steps.
         """
 

@@ -12,17 +12,25 @@ print("✅ Embedding model loaded\n")
 
 client = chromadb.PersistentClient(path=CHROMA_PATH)
 
-# ── Restructured Collections (no duplicate NSDC embedding) ──
+
 COLLECTIONS = {
-    "knowledge_sop": {
+    "knowledge_safety": {
         "paths": [
-            "data/documents/tata_annual_report_2025.pdf",
-            "data/documents/sustainability_2024.pdf",
             "data/documents/safety_manual.pdf"
         ],
         "chunk_size": 250,
         "overlap": 50
     },
+
+    "knowledge_reports": {
+        "paths": [
+            "data/documents/tata_annual_report_2025.pdf",
+            "data/documents/sustainability_2024.pdf"
+        ],
+        "chunk_size": 250,
+        "overlap": 50
+    },
+
     "role_knowledge": {
         "paths": [
             "data/documents/nsdc_pdfs"
@@ -174,14 +182,21 @@ def load_collection(collection_name, config):
                         f"{collection_name}_{doc_id}_{j}"
                         for j in range(i, i+len(batch_chunks))
                     ]
-                    batch_metadata = [
-                        {
+
+                    batch_metadata = []
+
+                    for j in range(len(batch_chunks)):
+
+                        metadata = {
                             "source": filename,
                             "collection": collection_name,
-                            "chunk_index": i+j
+                            "chunk_index": i + j
                         }
-                        for j in range(len(batch_chunks))
-                    ]
+
+                        if collection_name == "role_knowledge":
+                            metadata["role"] = os.path.splitext(filename)[0]
+
+                        batch_metadata.append(metadata)
 
                     collection.add(
                         documents=batch_chunks,

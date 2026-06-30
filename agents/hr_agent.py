@@ -15,8 +15,14 @@ If the answer isn't in the context, say you don't have
 that information and suggest they contact HR 
 (hr@tatasteel.com, Extension 201).
 
-Respond in the SAME language the user asked in 
-(English or Hindi). Be concise and practical.
+If the user's question is in English,
+answer entirely in English.
+
+If the user's question is in Hindi,
+answer entirely in Hindi.
+
+if the user is using hindi using English letters
+answer should also be in hindi using English letters.
 
 Context:
 {context}
@@ -92,6 +98,23 @@ def search_chromadb(query, collections, n_results=6, max_distance=0.5):
     all_results.sort(key=lambda x: x['distance'])
     return all_results[:n_results]
 
+def deduplicate(results, max_results=5):
+    """
+    Remove duplicate chunks while preserving the best-ranked ones.
+    """
+    seen = set()
+    unique = []
+
+    for r in results:
+        if r["text"] not in seen:
+            seen.add(r["text"])
+            unique.append(r)
+
+        if len(unique) >= max_results:
+            break
+
+    return unique
+
 def check_sufficiency(question, context):
     prompt = SUFFICIENCY_CHECK_PROMPT.format(
         question=question, context=context
@@ -124,9 +147,10 @@ def hr_agent(user_question, max_retries=1):
         results = search_chromadb(
             query,
             collections=["hr_support"],
-            n_results=6,
+            n_results=10,
             max_distance=0.75
         )
+        results = deduplicate(results)
 
         if not results:
             attempt += 1
@@ -155,7 +179,8 @@ def hr_agent(user_question, max_retries=1):
             return {
                 "answer": response.content,
                 "sources": sources,
-                "attempts": attempt + 1
+                "attempts": attempt + 1,
+                "context": context
             }
         else:
             attempt += 1
