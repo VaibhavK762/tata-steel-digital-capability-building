@@ -1,21 +1,25 @@
 announcements = [
-
     (
-        "Plant Safety Drill",
-        "A plant-wide emergency evacuation drill will be conducted on Friday at 10:00 AM. All employees must participate.",
+        "Maintenance Shutdown",
+        "Maintenance Shutdown: On 25 Jun 2026, 10:00 PM. Scheduled maintenance activities will take place this weekend. Follow all safety instructions during the shutdown period.",
+        "ALL",
+        "High",
+        "Maintenance Team"
+    ),
+    (
+        "New Safety SOP Released",
+        "New Safety SOP Released: Cast House Safety Manual v2.0. Updated Standard Operating Procedures for Rolling Mills have been uploaded to the document repository.",
         "ALL",
         "High",
         "Safety Team"
     ),
-
     (
-        "New SOP Uploaded",
-        "Updated Standard Operating Procedures for Rolling Mills have been uploaded to the document repository.",
-        "EMPLOYEES",
+        "Safety Drill",
+        "Safety Drill: Tomorrow, 10:00 AM at Main Ground. A plant-wide emergency evacuation drill will be conducted.",
+        "ALL",
         "Medium",
-        "Operations Team"
+        "Safety Team"
     ),
-
     (
         "Welcome New Joiners",
         "All new employees are requested to complete onboarding tasks and mandatory training within their first 30 days.",
@@ -23,7 +27,6 @@ announcements = [
         "High",
         "HR Team"
     ),
-
     (
         "Leadership Development Program",
         "Nominations are now open for the Leadership Development Program for frontline managers.",
@@ -31,7 +34,6 @@ announcements = [
         "Medium",
         "L&D Team"
     ),
-
     (
         "Quarterly Learning Review",
         "Department-wise learning progress review meeting will be conducted next week.",
@@ -39,31 +41,6 @@ announcements = [
         "Medium",
         "L&D Team"
     ),
-
-    (
-        "Mandatory Safety Training Reminder",
-        "Employees with pending safety courses must complete them before month end.",
-        "EMPLOYEES",
-        "High",
-        "Safety Team"
-    ),
-
-    (
-        "Skill Development Week",
-        "A special learning campaign has been launched focusing on communication and problem-solving skills.",
-        "ALL",
-        "Medium",
-        "L&D Team"
-    ),
-
-    (
-        "Maintenance Shutdown Notice",
-        "Scheduled maintenance activities will take place this weekend. Follow all safety instructions during the shutdown period.",
-        "ALL",
-        "High",
-        "Maintenance Team"
-    ),
-
     (
         "New Technical Manuals Available",
         "New maintenance and operations manuals have been added to the knowledge repository.",
@@ -71,7 +48,6 @@ announcements = [
         "Low",
         "Knowledge Management Team"
     ),
-
     (
         "Manager Approval Pending",
         "Managers are requested to review and approve pending course completion requests from team members.",

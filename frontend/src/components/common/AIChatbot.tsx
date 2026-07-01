@@ -17,8 +17,44 @@ export const AIChatbot: React.FC = () => {
   ]);
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-
+  const getSuggestionChips = (userType: string) => {
+    switch (userType) {
+      case 'New Joiner':
+        return [
+          'What are the safety rules for welding?',
+          'What should I learn next?',
+          'What happens during probation?',
+          'What does a Battery Operator do?'
+        ];
+      case 'Employee':
+        return [
+          'Give me a skill gap analysis',
+          'What is the promotion process?',
+          'My conveyor belt is making noise',
+          'What are the safety rules for welding?'
+        ];
+      case 'Manager':
+        return [
+          'How is Unit 1 efficiency this month?',
+          'What\'s causing the most downtime?',
+          'Compare department performance',
+          'What is the promotion process?'
+        ];
+      case 'Executive':
+        return [
+          'How is Unit 1 efficiency this month?',
+          'What\'s causing the most downtime?',
+          'Compare department performance',
+          'Tell me about Tata Steel\'s sustainability report'
+        ];
+      default:
+        return [
+          'What are the safety rules for welding?',
+          'What should I learn next?',
+          'What is the promotion process?'
+        ];
+    }
+  };
 
   const handleSend = async (textToSend: string) => {
     if (!textToSend.trim() || !user) return;
@@ -145,7 +181,19 @@ export const AIChatbot: React.FC = () => {
             <div ref={messagesEndRef} />
           </div>
 
-
+          {/* Quick Suggestion Chips */}
+          <div className="px-4 py-2 bg-slate-950/40 border-t border-slate-800/20 flex gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
+            {getSuggestionChips(user?.user_type || '').map((chip, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => handleSend(chip)}
+                className="text-[10px] font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 bg-slate-900/60 border border-slate-800 rounded-full px-2.5 py-1 hover:scale-[1.02] transition-all"
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
 
           {/* Input Area */}
           <form onSubmit={handleSubmit} className="p-3 border-t border-slate-800/60 bg-slate-950/60 flex gap-2">

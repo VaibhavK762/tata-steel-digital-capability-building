@@ -69,12 +69,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, setIsOpen, onOpenChat 
       roles: ['New Joiner', 'Employee', 'Manager', 'Executive'],
     },
     {
-      name: 'Assessments',
-      icon: <Clipboard size={20} />,
-      path: '/assessments',
-      roles: ['New Joiner', 'Employee', 'Manager', 'Executive'],
-    },
-    {
       name: 'Documents',
       icon: <FileText size={20} />,
       path: '/documents',

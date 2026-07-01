@@ -502,14 +502,34 @@ def get_manager_dashboard(manager_id):
     # Team Members
     # -------------------
 
-    team_members = [
-        {
+    team_members = []
+    for member in team:
+        # Get readiness score
+        r_row = cursor.execute("""
+            SELECT readiness_score
+            FROM skill_gap
+            WHERE user_id = ?
+            LIMIT 1
+        """, (member["user_id"],)).fetchone()
+        readiness_val = r_row["readiness_score"] if r_row else 100.0
+
+        # Get completion percentage
+        p_rows = cursor.execute("""
+            SELECT status
+            FROM progress
+            WHERE user_id = ?
+        """, (member["user_id"],)).fetchall()
+        c_completed = sum(1 for p in p_rows if p["status"] == "completed")
+        c_total = len(p_rows)
+        comp_pct = round((c_completed / max(c_total, 1)) * 100, 2)
+
+        team_members.append({
             "user_id": member["user_id"],
             "name": member["name"],
-            "is_new_joiner": member["is_new_joiner"]
-        }
-        for member in team
-    ]
+            "is_new_joiner": member["is_new_joiner"],
+            "readiness": readiness_val,
+            "completion": comp_pct
+        })
 
     pending_onboarding = cursor.execute("""
         SELECT
@@ -733,6 +753,50 @@ def get_executive_dashboard(executive_id):
         })
     
     # ------------------
+    # Additional Executive Metrics (For Mockup Match)
+    # ------------------
+    # Readiness Distribution
+    ready_count = sum(1 for score in readiness_scores if score > 80)
+    near_ready_count = sum(1 for score in readiness_scores if 60 <= score <= 80)
+    needs_dev_count = sum(1 for score in readiness_scores if score < 60)
+
+    # Department Performance List
+    dept_performance = []
+    dept_rows = cursor.execute("SELECT DISTINCT department FROM users WHERE department IS NOT NULL").fetchall()
+    for d_row in dept_rows:
+        dept = d_row["department"]
+        # Get progress
+        p_rows = cursor.execute("""
+            SELECT status FROM progress p
+            JOIN users u ON p.user_id = u.user_id
+            WHERE u.department = ?
+        """, (dept,)).fetchall()
+        d_completed = sum(1 for p in p_rows if p["status"] == "completed")
+        d_total = len(p_rows)
+        d_comp_pct = round((d_completed / max(d_total, 1)) * 100, 2)
+        
+        # Get readiness
+        r_rows = cursor.execute("""
+            SELECT readiness_score FROM skill_gap sg
+            JOIN users u ON sg.user_id = u.user_id
+            WHERE u.department = ?
+        """, (dept,)).fetchall()
+        d_readiness_scores = [r["readiness_score"] for r in r_rows]
+        d_readiness_pct = round(sum(d_readiness_scores) / max(len(d_readiness_scores), 1), 2)
+        
+        dept_performance.append({
+            "department": dept,
+            "completion": d_comp_pct,
+            "readiness": d_readiness_pct
+        })
+
+    # High Priority Skill Gaps Count (gaps with counter value > 2)
+    high_priority_gap_count = sum(1 for skill, cnt in counter.items() if cnt > 2)
+
+    # Total Courses
+    total_courses_count = cursor.execute("SELECT COUNT(*) FROM courses").fetchone()[0]
+
+    # ------------------
     # Announcements
     # ------------------
 
@@ -796,7 +860,22 @@ def get_executive_dashboard(executive_id):
             top_skill_gaps,
 
         "announcements":
-            announcements
+            announcements,
+
+        "readiness_distribution": {
+            "ready": ready_count,
+            "near_ready": near_ready_count,
+            "needs_dev": needs_dev_count
+        },
+
+        "dept_performance":
+            dept_performance,
+
+        "high_priority_gap_count":
+            high_priority_gap_count,
+
+        "total_courses":
+            total_courses_count
     }
 
 
@@ -1017,6 +1096,17 @@ def get_ld_dashboard():
         for row in announcement_rows
     ]
 
+    # Calculate additional L&D parameters (for mockup visual alignment)
+    ready_count = sum(1 for score in readiness_scores if score > 80)
+    near_ready_count = sum(1 for score in readiness_scores if 60 <= score <= 80)
+    needs_dev_count = sum(1 for score in readiness_scores if score < 60)
+
+    active_programs_count = cursor.execute("SELECT COUNT(DISTINCT course_id) FROM progress").fetchone()[0]
+
+    pending_course_approvals = cursor.execute("SELECT COUNT(*) FROM course_completion_requests WHERE status='Pending'").fetchone()[0]
+    pending_onboarding_approvals = cursor.execute("SELECT COUNT(*) FROM onboarding_tasks WHERE status='Pending Approval'").fetchone()[0]
+    pending_approvals_count = pending_course_approvals + pending_onboarding_approvals
+
     conn.close()
 
     return {
@@ -1026,7 +1116,9 @@ def get_ld_dashboard():
             "total_courses": total_courses,
             "total_progress_records": total_progress,
             "overall_completion": overall_completion,
-            "average_readiness": average_readiness
+            "average_readiness": average_readiness,
+            "active_programs": active_programs_count,
+            "pending_approvals": pending_approvals_count
         },
 
         "department_stats":
@@ -1042,5 +1134,11 @@ def get_ld_dashboard():
             documents_summary,
 
         "announcements":
-            announcements
+            announcements,
+
+        "readiness_distribution": {
+            "ready": ready_count,
+            "near_ready": near_ready_count,
+            "needs_dev": needs_dev_count
+        }
     }

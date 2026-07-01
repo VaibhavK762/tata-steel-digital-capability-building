@@ -12,7 +12,6 @@ import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import Help from './pages/Help';
 import Programs from './pages/Programs';
-import Assessments from './pages/Assessments';
 import Reports from './pages/Reports';
 import Sidebar from './components/common/Sidebar';
 import Topbar from './components/common/Topbar';
@@ -162,16 +161,7 @@ export const App: React.FC = () => {
           }
         />
 
-        <Route
-          path="/assessments"
-          element={
-            <ProtectedRoute>
-              <DashboardLayout onOpenChat={handleOpenChat}>
-                <Assessments />
-              </DashboardLayout>
-            </ProtectedRoute>
-          }
-        />
+
 
         <Route
           path="/reports"

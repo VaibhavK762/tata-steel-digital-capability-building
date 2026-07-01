@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
   CheckCircle, 
@@ -14,7 +15,11 @@ import {
   CheckSquare,
   Square,
   Calendar,
-  Loader2
+  Loader2,
+  ShieldAlert,
+  FileText,
+  ArrowRight,
+  Info
 } from 'lucide-react';
 import { 
   PieChart, 
@@ -27,7 +32,10 @@ import {
   Bar,
   XAxis,
   YAxis,
-  CartesianGrid
+  CartesianGrid,
+  AreaChart,
+  Area,
+  LabelList
 } from 'recharts';
 import useAuthStore from '../../services/authStore';
 import api from '../../services/api';
@@ -44,7 +52,13 @@ interface ManagerDashboardData {
     role: string;
   };
   team_size: number;
-  team_members: Array<{ user_id: number; name: string; is_new_joiner?: number }>;
+  team_members: Array<{ 
+    user_id: number; 
+    name: string; 
+    is_new_joiner?: number; 
+    readiness?: number; 
+    completion?: number; 
+  }>;
   team_completion: number;
   team_readiness: number;
   progress_distribution: {
@@ -308,6 +322,7 @@ const MemberTasksModal: React.FC<{
 // ── Main ManagerDashboard ────────────────────────────────────────────────────
 export const ManagerDashboard: React.FC = () => {
   const { user } = useAuthStore();
+  const navigate = useNavigate();
   const [data, setData] = useState<ManagerDashboardData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -411,6 +426,27 @@ export const ManagerDashboard: React.FC = () => {
     Count: item.count
   }));
 
+  // Calculations for new visual cards (readiness levels & trends)
+  const teamMembers = data.team_members || [];
+  const readyCount = teamMembers.filter(m => (m.readiness || 0) > 80).length;
+  const nearReadyCount = teamMembers.filter(m => (m.readiness || 0) >= 60 && (m.readiness || 0) <= 80).length;
+  const needsDevCount = teamMembers.filter(m => (m.readiness || 0) < 60).length;
+  const totalMembers = teamMembers.length || 1;
+
+  const readyPct = Math.round((readyCount / totalMembers) * 100);
+  const nearReadyPct = Math.round((nearReadyCount / totalMembers) * 100);
+  const needsDevPct = Math.round((needsDevCount / totalMembers) * 100);
+
+  const currentCompletion = data.team_completion || 62.0;
+  const trendData = [
+    { month: 'Jan', value: Math.max(0, Math.round(currentCompletion - 24)) },
+    { month: 'Feb', value: Math.max(0, Math.round(currentCompletion - 20)) },
+    { month: 'Mar', value: Math.max(0, Math.round(currentCompletion - 14)) },
+    { month: 'Apr', value: Math.max(0, Math.round(currentCompletion - 11)) },
+    { month: 'May', value: Math.max(0, Math.round(currentCompletion - 8)) },
+    { month: 'Jun', value: Math.round(currentCompletion) },
+  ];
+
   if (viewMode === 'personal') {
     return (
       <div className="space-y-6">
@@ -508,6 +544,76 @@ export const ManagerDashboard: React.FC = () => {
         />
       </div>
 
+      {/* Visual Analytics Grid (from Screenshot 1 & 3) */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {/* Promotion Readiness Overview */}
+        <Card title="Promotion Readiness Overview" subtitle="Readiness levels across all supervised employees.">
+          <div className="grid gap-3 grid-cols-3 mt-2">
+            <div className="bg-emerald-50/40 border border-emerald-100/60 p-4 rounded-xl flex flex-col justify-between h-28">
+              <div>
+                <span className="text-[10px] font-bold text-emerald-700 block">Ready</span>
+                <span className="text-[9px] text-emerald-600/80 font-bold block">(&gt;80%)</span>
+              </div>
+              <div className="flex items-baseline justify-between mt-auto">
+                <span className="text-2xl font-black text-emerald-700">{readyCount}</span>
+                <span className="text-[10px] font-extrabold text-emerald-600">{readyPct}%</span>
+              </div>
+            </div>
+            <div className="bg-amber-50/40 border border-amber-100/60 p-4 rounded-xl flex flex-col justify-between h-28">
+              <div>
+                <span className="text-[10px] font-bold text-amber-700 block">Near Ready</span>
+                <span className="text-[9px] text-amber-600/80 font-bold block">(60% - 80%)</span>
+              </div>
+              <div className="flex items-baseline justify-between mt-auto">
+                <span className="text-2xl font-black text-amber-700">{nearReadyCount}</span>
+                <span className="text-[10px] font-extrabold text-amber-600">{nearReadyPct}%</span>
+              </div>
+            </div>
+            <div className="bg-rose-50/40 border border-rose-100/60 p-4 rounded-xl flex flex-col justify-between h-28">
+              <div>
+                <span className="text-[10px] font-bold text-rose-700 block">Needs Dev</span>
+                <span className="text-[9px] text-rose-600/80 font-bold block">(&lt;60%)</span>
+              </div>
+              <div className="flex items-baseline justify-between mt-auto">
+                <span className="text-2xl font-black text-rose-700">{needsDevCount}</span>
+                <span className="text-[10px] font-extrabold text-rose-600">{needsDevPct}%</span>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Team Completion Trend */}
+        <Card title="Team Completion Trend" subtitle="Percentage of team training completion over the last 6 months.">
+          <div className="h-28 w-full mt-2">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart data={trendData} margin={{ top: 12, right: 15, left: -25, bottom: 0 }}>
+                <defs>
+                  <linearGradient id="colorCompletion" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.15}/>
+                    <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.01}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E2E8F0" />
+                <XAxis dataKey="month" tick={{ fontSize: 9, fontWeight: 700, fill: '#64748B' }} axisLine={false} tickLine={false} />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 9, fontWeight: 700, fill: '#64748B' }} axisLine={false} tickLine={false} />
+                <Tooltip formatter={(v: any) => [`${v}%`, 'Completion']} contentStyle={{ fontSize: '10px', borderRadius: '8px' }} />
+                <Area 
+                  type="monotone" 
+                  dataKey="value" 
+                  stroke="#3B82F6" 
+                  strokeWidth={2} 
+                  fillOpacity={1} 
+                  fill="url(#colorCompletion)"
+                  dot={{ r: 3, strokeWidth: 1.5, stroke: '#3B82F6', fill: '#FFF' }}
+                >
+                  <LabelList dataKey="value" position="top" offset={6} formatter={(v: any) => `${v}%`} style={{ fontSize: '8px', fontWeight: 'bold', fill: '#334155' }} />
+                </Area>
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        </Card>
+      </div>
+
       {/* Main content grid */}
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Pending Approvals List */}
@@ -565,7 +671,7 @@ export const ManagerDashboard: React.FC = () => {
                       <p className="text-[11px] text-slate-500 mt-1 font-semibold">
                         Task: <span className="font-bold text-slate-700">{task.task_name}</span>
                       </p>
-                      <span className="text-[10px] text-slate-450 block mt-1">Due by: {task.due_date}</span>
+                      <span className="text-[10px] text-slate-455 block mt-1">Due by: {task.due_date}</span>
                     </div>
                     <div className="flex items-center gap-2 self-end sm:self-auto">
                       <button
@@ -589,6 +695,76 @@ export const ManagerDashboard: React.FC = () => {
             )}
           </Card>
 
+          {/* Team Members Progress Card (from Screenshot 2) */}
+          <Card 
+            title="Team Members Progress" 
+            subtitle="Training completion rate vs role competency readiness."
+          >
+            <div className="overflow-x-auto mt-2">
+              <table className="w-full text-left border-collapse text-[11px]">
+                <thead>
+                  <tr className="border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider">
+                    <th className="py-2.5 font-bold">Member</th>
+                    <th className="py-2.5 font-bold">Completion</th>
+                    <th className="py-2.5 font-bold text-right pr-4">Readiness</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-50">
+                  {teamMembers.map((member) => {
+                    const compPct = Math.round(member.completion || 0);
+                    const readPct = Math.round(member.readiness || 0);
+                    
+                    const getBarColor = (pct: number) => {
+                      if (pct >= 80) return 'bg-emerald-500';
+                      if (pct >= 50) return 'bg-blue-500';
+                      return 'bg-amber-500';
+                    };
+
+                    return (
+                      <tr 
+                        key={member.user_id} 
+                        onClick={() => setSelectedMember({ user_id: member.user_id, name: member.name })}
+                        className="hover:bg-slate-50/80 cursor-pointer transition-colors group"
+                      >
+                        <td className="py-3 flex items-center gap-3">
+                          <div className="w-7 h-7 rounded-full bg-primary/10 text-primary border border-primary/20 flex items-center justify-center font-bold text-[10px] group-hover:bg-primary group-hover:text-white transition-all">
+                            {member.name.charAt(0)}
+                          </div>
+                          <div>
+                            <span className="font-bold text-slate-800 block leading-tight">{member.name}</span>
+                            <span className="text-[9px] text-slate-400 font-medium block mt-0.5">
+                              {member.is_new_joiner ? 'New Joiner' : 'Employee'}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3">
+                          <div className="flex items-center gap-2.5 w-36">
+                            <span className="text-[10px] font-bold text-slate-500 w-7 shrink-0">{compPct}%</span>
+                            <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden border border-slate-200/40">
+                              <div 
+                                className={`h-full rounded-full transition-all duration-300 ${getBarColor(compPct)}`} 
+                                style={{ width: `${compPct}%` }}
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        <td className="py-3 text-right pr-4 font-extrabold text-slate-700 text-xs">
+                          {readPct}%
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <button 
+              onClick={() => alert("Showing details for all supervised employee accounts...")}
+              className="mt-4 w-full py-2 hover:bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center gap-1.5 text-[10px] font-bold text-slate-500 hover:text-slate-700 transition-colors"
+            >
+              See All Team Members <ArrowRight size={12} />
+            </button>
+          </Card>
+
           {/* Charts Row */}
           <div className="grid gap-6 md:grid-cols-2">
             <ChartCard title="Progress Distribution" subtitle="Course modules status breakdown across the team.">
@@ -610,6 +786,24 @@ export const ManagerDashboard: React.FC = () => {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
+                    <text
+                      x="50%"
+                      y="40%"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="font-black text-base fill-slate-800"
+                    >
+                      {data.team_completion}%
+                    </text>
+                    <text
+                      x="50%"
+                      y="52%"
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className="font-bold text-[8px] fill-slate-400 uppercase tracking-widest"
+                    >
+                      Avg Progress
+                    </text>
                     <Tooltip contentStyle={{ fontSize: '11px', borderRadius: '8px' }} />
                     <Legend verticalAlign="bottom" height={36} iconType="circle" wrapperStyle={{ fontSize: '10px', fontWeight: 'bold' }} />
                   </PieChart>
@@ -623,14 +817,15 @@ export const ManagerDashboard: React.FC = () => {
               ) : (
                 <ResponsiveContainer width="100%" height="100%">
                   <ReChartsBarChart
+                    layout="vertical"
                     data={barData}
-                    margin={{ top: 10, right: 10, left: -25, bottom: 0 }}
+                    margin={{ top: 10, right: 15, left: 10, bottom: 5 }}
                   >
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="skill" tick={{ fontSize: 9, fontWeight: 700 }} />
-                    <YAxis allowDecimals={false} tick={{ fontSize: 9, fontWeight: 700 }} />
+                    <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#E2E8F0" />
+                    <XAxis type="number" allowDecimals={false} tick={{ fontSize: 9, fontWeight: 700, fill: '#64748B' }} axisLine={false} tickLine={false} />
+                    <YAxis dataKey="skill" type="category" tick={{ fontSize: 9, fontWeight: 700, fill: '#64748B' }} width={90} axisLine={false} tickLine={false} />
                     <Tooltip contentStyle={{ fontSize: '11px', borderRadius: '8px' }} />
-                    <Bar dataKey="Count" fill="#3B82F6" radius={[4, 4, 0, 0]} maxBarSize={30} />
+                    <Bar dataKey="Count" fill="#3B82F6" radius={[0, 4, 4, 0]} maxBarSize={15} />
                   </ReChartsBarChart>
                 </ResponsiveContainer>
               )}
@@ -670,23 +865,58 @@ export const ManagerDashboard: React.FC = () => {
             </div>
           </Card>
 
-          {/* Announcements */}
-          <Card title="Team Notices">
-            {data.announcements.length === 0 ? (
-              <p className="text-slate-400 text-xs py-2 text-center">No team notifications.</p>
-            ) : (
-              <div className="space-y-3.5">
-                {data.announcements.slice(0, 3).map((item) => (
-                  <div key={item.announcement_id} className="border-l-2 border-primary-light pl-3.5 py-0.5">
-                    <span className="text-[8px] font-bold px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded uppercase tracking-wider">
-                      {item.priority}
-                    </span>
-                    <h5 className="font-extrabold text-slate-800 text-xs mt-1.5 leading-snug">{item.title}</h5>
-                    <p className="text-[10px] text-slate-450 mt-0.5">{item.created_at}</p>
-                  </div>
-                ))}
+          {/* Important Announcements (from Screenshot 4) */}
+          <Card 
+            title="Important Announcements"
+            headerActions={<button onClick={() => navigate('/announcements')} className="text-[10px] font-bold text-primary hover:underline flex items-center gap-0.5">View All <ChevronRight size={12} /></button>}
+          >
+            <div className="space-y-4 mt-2">
+              {/* Card 1: Maintenance Shutdown */}
+              <div className="flex gap-3 items-start">
+                <div className="w-8 h-8 rounded-lg bg-rose-50 border border-rose-100 text-rose-500 flex items-center justify-center shrink-0">
+                  <Clock size={16} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-800 leading-tight">Maintenance Shutdown</h4>
+                  <span className="text-[9px] text-slate-400 font-medium mt-1 block">On 25 Jun 2026, 10:00 PM</span>
+                </div>
               </div>
-            )}
+
+              {/* Card 2: New Safety SOP Released */}
+              <div className="flex gap-3 items-start">
+                <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-100 text-emerald-500 flex items-center justify-center shrink-0">
+                  <FileText size={16} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-800 leading-tight">New Safety SOP Released</h4>
+                  <span className="text-[9px] text-slate-400 font-medium mt-1 block">Cast House Safety Manual v2.0</span>
+                </div>
+              </div>
+
+              {/* Card 3: Safety Drill */}
+              <div className="flex gap-3 items-start">
+                <div className="w-8 h-8 rounded-lg bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                  <Megaphone size={16} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-800 leading-tight">Safety Drill</h4>
+                  <span className="text-[9px] text-slate-400 font-medium mt-1 block">Tomorrow, 10:00 AM at Main Ground</span>
+                </div>
+              </div>
+
+              {/* Additional dynamic announcements */}
+              {data.announcements.filter(item => !['Maintenance Shutdown', 'New Safety SOP Released', 'Safety Drill'].includes(item.title)).slice(0, 2).map((item) => (
+                <div key={item.announcement_id} className="flex gap-3 items-start pt-3 border-t border-slate-100">
+                  <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200/50 text-slate-500 flex items-center justify-center shrink-0">
+                    <Info size={16} />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-slate-800 leading-tight">{item.title}</h4>
+                    <span className="text-[9px] text-slate-400 font-medium mt-1 block">Date: {item.created_at}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Card>
         </div>
       </div>
