@@ -417,10 +417,3 @@ tata_steel_agent/
 ---
 
 ## 📸 Screenshots & Video Demonstration
-
-> [!NOTE]
-> System screenshots and application walkthrough video resources can be placed in this section to demonstrate interface dashboards and navigation.
-
-* **Application Walkthrough**: `Walkthrough.mp4` / `Walkthrough.gif`
-* **L&D Admin view**: [Corporate L&D dashboard with AI insights.png](file:///home/vasterk/tata_steel_agent/frontend/images/Corporate%20L&D%20dashboard%20with%20AI%20insights.png)
-* **Executive Performance view**: [Executive.png](file:///home/vasterk/tata_steel_agent/frontend/images/Executive.png)
