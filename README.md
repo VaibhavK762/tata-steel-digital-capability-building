@@ -218,7 +218,7 @@ erDiagram
         int approved_by FK
     }
 
-    USERS ||--o[Self] : "manages (manager_id -> user_id)"
+    USERS ||--o{ USERS : "manages (manager_id -> user_id)"
     USERS ||--o{ USER_SKILLS : "has"
     USERS ||--o{ PROGRESS : "tracks"
     COURSES ||--o{ PROGRESS : "completed_by"
